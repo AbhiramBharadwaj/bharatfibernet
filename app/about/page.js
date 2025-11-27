@@ -7,7 +7,7 @@ const page = () => {
   return (
     <NextLayout>
       {/*<< Breadcrumb Section Start >>*/}
-      <Breadcrumb title="Who We Are" />
+      <Breadcrumb title="About Us - Who We Are" />
       
       {/* Screen 1: Tabbed About Section */}
       <AboutTabs />
