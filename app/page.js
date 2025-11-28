@@ -332,7 +332,15 @@ const page = () => {
 </section>
 
 
-<section className="testimonial-section fix section-padding">
+<section 
+  className="testimonial-section fix section-padding"
+  style={{
+    backgroundImage: 'url("/assets/img/2.jpg")',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }}
+>
   <div className="container">
 
     {/* Heading */}
