@@ -1,11 +1,8 @@
+'use client';
+
 import Breadcrumb from "@/components/Breadcrumb";
 import NextLayout from "@/layouts/NextLayout";
 import Link from "next/link";
-
-export const metadata = {
-  title: "Career | Bharat Fibernet",
-  description: "Build the future of connectivity with us",
-};
 
 export default function Career() {
   return (
@@ -48,23 +45,29 @@ export default function Career() {
                 </p>
                 
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '2rem' }}>
-                  <Link 
-                    href="/jobs" 
-                    className="theme-btn"
+                  <button
+                    onClick={() => {
+                      const jobSection = document.querySelector('.section-padding:nth-of-type(4)');
+                      if (jobSection) {
+                        jobSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }
+                    }}
                     style={{ 
                       padding: '1rem 3rem',
                       fontSize: '1.1rem',
                       fontWeight: '600',
                       borderRadius: '8px',
-                      background: 'linear-gradient(135deg, #6b9ff3 0%, #5a8fe8 100%)',
+                      background: 'linear-gradient(135deg, #fd9330 0%, #ff7420 100%)',
                       border: 'none',
                       color: 'white',
-                      textDecoration: 'none',
-                      display: 'inline-block'
+                      cursor: 'pointer',
+                      transition: 'transform 0.3s ease'
                     }}
+                    onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                    onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
                   >
                     View Available Jobs
-                  </Link>
+                  </button>
                   
                   <span style={{ fontSize: '2rem', color: '#ccc' }}>|</span>
                 </div>
@@ -130,7 +133,7 @@ export default function Career() {
                 background: 'white'
               }}>
                 <div style={{ 
-                  backgroundColor: '#c8e0f4', 
+                  backgroundColor: '#ffc299', 
                   border: '1px solid #000', 
                   padding: '0.75rem 1.5rem', 
                   marginBottom: '1.5rem',
@@ -152,7 +155,7 @@ export default function Career() {
                 background: 'white'
               }}>
                 <div style={{ 
-                  backgroundColor: '#c8e0f4', 
+                  backgroundColor: '#ffc299', 
                   border: '1px solid #000', 
                   padding: '0.75rem 1.5rem', 
                   marginBottom: '1.5rem',
@@ -174,7 +177,7 @@ export default function Career() {
                 background: 'white'
               }}>
                 <div style={{ 
-                  backgroundColor: '#c8e0f4', 
+                  backgroundColor: '#ffc299', 
                   border: '1px solid #000', 
                   padding: '0.75rem 1.5rem', 
                   marginBottom: '1.5rem',

@@ -1,6 +1,7 @@
 import Breadcrumb from "@/components/Breadcrumb";
 import NextLayout from "@/layouts/NextLayout";
 import FirewallRentalFaqAccordion from "@/components/FirewallRentalFaqAccordion";
+import Link from "next/link";
 
 export const metadata = {
   title: "Firewall Rental Services | Bharat Fibernet",
@@ -14,7 +15,7 @@ export default function FirewallRentalServices() {
 
       {/* Screen 1 - Hero Section */}
       <section className="about-section section-padding" style={{ 
-        backgroundImage: 'url(/assets/img/4.jpg)',
+        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url(/assets/img/3.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
@@ -127,10 +128,12 @@ export default function FirewallRentalServices() {
           <div className="row mt-5">
             <div className="col-12 text-center">
               <h3 style={{ fontSize: '2.5rem', fontWeight: '400', lineHeight: '1.4', marginBottom: '1rem' , color: '#1a1a1a'}}>
-                Deploy protection instantly - no long-term tie-ins.
+                Deploy Protection Instantly - No Long-Term Tie-Ins.
               </h3>
               <p style={{ fontSize: '1.3rem', fontWeight: '500', marginTop: '1.5rem' }}>
-                Lets Talk!
+                <Link href="/contact" style={{ color: '#1a1a1a', textDecoration: 'none', transition: 'color 0.3s ease' }} onMouseEnter={(e) => e.target.style.color = '#ff8c42'} onMouseLeave={(e) => e.target.style.color = '#1a1a1a'}>
+                  Let's Talk!
+                </Link>
               </p>
             </div>
           </div>

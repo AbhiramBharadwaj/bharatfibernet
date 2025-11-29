@@ -3,7 +3,7 @@ import NextLayout from "@/layouts/NextLayout";
 
 const page = () => {
   return (
-    <NextLayout>
+    <NextLayout header={1}>
       <Breadcrumb pageName="Help & Support" />
       
       <section className="service-details-section section-padding" style={{ 

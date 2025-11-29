@@ -5,7 +5,7 @@ import AboutTabs from "@/components/AboutTabs";
 
 const page = () => {
   return (
-    <NextLayout>
+    <NextLayout header={1}>
       {/*<< Breadcrumb Section Start >>*/}
       <Breadcrumb title="Who We Are" />
       
@@ -43,7 +43,7 @@ const page = () => {
                 <p className="mt-3 wow fadeInUp" data-wow-delay=".7s" style={{color: '#333'}}>
                   With dual-link redundancy and multi-gateway routing, we ensure your business never skips a beat.
                 </p>
-                <div className="highlight-box mt-4 p-4 wow fadeInUp" data-wow-delay=".8s" style={{border: '2px solid #0d6efd', borderRadius: '10px', background: '#ffffff'}}>
+                <div className="highlight-box mt-4 p-4 wow fadeInUp" data-wow-delay=".8s" style={{border: '2px solid #ff6600', borderRadius: '10px', background: '#ffffff'}}>
                   <h5 className="text-center" style={{color: '#000'}}>
                     Helping your growth run on reliable digital rails. Because when your network performs flawlessly, so does your business.
                   </h5>
@@ -76,7 +76,7 @@ const page = () => {
               <p className="mt-3 wow fadeInUp" data-wow-delay=".6s" style={{fontSize: '1.1rem', color: '#333'}}>
                 With local expertise, proactive support, and human-first service, we make sure you can focus on what really matters - your growth.
               </p>
-              <div className="highlight-box mt-5 p-4 wow fadeInUp" data-wow-delay=".7s" style={{border: '2px solid #0d6efd', borderRadius: '10px', background: '#f8f9fa'}}>
+              <div className="highlight-box mt-5 p-4 wow fadeInUp" data-wow-delay=".7s" style={{border: '2px solid var(--theme)', borderRadius: '10px', background: '#f8f9fa'}}>
                 <h4 className="text-center" style={{color: '#000'}}>
                   Technology should simplify, not complicate. That's our belief.
                 </h4>
@@ -105,61 +105,61 @@ const page = () => {
           
           <div className="row g-4 justify-content-center">
             <div className="col-lg-4 col-md-6">
-              <div className="service-box-items wow fadeInUp" data-wow-delay=".2s">
-                <div className="icon">
-                  <i className="fas fa-check-circle"></i>
+              <div className="service-box-items wow fadeInUp" data-wow-delay=".2s" style={{background: '#2a2e35', borderRadius: '15px', padding: '40px 30px', border: 'none'}}>
+                <div className="icon" style={{marginBottom: '20px'}}>
+                  <i className="fas fa-check-circle" style={{fontSize: '3rem', color: '#ff8c42'}}></i>
                 </div>
                 <div className="content">
-                  <h4>Uninterrupted Connectivity</h4>
-                  <p>Keep working, playing, and growing without interruptions.</p>
+                  <h4 style={{color: '#fff', marginBottom: '15px'}}>Uninterrupted Connectivity</h4>
+                  <p style={{color: '#b0b0b0'}}>Keep working, playing, and growing without interruptions.</p>
                 </div>
               </div>
             </div>
             
             <div className="col-lg-4 col-md-6">
-              <div className="service-box-items wow fadeInUp" data-wow-delay=".3s">
-                <div className="icon">
-                  <i className="fas fa-cogs"></i>
+              <div className="service-box-items wow fadeInUp" data-wow-delay=".3s" style={{background: '#2a2e35', borderRadius: '15px', padding: '40px 30px', border: 'none'}}>
+                <div className="icon" style={{marginBottom: '20px'}}>
+                  <i className="fas fa-cogs" style={{fontSize: '3rem', color: '#ff8c42'}}></i>
                 </div>
                 <div className="content">
-                  <h4>Simple Setup & Support</h4>
-                  <p>Setup and support made easy—no complications.</p>
+                  <h4 style={{color: '#fff', marginBottom: '15px'}}>Simple Setup & Support</h4>
+                  <p style={{color: '#b0b0b0'}}>Setup and support made easy—no complications.</p>
                 </div>
               </div>
             </div>
             
             <div className="col-lg-4 col-md-6">
-              <div className="service-box-items wow fadeInUp" data-wow-delay=".4s">
-                <div className="icon">
-                  <i className="fas fa-headset"></i>
+              <div className="service-box-items wow fadeInUp" data-wow-delay=".4s" style={{background: '#2a2e35', borderRadius: '15px', padding: '40px 30px', border: 'none'}}>
+                <div className="icon" style={{marginBottom: '20px'}}>
+                  <i className="fas fa-headset" style={{fontSize: '3rem', color: '#ff8c42'}}></i>
                 </div>
                 <div className="content">
-                  <h4>Quick Help</h4>
-                  <p>Quick help when you need it, no downtime.</p>
+                  <h4 style={{color: '#fff', marginBottom: '15px'}}>Quick Help</h4>
+                  <p style={{color: '#b0b0b0'}}>Quick help when you need it, no downtime.</p>
                 </div>
               </div>
             </div>
             
             <div className="col-lg-4 col-md-6">
-              <div className="service-box-items wow fadeInUp" data-wow-delay=".5s">
-                <div className="icon">
-                  <i className="fas fa-bolt"></i>
+              <div className="service-box-items wow fadeInUp" data-wow-delay=".5s" style={{background: '#2a2e35', borderRadius: '15px', padding: '40px 30px', border: 'none'}}>
+                <div className="icon" style={{marginBottom: '20px'}}>
+                  <i className="fas fa-bolt" style={{fontSize: '3rem', color: '#ff8c42'}}></i>
                 </div>
                 <div className="content">
-                  <h4>Responsive Internet</h4>
-                  <p>Responsive internet for work or entertainment.</p>
+                  <h4 style={{color: '#fff', marginBottom: '15px'}}>Responsive Internet</h4>
+                  <p style={{color: '#b0b0b0'}}>Responsive internet for work or entertainment.</p>
                 </div>
               </div>
             </div>
             
             <div className="col-lg-4 col-md-6">
-              <div className="service-box-items wow fadeInUp" data-wow-delay=".6s">
-                <div className="icon">
-                  <i className="fas fa-tag"></i>
+              <div className="service-box-items wow fadeInUp" data-wow-delay=".6s" style={{background: '#2a2e35', borderRadius: '15px', padding: '40px 30px', border: 'none'}}>
+                <div className="icon" style={{marginBottom: '20px'}}>
+                  <i className="fas fa-tag" style={{fontSize: '3rem', color: '#ff8c42'}}></i>
                 </div>
                 <div className="content">
-                  <h4>Affordable Plans</h4>
-                  <p>Affordable plans designed for your needs.</p>
+                  <h4 style={{color: '#fff', marginBottom: '15px'}}>Affordable Plans</h4>
+                  <p style={{color: '#b0b0b0'}}>Affordable plans designed for your needs.</p>
                 </div>
               </div>
             </div>
@@ -284,16 +284,16 @@ const page = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="cta-section section-padding" style={{ 
+      <section className="cta-section section-padding pt-0" style={{ 
         backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url(/assets/img/2.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
       }}>
         <div className="container">
-          <div className="row">
-            <div className="col-lg-6 mb-4 mb-lg-0">
-              <div className="cta-box text-center p-5 wow fadeInUp" data-wow-delay=".3s" style={{background: '#f8f9fa', borderRadius: '10px'}}>
+          <div className="row g-4">
+            <div className="col-lg-6">
+              <div className="cta-box text-center p-5 wow fadeInUp" data-wow-delay=".3s" style={{background: '#f8f9fa', borderRadius: '10px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                 <h4 className="mb-4" style={{color: '#000'}}>Ready to find the right solution for your business or home?</h4>
                 <Link href="/pricing" className="theme-btn">
                   See our plans
@@ -309,22 +309,24 @@ const page = () => {
                   <div className="mb-3">
                     <input 
                       type="tel" 
-                      className="form-control" 
+                      className="guidance-input" 
                       placeholder="Mobile Number" 
                       required 
+                      style={{width: '100%', borderRadius: '10px', border: '1px solid #d1d5db', background: '#ffffff', padding: '12px 14px', color: '#111827', fontSize: '14px', outline: 'none'}}
                     />
                   </div>
                   <div className="mb-3">
                     <input 
                       type="email" 
-                      className="form-control" 
+                      className="guidance-input" 
                       placeholder="Email Address" 
                       required 
+                      style={{width: '100%', borderRadius: '10px', border: '1px solid #d1d5db', background: '#ffffff', padding: '12px 14px', color: '#111827', fontSize: '14px', outline: 'none'}}
                     />
                   </div>
-                  <button type="submit" className="theme-btn w-100">
+                  <button type="submit" className="guidance-btn" style={{marginTop: '12px', border: 'none', borderRadius: '999px', padding: '12px 18px', background: 'linear-gradient(135deg, #f7931e, #ffb347)', color: '#ffffff', fontWeight: '700', fontSize: '15px', cursor: 'pointer', width: '100%'}}>
                     Submit!
-                    <i className="far fa-arrow-right" />
+                    <i className="far fa-arrow-right" style={{marginLeft: '8px'}} />
                   </button>
                 </form>
               </div>

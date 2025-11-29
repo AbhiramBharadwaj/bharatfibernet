@@ -399,7 +399,7 @@ p {
 .preloader .animation-preloader .txt-loading .letters-loading::before {
   -webkit-animation: letters-loading 4s infinite;
           animation: letters-loading 4s infinite;
-  color: var(--header);
+  color: var(--theme);
   content: attr(data-text-preloader);
   left: 0;
   opacity: 0;
@@ -1765,9 +1765,14 @@ input.main-search-input::placeholder {
     padding: 0 30px;
   }
 }
+@media (max-width: 767px) {
+  .header-1 .container-fluid {
+    padding: 0 15px;
+  }
+}
 @media (max-width: 470px) {
   .header-1 .container-fluid {
-    padding: 0 20px;
+    padding: 0 15px;
   }
 }
 .header-1 .header-main .sticky-logo .logo-2 {
@@ -1848,9 +1853,14 @@ input.main-search-input::placeholder {
     padding: 0 30px;
   }
 }
+@media (max-width: 767px) {
+  .header-2 .container-fluid {
+    padding: 0 15px;
+  }
+}
 @media (max-width: 470px) {
   .header-2 .container-fluid {
-    padding: 0 20px;
+    padding: 0 15px;
   }
 }
 .header-2 .header-right {
@@ -1916,9 +1926,14 @@ input.main-search-input::placeholder {
     padding: 0 30px;
   }
 }
+@media (max-width: 767px) {
+  .header-3 .container-fluid {
+    padding: 0 15px;
+  }
+}
 @media (max-width: 470px) {
   .header-3 .container-fluid {
-    padding: 0 20px;
+    padding: 0 15px;
   }
 }
 .header-3 .header-right {

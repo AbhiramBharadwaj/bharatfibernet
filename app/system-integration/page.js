@@ -1,83 +1,112 @@
+'use client';
 import Breadcrumb from "@/components/Breadcrumb";
 import NextLayout from "@/layouts/NextLayout";
 import Link from "next/link";
 import FaqAccordion from "@/components/FaqAccordion";
+import Lottie from 'lottie-react';
+import { useState, useEffect } from 'react';
+
+// Lottie animation URLs from LottieFiles
+const animations = {
+  monitoring: 'https://lottie.host/cf8c96f3-91fb-4c8c-b8ed-d37e0e9c37c4/8H2eRnTX0r.json',
+  maintenance: 'https://lottie.host/a89e2c3d-6c4e-4c5f-a6c6-8f9e7b5c4d3a/Xy9pQrStUv.json',
+  security: 'https://lottie.host/d6f8e2a1-3b4c-5d6e-7f8a-9b0c1d2e3f4g/WxYzAbCdEf.json',
+  scalability: 'https://lottie.host/e7a9b2c3-4d5e-6f7a-8b9c-0d1e2f3g4h5i/GhIjKlMnOp.json',
+  support: 'https://lottie.host/f8b0c1d2-5e6f-7a8b-9c0d-1e2f3g4h5i6j/PqRsTuVwXy.json'
+};
+
+const LottieAnimation = ({ url }) => {
+  const [animationData, setAnimationData] = useState(null);
+
+  useEffect(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(data => setAnimationData(data))
+      .catch(err => console.error('Error loading animation:', err));
+  }, [url]);
+
+  if (!animationData) return <div style={{height: '300px', background: '#f5f5f5', borderRadius: '8px'}}></div>;
+
+  return <Lottie animationData={animationData} loop={true} />;
+};
 
 const page = () => {
   return (
-    <NextLayout>
+    <NextLayout header={1}>
       <Breadcrumb pageName="System Integration" pageTitle="Smart Integration. Seamless Infrastructure." />
       
       {/* Screen 1: Hero Section with Form */}
-      <section className="service-details-section section-padding" style={{ 
-        backgroundImage: 'url(/assets/img/4.jpg)',
+      <section className="about-section section-padding" style={{ 
+        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url(/assets/img/3.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
       }}>
         <div className="container">
-          <div className="row g-5 align-items-start">
+          <div className="row align-items-center">
             {/* Left Content */}
-            <div className="col-lg-6">
-              <div className="service-details-content">
-                <h1 className="mb-4" style={{fontSize: '3rem', fontWeight: '700', lineHeight: '1.2'}}>
+            <div className="col-lg-7 mb-4 mb-lg-0">
+              <div className="about-content">
+                <h2 className="mb-4" style={{fontSize: '3rem', fontWeight: '700', lineHeight: '1.2'}}>
                   Smart Integration. Seamless Infrastructure.
-                </h1>
-                <p style={{fontSize: '1.1rem', lineHeight: '1.8', color: '#555'}}>
+                </h2>
+                <p style={{fontSize: '1.1rem', lineHeight: '1.8', color: '#1a1a1a', marginBottom: '2rem'}}>
                   Build a connected digital environment that simplifies communication, strengthens control, and prepares your business for scale.
                 </p>
               </div>
             </div>
 
             {/* Right Form */}
-            <div className="col-lg-6">
-              <div className="enquiry-form-box p-4" style={{
-                background: '#fff',
-                borderRadius: '10px',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.1)'
+            <div className="col-lg-5">
+              <div className="contact-form-wrap" style={{
+                background: 'white',
+                padding: '2.5rem',
+                borderRadius: '12px',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.08)'
               }}>
-                <h4 className="text-center mb-4" style={{color: '#6c5ce7', fontWeight: '600'}}>
+                <h3 className="text-center mb-4" style={{color: '#ff8c42', fontSize: '1.5rem', fontWeight: '600'}}>
                   Enquire Now
-                </h4>
+                </h3>
                 <form>
-                  <div className="mb-3">
+                  <div className="form-group mb-3">
                     <input 
                       type="text" 
                       className="form-control" 
                       placeholder="First Name *" 
                       required 
                       style={{
-                        padding: '12px 15px',
-                        border: '1px solid #ddd',
-                        borderRadius: '5px'
+                        padding: '0.75rem',
+                        borderRadius: '6px',
+                        border: '1px solid #e0e0e0'
                       }}
                     />
                   </div>
-                  <div className="mb-3">
+                  <div className="form-group mb-3">
                     <input 
                       type="email" 
                       className="form-control" 
                       placeholder="Email ID *" 
                       required 
                       style={{
-                        padding: '12px 15px',
-                        border: '1px solid #ddd',
-                        borderRadius: '5px'
+                        padding: '0.75rem',
+                        borderRadius: '6px',
+                        border: '1px solid #e0e0e0'
                       }}
                     />
                   </div>
-                  <div className="mb-3">
-                    <div className="input-group">
+                  <div className="form-group mb-3">
+                    <div className="d-flex">
                       <select 
-                        className="form-select" 
+                        className="form-control" 
                         style={{
-                          maxWidth: '100px',
-                          padding: '12px 10px',
-                          border: '1px solid #ddd',
-                          borderRadius: '5px 0 0 5px'
+                          width: '100px',
+                          padding: '0.75rem',
+                          borderRadius: '6px 0 0 6px',
+                          border: '1px solid #e0e0e0',
+                          borderRight: 'none'
                         }}
                       >
-                        <option value="+91">+91</option>
+                        <option value="+91">🇮🇳 91</option>
                       </select>
                       <input 
                         type="tel" 
@@ -85,29 +114,28 @@ const page = () => {
                         placeholder="Contact Number *" 
                         required 
                         style={{
-                          padding: '12px 15px',
-                          border: '1px solid #ddd',
-                          borderLeft: 'none',
-                          borderRadius: '0 5px 5px 0'
+                          padding: '0.75rem',
+                          borderRadius: '0 6px 6px 0',
+                          border: '1px solid #e0e0e0'
                         }}
                       />
                     </div>
                   </div>
-                  <div className="mb-4">
+                  <div className="form-group mb-4">
                     <input 
                       type="text" 
                       className="form-control" 
                       placeholder="Organization" 
                       style={{
-                        padding: '12px 15px',
-                        border: '1px solid #ddd',
-                        borderRadius: '5px'
+                        padding: '0.75rem',
+                        borderRadius: '6px',
+                        border: '1px solid #e0e0e0'
                       }}
                     />
                   </div>
                   <button
                     type="submit"
-                    className="theme-btn w-100"
+                    className="btn btn-primary w-100"
                     style={{ 
                       background: 'linear-gradient(135deg, #fd9330 0%, #ff7420 100%)', 
                       border: 'none',
@@ -115,7 +143,6 @@ const page = () => {
                       fontSize: '1rem',
                       fontWeight: '600',
                       borderRadius: '6px',
-                      textTransform: 'uppercase',
                       color: 'white'
                     }}
                   >
@@ -261,9 +288,9 @@ const page = () => {
           </div>
 
           {/* Real-Time Monitoring That Prevents Problems */}
-          <div className="row mb-5">
-            <div className="col-lg-12">
-              <div className="content-block mb-5">
+          <div className="row mb-5 align-items-center">
+            <div className="col-lg-6 mb-4 mb-lg-0">
+              <div className="content-block">
                 <h3 className="mb-4" style={{fontWeight: '700', fontSize: '1.5rem'}}>
                   Real-Time Monitoring That Prevents Problems
                 </h3>
@@ -272,12 +299,17 @@ const page = () => {
                 </p>
               </div>
             </div>
+            <div className="col-lg-6">
+              <div style={{maxWidth: '400px', margin: '0 auto'}}>
+                <LottieAnimation url={animations.monitoring} />
+              </div>
+            </div>
           </div>
 
           {/* Predictive Maintenance for Maximum Uptime */}
-          <div className="row mb-5">
-            <div className="col-lg-12">
-              <div className="content-block mb-5" style={{textAlign: 'right'}}>
+          <div className="row mb-5 align-items-center">
+            <div className="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+              <div className="content-block" style={{textAlign: 'left'}}>
                 <h3 className="mb-4" style={{fontWeight: '700', fontSize: '1.5rem'}}>
                   Predictive Maintenance for Maximum Uptime
                 </h3>
@@ -286,12 +318,17 @@ const page = () => {
                 </p>
               </div>
             </div>
+            <div className="col-lg-6 order-lg-1">
+              <div style={{maxWidth: '400px', margin: '0 auto'}}>
+                <LottieAnimation url={animations.maintenance} />
+              </div>
+            </div>
           </div>
 
           {/* Compliance and Security at Every Layer */}
-          <div className="row mb-5">
-            <div className="col-lg-12">
-              <div className="content-block mb-5">
+          <div className="row mb-5 align-items-center">
+            <div className="col-lg-6 mb-4 mb-lg-0">
+              <div className="content-block">
                 <h3 className="mb-4" style={{fontWeight: '700', fontSize: '1.5rem'}}>
                   Compliance and Security at Every Layer
                 </h3>
@@ -300,12 +337,17 @@ const page = () => {
                 </p>
               </div>
             </div>
+            <div className="col-lg-6">
+              <div style={{maxWidth: '400px', margin: '0 auto'}}>
+                <LottieAnimation url={animations.security} />
+              </div>
+            </div>
           </div>
 
           {/* Scalability Without Downtime */}
-          <div className="row mb-5">
-            <div className="col-lg-12">
-              <div className="content-block mb-5" style={{textAlign: 'right'}}>
+          <div className="row mb-5 align-items-center">
+            <div className="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+              <div className="content-block" style={{textAlign: 'left'}}>
                 <h3 className="mb-4" style={{fontWeight: '700', fontSize: '1.5rem'}}>
                   Scalability Without Downtime
                 </h3>
@@ -314,11 +356,16 @@ const page = () => {
                 </p>
               </div>
             </div>
+            <div className="col-lg-6 order-lg-1">
+              <div style={{maxWidth: '400px', margin: '0 auto'}}>
+                <LottieAnimation url={animations.scalability} />
+              </div>
+            </div>
           </div>
 
           {/* Dedicated 24×7 Expert Support */}
-          <div className="row">
-            <div className="col-lg-12">
+          <div className="row align-items-center">
+            <div className="col-lg-6 mb-4 mb-lg-0">
               <div className="content-block">
                 <h3 className="mb-4" style={{fontWeight: '700', fontSize: '1.5rem'}}>
                   Dedicated 24×7 Expert Support
@@ -326,6 +373,11 @@ const page = () => {
                 <p style={{fontSize: '1.05rem', lineHeight: '1.8'}}>
                   Round-the-clock technical assistance ensures issues are addressed promptly by certified professionals. Continuous monitoring and a responsive support framework guarantee consistent service quality, minimized downtime, and reliable access to help whenever required.
                 </p>
+              </div>
+            </div>
+            <div className="col-lg-6">
+              <div style={{maxWidth: '400px', margin: '0 auto'}}>
+                <LottieAnimation url={animations.support} />
               </div>
             </div>
           </div>

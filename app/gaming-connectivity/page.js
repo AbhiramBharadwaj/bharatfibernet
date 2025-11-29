@@ -13,8 +13,8 @@ export default function GamingConnectivity() {
       <Breadcrumb pageName="Gaming Connectivity" />
 
       {/* Screen 4 - FAQ Section */}
-      <section className="faq-section section-padding" style={{ 
-        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url(/assets/img/4.jpg)',
+      <section className="about-section section-padding" style={{ 
+        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url(/assets/img/3.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'

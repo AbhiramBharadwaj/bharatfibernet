@@ -23,7 +23,7 @@ const AboutTabs = () => {
           <p className="mt-3 wow fadeInUp" data-wow-delay=".6s">
             Our vision is simple - to deliver <strong>premium internet and enterprise communication solutions</strong> that enable organizations to grow without limits. From dedicated leased lines and managed networks to cloud and cybersecurity services, every solution we design is backed by engineering precision, local expertise, and an unwavering focus on uptime.
           </p>
-          <div className="highlight-box mt-4 p-4 wow fadeInUp" data-wow-delay=".7s" style={{border: '2px solid #0d6efd', borderRadius: '10px', background: '#f8f9fa'}}>
+          <div className="highlight-box mt-4 p-4 wow fadeInUp" data-wow-delay=".7s" style={{border: '2px solid var(--theme)', borderRadius: '10px', background: '#f8f9fa'}}>
             <h5 className="text-center" style={{fontStyle: 'italic'}}>
               We're not just powering connections - we're enabling a smarter, stronger, and more connected India.
             </h5>
@@ -45,7 +45,7 @@ const AboutTabs = () => {
           <p className="mt-3 wow fadeInUp" data-wow-delay=".7s">
             With dual-link redundancy and multi-gateway routing, we ensure your business never skips a beat.
           </p>
-          <div className="highlight-box mt-4 p-4 wow fadeInUp" data-wow-delay=".8s" style={{border: '2px solid #0d6efd', borderRadius: '10px', background: '#f8f9fa'}}>
+          <div className="highlight-box mt-4 p-4 wow fadeInUp" data-wow-delay=".8s" style={{border: '2px solid var(--theme)', borderRadius: '10px', background: '#f8f9fa'}}>
             <h5 className="text-center" style={{fontStyle: 'italic'}}>
               Helping your growth run on reliable digital rails. Because when your network performs flawlessly, so does your business.
             </h5>
@@ -95,7 +95,7 @@ const AboutTabs = () => {
             <li className="wow fadeInUp" data-wow-delay=".8s">• Proactive monitoring and rapid issue resolution</li>
             <li className="wow fadeInUp" data-wow-delay=".85s">• Human-centered service that puts you first</li>
           </ul>
-          <div className="highlight-box mt-4 p-4 wow fadeInUp" data-wow-delay=".9s" style={{border: '2px solid #0d6efd', borderRadius: '10px', background: '#f8f9fa'}}>
+          <div className="highlight-box mt-4 p-4 wow fadeInUp" data-wow-delay=".9s" style={{border: '2px solid var(--theme)', borderRadius: '10px', background: '#f8f9fa'}}>
             <h5 className="text-center" style={{fontStyle: 'italic'}}>
               Technology should simplify, not complicate. That's our belief.
             </h5>

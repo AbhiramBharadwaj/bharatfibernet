@@ -12,9 +12,9 @@ export default function DataCenterCloud() {
     <NextLayout header={1} footer={1}>
       <Breadcrumb pageName="Data Center & Cloud" />
 
-      {/* Screen 1 - Hero Section with Form */}
+      {/* Hero Section with Form */}
       <section className="about-section section-padding" style={{ 
-        backgroundImage: 'url(/assets/img/4.jpg)',
+        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url(/assets/img/3.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
@@ -33,7 +33,7 @@ export default function DataCenterCloud() {
             </div>
             <div className="col-lg-5">
               <div className="contact-form-wrap" style={{ background: 'white', padding: '2.5rem', borderRadius: '12px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}>
-                <h3 className="text-center mb-4" style={{ color: '#8b5cf6', fontSize: '1.5rem', fontWeight: '600' }}>
+                <h3 className="text-center mb-4" style={{ color: '#ff8c42', fontSize: '1.5rem', fontWeight: '600' }}>
                   Enquire Now
                 </h3>
                 <form>

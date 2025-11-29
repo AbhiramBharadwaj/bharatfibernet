@@ -479,8 +479,8 @@ const Page = () => {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-10px)';
-                e.currentTarget.style.boxShadow = '0 20px 60px rgba(121, 255, 91, 0.2)';
-                e.currentTarget.style.borderColor = '#28a745';
+                e.currentTarget.style.boxShadow = '0 20px 60px rgba(253, 147, 48, 0.2)';
+                e.currentTarget.style.borderColor = '#fd9330';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
@@ -491,12 +491,12 @@ const Page = () => {
                   width: '70px',
                   height: '70px',
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #28a745 0%, #84ff5b 100%)',
+                  background: 'linear-gradient(135deg, #fd9330 0%, #fc9546 100%)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   marginBottom: '1.5rem',
-                  boxShadow: '0 8px 20px rgba(121, 255, 91, 0.3)'
+                  boxShadow: '0 8px 20px rgba(253, 147, 48, 0.3)'
                 }}>
                   <i className="fas fa-map-marker-alt" style={{ fontSize: '1.8rem', color: '#fff' }}></i>
                 </div>
@@ -505,7 +505,7 @@ const Page = () => {
                   fontSize: '1.8rem', 
                   fontWeight: '700', 
                   marginBottom: '1.5rem',
-                  color: '#28a745'
+                  color: '#fd9330'
                 }}>
                   Location
                 </h3>
@@ -646,69 +646,84 @@ const Page = () => {
                     gap: '1rem',
                     marginTop: '0.5rem'
                   }}>
-                    <div style={{
-                      width: '45px',
-                      height: '45px',
-                      borderRadius: '50%',
-                      background: '#f0f0f0',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      cursor: 'pointer',
-                      transition: 'all 0.3s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = '#fd9330';
-                      e.currentTarget.querySelector('i').style.color = '#fff';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = '#f0f0f0';
-                      e.currentTarget.querySelector('i').style.color = '#666';
-                    }}>
+                    <a 
+                      href="https://wa.me/917799906341" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      style={{
+                        width: '45px',
+                        height: '45px',
+                        borderRadius: '50%',
+                        background: '#f0f0f0',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s ease',
+                        textDecoration: 'none'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = '#25D366';
+                        e.currentTarget.querySelector('i').style.color = '#fff';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = '#f0f0f0';
+                        e.currentTarget.querySelector('i').style.color = '#666';
+                      }}>
                       <i className="fab fa-whatsapp" style={{ fontSize: '1.3rem', color: '#666', transition: 'color 0.3s ease' }}></i>
-                    </div>
-                    <div style={{
-                      width: '45px',
-                      height: '45px',
-                      borderRadius: '50%',
-                      background: '#f0f0f0',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      cursor: 'pointer',
-                      transition: 'all 0.3s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = '#28a745';
-                      e.currentTarget.querySelector('i').style.color = '#fff';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = '#f0f0f0';
-                      e.currentTarget.querySelector('i').style.color = '#666';
-                    }}>
+                    </a>
+                    <a 
+                      href="https://www.facebook.com/BharatFiberNetHyd/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      style={{
+                        width: '45px',
+                        height: '45px',
+                        borderRadius: '50%',
+                        background: '#f0f0f0',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s ease',
+                        textDecoration: 'none'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = '#1877F2';
+                        e.currentTarget.querySelector('i').style.color = '#fff';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = '#f0f0f0';
+                        e.currentTarget.querySelector('i').style.color = '#666';
+                      }}>
                       <i className="fab fa-facebook-f" style={{ fontSize: '1.3rem', color: '#666', transition: 'color 0.3s ease' }}></i>
-                    </div>
-                    <div style={{
-                      width: '45px',
-                      height: '45px',
-                      borderRadius: '50%',
-                      background: '#f0f0f0',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      cursor: 'pointer',
-                      transition: 'all 0.3s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = '#fd9330';
-                      e.currentTarget.querySelector('i').style.color = '#fff';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = '#f0f0f0';
-                      e.currentTarget.querySelector('i').style.color = '#666';
-                    }}>
-                      <i className="fab fa-twitter" style={{ fontSize: '1.3rem', color: '#666', transition: 'color 0.3s ease' }}></i>
-                    </div>
+                    </a>
+                    <a 
+                      href="https://www.linkedin.com/in/bharat-voip-communications-private-limited-595b82241/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      style={{
+                        width: '45px',
+                        height: '45px',
+                        borderRadius: '50%',
+                        background: '#f0f0f0',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s ease',
+                        textDecoration: 'none'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = '#0A66C2';
+                        e.currentTarget.querySelector('i').style.color = '#fff';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = '#f0f0f0';
+                        e.currentTarget.querySelector('i').style.color = '#666';
+                      }}>
+                      <i className="fab fa-linkedin-in" style={{ fontSize: '1.3rem', color: '#666', transition: 'color 0.3s ease' }}></i>
+                    </a>
                   </div>
                 </div>
               </div>

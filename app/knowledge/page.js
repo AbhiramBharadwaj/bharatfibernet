@@ -365,7 +365,6 @@ export default function Knowledge() {
                       color: '#999'
                     }}>
                       <span>Nov 20, 2025</span>
-                      <span style={{ color: '#28a745', fontWeight: '600' }}>Read More →</span>
                     </div>
                   </div>
                 </div>
@@ -453,7 +452,6 @@ export default function Knowledge() {
                       color: '#999'
                     }}>
                       <span>Nov 18, 2025</span>
-                      <span style={{ color: '#fd9330', fontWeight: '600' }}>Read More →</span>
                     </div>
                   </div>
                 </div>
@@ -526,7 +524,6 @@ export default function Knowledge() {
                       color: '#999'
                     }}>
                       <span>Nov 15, 2025</span>
-                      <span style={{ color: '#28a745', fontWeight: '600' }}>Read More →</span>
                     </div>
                   </div>
                 </div>
@@ -599,7 +596,6 @@ export default function Knowledge() {
                       color: '#999'
                     }}>
                       <span>Nov 12, 2025</span>
-                      <span style={{ color: '#fd9330', fontWeight: '600' }}>Read More →</span>
                     </div>
                   </div>
                 </div>
@@ -672,7 +668,6 @@ export default function Knowledge() {
                       color: '#999'
                     }}>
                       <span>Nov 10, 2025</span>
-                      <span style={{ color: '#28a745', fontWeight: '600' }}>Read More →</span>
                     </div>
                   </div>
                 </div>
@@ -745,7 +740,6 @@ export default function Knowledge() {
                       color: '#999'
                     }}>
                       <span>Nov 8, 2025</span>
-                      <span style={{ color: '#fd9330', fontWeight: '600' }}>Watch Now →</span>
                     </div>
                   </div>
                 </div>
