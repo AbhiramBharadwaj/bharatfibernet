@@ -131,7 +131,7 @@ export default function FirewallRentalServices() {
                 Deploy Protection Instantly - No Long-Term Tie-Ins.
               </h3>
               <p style={{ fontSize: '1.3rem', fontWeight: '500', marginTop: '1.5rem' }}>
-                <Link href="/contact" style={{ color: '#1a1a1a', textDecoration: 'none', transition: 'color 0.3s ease' }} onMouseEnter={(e) => e.target.style.color = '#ff8c42'} onMouseLeave={(e) => e.target.style.color = '#1a1a1a'}>
+                <Link href="/contact" style={{ color: '#1a1a1a', textDecoration: 'none' }}>
                   Let's Talk!
                 </Link>
               </p>
