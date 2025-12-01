@@ -20,7 +20,21 @@ const Preloader = () => {
   return (
     <div id="preloader" className="preloader">
       <div className="animation-preloader">
-        <div className="spinner"></div>
+        <div className="spinner">
+          <img 
+            src="/assets/img/logo/logo.png" 
+            alt="Bharat Fibernet Logo" 
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '120px',
+              height: 'auto',
+              zIndex: 10
+            }}
+          />
+        </div>
         <div className="txt-loading">
           <span data-text-preloader="B" className="letters-loading">
             B

@@ -52,7 +52,8 @@ const Page = () => {
                   background: '#e6f2ff',
                   width: '100%',
                   maxWidth: '500px',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  position: 'relative'
                 }}>
                   <select 
                     className="form-select"
@@ -61,13 +62,17 @@ const Page = () => {
                     style={{
                       width: '100%',
                       padding: '0',
+                      paddingRight: '30px',
                       border: 'none',
                       fontSize: '1.1rem',
                       background: 'transparent',
                       fontWeight: '600',
                       cursor: 'pointer',
                       color: '#000',
-                      outline: 'none'
+                      outline: 'none',
+                      appearance: 'none',
+                      WebkitAppearance: 'none',
+                      MozAppearance: 'none'
                     }}
                   >
                     <option value="">Select Your Enquiry Type</option>
@@ -79,6 +84,15 @@ const Page = () => {
                     <option value="technical">Technical Escalation</option>
                     <option value="other">Other (General Query)</option>
                   </select>
+                  <i className="fas fa-chevron-down" style={{
+                    position: 'absolute',
+                    right: '1.5rem',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    color: '#2c5aa0',
+                    fontSize: '1rem',
+                    pointerEvents: 'none'
+                  }}></i>
                 </div>
               </div>
             </div>
