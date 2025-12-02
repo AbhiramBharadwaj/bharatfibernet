@@ -1,6 +1,6 @@
 const Faq = () => {
   return (
-    <section className="faq-section section-padding">
+    <section className="faq-section" style={{ padding: '30px 0' }}>
       <div className="container">
         <div className="section-title text-center">
           <span className="sub-content wow fadeInUp">

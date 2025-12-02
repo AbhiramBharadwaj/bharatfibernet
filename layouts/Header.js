@@ -226,7 +226,7 @@ const Sidebar = ({ sidebarToggle, close, menu }) => {
                     </div>
                     <div className="offcanvas__contact-text">
                       <a target="_blank" href="https://maps.google.com/?q=Jyothi+Flora+Kavuri+Hills+Madhapur+Hyderabad">
-                        Jyothi Flora, 4th Floor, Kavuri Hills, Phase 2, Madhapur, Hyderabad, Telangana 500081
+                        Jyothi Flora, 4th Floor, Kavuri Hills, Phase 2, Madhapur, Hyderabad, Telangana 500083
                       </a>
                     </div>
                   </li>

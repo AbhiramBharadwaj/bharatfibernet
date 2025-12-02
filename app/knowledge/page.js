@@ -838,72 +838,107 @@ export default function Knowledge() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-padding" style={{ 
-        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url(/assets/img/3.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}>
+      {/* Need Guidance Section */}
+      <section 
+        className="section-padding"
+        style={{
+          backgroundImage: 'url("/assets/img/4.jpg")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          padding: '80px 0'
+        }}
+      >
         <div className="container">
+          {/* Heading */}
+          <div className="text-center mb-4">
+            <h2 style={{ color: '#1a1a1a', fontWeight: '700', fontSize: '2.5rem', textShadow: '0 2px 4px rgba(255,255,255,0.3)' }}>
+              Need Guidance?
+            </h2>
+            <p style={{ color: '#2c2c2c', fontSize: '1.1rem', fontWeight: '500' }}>
+              We'd love to help you.
+            </p>
+          </div>
+
+          {/* Labels Row */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '3rem',
+            marginBottom: '2rem',
+            flexWrap: 'wrap'
+          }}>
+            <span style={{ color: '#1a1a1a', fontWeight: '600', fontSize: '1.1rem' }}>Enquire</span>
+            <span style={{ color: '#1a1a1a', fontWeight: '600', fontSize: '1.1rem' }}>Email</span>
+            <span style={{ color: '#ff6f00', fontWeight: '700', fontSize: '1.1rem' }}>Call Us</span>
+          </div>
+
+          {/* Form */}
           <div className="row justify-content-center">
-            <div className="col-lg-8 text-center">
-              <div style={{
-                background: '#fff',
-                border: '2px solid #e0e0e0',
-                borderRadius: '15px',
-                padding: '3rem 2rem'
+            <div className="col-lg-6">
+              <form style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1.5rem'
               }}>
-                <h3 style={{
-                  fontSize: '2rem',
-                  fontWeight: '700',
-                  marginBottom: '1.5rem',
-                  color: '#000'
-                }}>
-                  Want to Stay Updated?
-                </h3>
-                <p style={{
-                  fontSize: '1.1rem',
-                  lineHeight: '1.7',
-                  color: '#666',
-                  marginBottom: '2rem'
-                }}>
-                  Subscribe to our newsletter and get the latest insights, guides, and updates delivered to your inbox.
-                </p>
-                <form className="d-flex gap-3 justify-content-center flex-wrap">
-                  <input 
-                    type="email" 
-                    placeholder="Enter your email"
-                    style={{
-                      flex: '1',
-                      minWidth: '250px',
-                      maxWidth: '400px',
-                      padding: '0.875rem 1.5rem',
-                      border: '2px solid #e0e0e0',
-                      borderRadius: '8px',
-                      fontSize: '1rem'
-                    }}
-                  />
-                  <button 
-                    type="submit"
-                    style={{
-                      padding: '0.875rem 2.5rem',
-                      background: 'linear-gradient(135deg, #fd9330 0%, #fc9546 100%)',
-                      color: '#fff',
-                      border: 'none',
-                      borderRadius: '8px',
-                      fontSize: '1rem',
-                      fontWeight: '600',
-                      cursor: 'pointer',
-                      transition: 'transform 0.3s ease'
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-                    onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-                  >
-                    Subscribe
-                  </button>
-                </form>
-              </div>
+                <input
+                  type="tel"
+                  placeholder="Mobile Number"
+                  required
+                  style={{
+                    width: '100%',
+                    padding: '18px 25px',
+                    borderRadius: '12px',
+                    border: 'none',
+                    fontSize: '16px',
+                    outline: 'none',
+                    backgroundColor: '#ffffff',
+                    color: '#333'
+                  }}
+                />
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  required
+                  style={{
+                    width: '100%',
+                    padding: '18px 25px',
+                    borderRadius: '12px',
+                    border: 'none',
+                    fontSize: '16px',
+                    outline: 'none',
+                    backgroundColor: '#ffffff',
+                    color: '#333'
+                  }}
+                />
+                <button
+                  type="submit"
+                  style={{
+                    width: '100%',
+                    padding: '18px',
+                    background: 'linear-gradient(135deg, #ff8c00 0%, #ff6f00 100%)',
+                    color: '#ffffff',
+                    border: 'none',
+                    borderRadius: '12px',
+                    fontSize: '18px',
+                    fontWeight: '700',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    textTransform: 'uppercase',
+                    letterSpacing: '1px'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 10px 30px rgba(255, 140, 0, 0.4)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                >
+                  Let's Connect!
+                </button>
+              </form>
             </div>
           </div>
         </div>

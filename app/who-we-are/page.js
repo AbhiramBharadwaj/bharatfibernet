@@ -200,7 +200,7 @@ const page = () => {
             <div className="col-lg-4 col-md-6">
               <div className="team-card-items wow fadeInUp" data-wow-delay=".2s">
                 <div className="team-image">
-                  <img src="assets/img/p1.jpeg" alt="Botte Venugopal" />
+                  <img src="/assets/img/p1.jpg" alt="Botte Venugopal" />
                 </div>
                 <div className="team-content text-center">
                   <h4 style={{ color: '#000' }}>Botte Venugopal</h4>
@@ -219,7 +219,7 @@ const page = () => {
             <div className="col-lg-4 col-md-6">
               <div className="team-card-items wow fadeInUp" data-wow-delay=".4s">
                 <div className="team-image">
-                  <img src="assets/img/p2.jpeg" alt="Gaddam Poornachander" />
+                  <img src="/assets/img/p2.jpg" alt="Gaddam Poornachander" />
                 </div>
                 <div className="team-content text-center">
                   <h4 style={{ color: '#000' }}>Gaddam Poornachander</h4>
@@ -235,7 +235,7 @@ const page = () => {
             <div className="col-lg-4 col-md-6">
               <div className="team-card-items wow fadeInUp" data-wow-delay=".6s">
                 <div className="team-image">
-                  <img src="assets/img/p3.jpeg" alt="Srikanth Bodla" />
+                  <img src="/assets/img/p3.jpg" alt="Srikanth Bodla" />
                 </div>
                 <div className="team-content text-center">
                   <h4 style={{ color: '#000' }}>Srikanth Bodla</h4>
@@ -259,30 +259,31 @@ const page = () => {
       </section>
 
       {/* Our Team Section */}
-      <section className="team-section fix section-padding pt-0" style={{
+      <section className="team-section fix" style={{
+        padding: '30px 0',
         backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url(/assets/img/1.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
       }}>
         <div className="container">
-          <div className="section-title text-center mb-5">
+          <div className="section-title text-center mb-3">
             <h2 className="wow fadeInUp" data-wow-delay=".3s" style={{ color: '#000' }}>
               The People Who Keep You Connected
             </h2>
-            <p className="mt-4 wow fadeInUp" data-wow-delay=".4s" style={{ fontSize: '1.1rem', color: '#333' }}>
+            <p className="mt-3 wow fadeInUp" data-wow-delay=".4s" style={{ fontSize: '1.1rem', color: '#333' }}>
               Every smooth and uninterrupted connection has a hardworking team behind it.
             </p>
-            <p className="mt-3 wow fadeInUp" data-wow-delay=".5s" style={{ fontSize: '1.1rem', color: '#333' }}>
+            <p className="mt-2 wow fadeInUp" data-wow-delay=".5s" style={{ fontSize: '1.1rem', color: '#333' }}>
               Our engineers, network architects, and support staff put in their best every day to design, monitor, and maintain networks that keep your homes and businesses running fast and reliably.
             </p>
-            <p className="mt-3 wow fadeInUp" data-wow-delay=".6s" style={{ fontSize: '1.1rem', color: '#333' }}>
+            <p className="mt-2 wow fadeInUp" data-wow-delay=".6s" style={{ fontSize: '1.1rem', color: '#333' }}>
               From on-ground teams handling installations to technical experts offering round-the-clock support, everyone at Bharat VoIP works with one goal — keeping you connected always.
             </p>
-            <h4 className="mt-5 wow fadeInUp" data-wow-delay=".7s" style={{ color: '#000' }}>
+            <h4 className="mt-3 wow fadeInUp" data-wow-delay=".7s" style={{ color: '#000' }}>
               To deliver connectivity you can count on, every single day.
             </h4>
-            <div className="mt-5 wow fadeInUp" data-wow-delay=".8s">
+            <div className="mt-3 wow fadeInUp" data-wow-delay=".8s">
               <Link href="/service" className="theme-btn">
                 Explore Our Services
                 <i className="far fa-arrow-right" />
@@ -293,7 +294,8 @@ const page = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="cta-section section-padding pt-0" style={{
+      <section className="cta-section" style={{
+        padding: '30px 0',
         backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url(/assets/img/2.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -302,8 +304,8 @@ const page = () => {
         <div className="container">
           <div className="row g-4">
             <div className="col-lg-6">
-              <div className="cta-box text-center p-5 wow fadeInUp" data-wow-delay=".3s" style={{ background: '#f8f9fa', borderRadius: '10px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <h4 className="mb-4" style={{ color: '#000' }}>Ready to find the right solution for your business or home?</h4>
+              <div className="cta-box text-center p-4 wow fadeInUp" data-wow-delay=".3s" style={{ background: '#f8f9fa', borderRadius: '10px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <h4 className="mb-3" style={{ color: '#000' }}>Ready to find the right solution for your business or home?</h4>
                 <Link href="/pricing" className="theme-btn">
                   See our plans
                   <i className="far fa-arrow-right" />
@@ -311,11 +313,11 @@ const page = () => {
               </div>
             </div>
             <div className="col-lg-6">
-              <div className="cta-box text-center p-5 wow fadeInUp" data-wow-delay=".5s" style={{ background: '#f8f9fa', borderRadius: '10px' }}>
-                <h4 className="mb-4" style={{ color: '#000' }}>Not sure what you're looking for?</h4>
-                <p className="mb-4" style={{ color: '#333' }}>Let us recommend a solution for you.</p>
-                <form className="mt-4">
-                  <div className="mb-3">
+              <div className="cta-box text-center p-4 wow fadeInUp" data-wow-delay=".5s" style={{ background: '#f8f9fa', borderRadius: '10px' }}>
+                <h4 className="mb-2" style={{ color: '#000' }}>Not sure what you're looking for?</h4>
+                <p className="mb-3" style={{ color: '#333' }}>Let us recommend a solution for you.</p>
+                <form className="mt-2">
+                  <div className="mb-2">
                     <input
                       type="tel"
                       className="guidance-input"
@@ -324,7 +326,7 @@ const page = () => {
                       style={{ width: '100%', borderRadius: '10px', border: '1px solid #d1d5db', background: '#ffffff', padding: '12px 14px', color: '#111827', fontSize: '14px', outline: 'none' }}
                     />
                   </div>
-                  <div className="mb-3">
+                  <div className="mb-2">
                     <input
                       type="email"
                       className="guidance-input"

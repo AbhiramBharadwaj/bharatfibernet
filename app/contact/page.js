@@ -15,11 +15,11 @@ const Page = () => {
       <Breadcrumb pageName="Contact Us" />
       
       {/* Connect with Us Section */}
-      <section className="section-padding">
+      <section style={{ padding: '30px 0' }}>
         <div className="container">
           <div className="row">
             <div className="col-12 text-center">
-              <h1 style={{ fontSize: '3.5rem', fontWeight: '700', marginBottom: '2rem', color: '#fd9330' }}>
+              <h1 style={{ fontSize: '3.5rem', fontWeight: '700', marginBottom: '1rem', color: '#fd9330' }}>
                 Connect with Us
               </h1>
               
@@ -28,7 +28,7 @@ const Page = () => {
                 lineHeight: '1.8', 
                 color: '#333', 
                 maxWidth: '1000px', 
-                margin: '0 auto 3rem'
+                margin: '0 auto 1.5rem'
               }}>
                 We're here to make your connection strong and reliable. Whether you need broadband support, enterprise solutions, or expert consultation, our dedicated team is just a message away.
               </p>
@@ -37,14 +37,14 @@ const Page = () => {
 
           <div className="row justify-content-center">
             <div className="col-lg-10">
-              <h2 style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '2.5rem', textAlign: 'center', color: '#28a745' }}>
+              <h2 style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '1.5rem', textAlign: 'center', color: '#28a745' }}>
                 Select Your Option And Get In Touch Instantly
               </h2>
               
               <div style={{ 
                 display: 'flex',
                 justifyContent: 'center',
-                marginBottom: '3rem'
+                marginBottom: '0'
               }}>
                 <div style={{ 
                   border: '3px solid #2c5aa0', 
@@ -101,7 +101,7 @@ const Page = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="section-padding" style={{ background: '#f8f9fa' }}>
+      <section style={{ padding: '30px 0', background: '#f8f9fa' }}>
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-10">
@@ -361,7 +361,8 @@ const Page = () => {
       </section>
 
       {/* Contact Information Cards Section */}
-      <section className="section-padding" style={{ 
+      <section style={{ 
+        padding: '30px 0',
         background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)'
       }}>
         <div className="container">
@@ -542,7 +543,7 @@ const Page = () => {
                     Kavuri Hills, Phase 2<br />
                     Madhapur<br />
                     Hyderabad, Telangana<br />
-                    500081
+                    500083
                   </p>
                 </div>
 

@@ -39,12 +39,12 @@ const page = () => {
           <div className="row">
             <div className="col-lg-8 wow fadeInUp" data-wow-delay=".3s">
               <div className="about-image">
-                <img src="assets/img/team/about-img-1.jpg" alt="img" />
+                <img src="/assets/img/team/about-img-1.jpg" alt="img" />
               </div>
             </div>
             <div className="col-lg-4 wow fadeInUp" data-wow-delay=".5s">
               <div className="about-image">
-                <img src="assets/img/team/about-img-2.jpg" alt="img" />
+                <img src="/assets/img/team/about-img-2.jpg" alt="img" />
               </div>
             </div>
           </div>
@@ -66,11 +66,11 @@ const page = () => {
             >
               <div className="team-card-items style-2">
                 <div className="team-image">
-                  <img src="assets/img/team/06.jpg" alt="team-img" />
+                  <img src="/assets/img/p3.jpg" alt="team-img" />
                   <div className="icon-list">
                     <ul>
                       <li>
-                        <a href="#">
+                        <a href="https://www.facebook.com/BharatFiberNetHyd/" target="_blank" rel="noopener noreferrer">
                           <i className="fab fa-facebook-f" />
                         </a>
                       </li>
@@ -80,7 +80,7 @@ const page = () => {
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a href="https://www.linkedin.com/in/bharat-voip-communications-private-limited-595b82241/" target="_blank" rel="noopener noreferrer">
                           <i className="fab fa-linkedin-in" />
                         </a>
                       </li>
@@ -94,9 +94,9 @@ const page = () => {
                 </div>
                 <div className="team-content">
                   <h4>
-                    <Link href="team-details">Eduardo D. Howard</Link>
+                    <Link href="team-details">Poornachander Gaddam</Link>
                   </h4>
-                  <p>CEO &amp; Founder</p>
+                  <p>Managing Director</p>
                 </div>
               </div>
             </div>
@@ -106,11 +106,11 @@ const page = () => {
             >
               <div className="team-card-items style-2">
                 <div className="team-image">
-                  <img src="assets/img/team/07.jpg" alt="team-img" />
+                  <img src="/assets/img/p2.jpg" alt="team-img" />
                   <div className="icon-list">
                     <ul>
                       <li>
-                        <a href="#">
+                        <a href="https://www.facebook.com/BharatFiberNetHyd/" target="_blank" rel="noopener noreferrer">
                           <i className="fab fa-facebook-f" />
                         </a>
                       </li>
@@ -120,7 +120,7 @@ const page = () => {
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a href="https://www.linkedin.com/in/bharat-voip-communications-private-limited-595b82241/" target="_blank" rel="noopener noreferrer">
                           <i className="fab fa-linkedin-in" />
                         </a>
                       </li>
@@ -134,9 +134,9 @@ const page = () => {
                 </div>
                 <div className="team-content">
                   <h4>
-                    <Link href="team-details">Jeremiah D. Marshall</Link>
+                    <Link href="team-details">Gaddam Kishore</Link>
                   </h4>
-                  <p>Business Consultant</p>
+                  <p>Director</p>
                 </div>
               </div>
             </div>
@@ -146,7 +146,7 @@ const page = () => {
             >
               <div className="team-card-items style-2">
                 <div className="team-image">
-                  <img src="assets/img/team/08.jpg" alt="team-img" />
+                  <img src="/assets/img/p1.jpg" alt="team-img" />
                   <div className="icon-list">
                     <ul>
                       <li>
@@ -174,179 +174,12 @@ const page = () => {
                 </div>
                 <div className="team-content">
                   <h4>
-                    <Link href="team-details">Jeremy B. Forsberg</Link>
+                    <Link href="team-details">Botte Venugopal</Link>
                   </h4>
-                  <p>Senior Manager</p>
+                  <p>Technical Director</p>
                 </div>
               </div>
             </div>
-            <div
-              className="col-xl-3 col-lg-4 col-md-6 wow fadeInUp"
-              data-wow-delay=".8s"
-            >
-              <div className="team-card-items style-2">
-                <div className="team-image">
-                  <img src="assets/img/team/09.jpg" alt="team-img" />
-                  <div className="icon-list">
-                    <ul>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-facebook-f" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-twitter" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-linkedin-in" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-pinterest-p" />
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="team-content">
-                  <h4>
-                    <Link href="team-details">Duane V. McCormick</Link>
-                  </h4>
-                  <p>Junior Consultant</p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-xl-3 col-lg-4 col-md-6 wow fadeInUp"
-              data-wow-delay=".2s"
-            >
-              <div className="team-card-items style-2">
-                <div className="team-image">
-                  <img src="assets/img/team/09.jpg" alt="team-img" />
-                  <div className="icon-list">
-                    <ul>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-facebook-f" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-twitter" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-linkedin-in" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-pinterest-p" />
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="team-content">
-                  <h4>
-                    <Link href="team-details">James H. Richardson</Link>
-                  </h4>
-                  <p>Digital Marketer</p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-xl-3 col-lg-4 col-md-6 wow fadeInUp"
-              data-wow-delay=".4s"
-            >
-              <div className="team-card-items style-2">
-                <div className="team-image">
-                  <img src="assets/img/team/11.jpg" alt="team-img" />
-                  <div className="icon-list">
-                    <ul>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-facebook-f" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-twitter" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-linkedin-in" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-pinterest-p" />
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="team-content">
-                  <h4>
-                    <Link href="team-details">Duane V. McCormick</Link>
-                  </h4>
-                  <p>Junior Consultant</p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-xl-3 col-lg-4 col-md-6 wow fadeInUp"
-              data-wow-delay=".6s"
-            >
-              <div className="team-card-items style-2">
-                <div className="team-image">
-                  <img src="assets/img/team/12.jpg" alt="team-img" />
-                  <div className="icon-list">
-                    <ul>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-facebook-f" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-twitter" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-linkedin-in" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-pinterest-p" />
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="team-content">
-                  <h4>
-                    <Link href="team-details">Wayne D. Rodriguez</Link>
-                  </h4>
-                  <p>JWeb Developer</p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-xl-3 col-lg-4 col-md-6 wow fadeInUp"
-              data-wow-delay=".8s"
-            >
-              <div className="team-card-items style-2">
-                <div className="team-image">
-                  <img src="assets/img/team/13.jpg" alt="team-img" />
                   <div className="icon-list">
                     <ul>
                       <li>

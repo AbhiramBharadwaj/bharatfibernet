@@ -347,7 +347,7 @@ export default function RefundPolicy() {
                 <p style={{ fontSize: '1.05rem', lineHeight: '1.8', color: '#333', marginBottom: '0' }}>
                   <strong>Corporate Office:</strong><br />
                   Jyothi Flora, 4th Floor, Kavuri Hills,<br />
-                  Phase 2, Madhapur, Hyderabad, Telangana 500081
+                  Phase 2, Madhapur, Hyderabad, Telangana 500083
                 </p>
               </div>
 

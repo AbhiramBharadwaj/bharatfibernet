@@ -1,11 +1,8 @@
+'use client';
 import Breadcrumb from "@/components/Breadcrumb";
 import NextLayout from "@/layouts/NextLayout";
 import NetworkFaqAccordion from "@/components/NetworkFaqAccordion";
-
-export const metadata = {
-  title: "Network Services | Bharat Fibernet",
-  description: "Enterprise-grade network services for always-on businesses",
-};
+import Link from "next/link";
 
 export default function NetworkServices() {
   return (
@@ -450,7 +447,8 @@ export default function NetworkServices() {
       </section>
 
       {/* Screen 6 - FAQ Section */}
-      <section className="faq-section section-padding" style={{ 
+      <section className="faq-section" style={{ 
+        padding: '30px 0',
         backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url(/assets/img/4.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -458,8 +456,8 @@ export default function NetworkServices() {
       }}>
         <div className="container">
           <div className="row">
-            <div className="col-12 text-center mb-5">
-              <h2 style={{ fontSize: '3rem', fontWeight: '600', marginBottom: '2rem' , color: '#1a1a1a'}}>
+            <div className="col-12 text-center mb-3">
+              <h2 style={{ fontSize: '3rem', fontWeight: '600', marginBottom: '1rem' , color: '#1a1a1a'}}>
                 Frequently Asked Questions
               </h2>
             </div>
@@ -472,14 +470,31 @@ export default function NetworkServices() {
           </div>
 
           {/* Closing Statement */}
-          <div className="row mt-5">
+          <div className="row mt-3">
             <div className="col-12 text-center">
-              <h3 style={{ fontSize: '2.5rem', fontWeight: '400', lineHeight: '1.4', marginBottom: '1rem' , color: '#1a1a1a'}}>
+              <h3 style={{ fontSize: '2.5rem', fontWeight: '400', lineHeight: '1.4', marginBottom: '0.5rem' , color: '#1a1a1a'}}>
                 Connecting industries. Enabling growth.<br />Ensuring reliability.
               </h3>
-              <p style={{ fontSize: '1.3rem', fontWeight: '500', marginTop: '1.5rem' }}>
-                Let's Connect
-              </p>
+              <div style={{ marginTop: '1rem' }}>
+                <Link href="/contact">
+                  <button style={{
+                    padding: '15px 40px',
+                    background: 'linear-gradient(135deg, #ff8c00 0%, #ff6f00 100%)',
+                    border: 'none',
+                    borderRadius: '8px',
+                    color: 'white',
+                    fontSize: '1.1rem',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    transition: 'transform 0.2s'
+                  }}
+                  onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
+                  onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+                  >
+                    Let's Connect
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

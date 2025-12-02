@@ -315,7 +315,8 @@ export default function DataCenterCloud() {
       </section>
 
       {/* Screen 5 - FAQ Section */}
-      <section className="faq-section section-padding" style={{ 
+      <section className="faq-section" style={{ 
+        padding: '30px 0',
         backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url(/assets/img/4.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -323,8 +324,8 @@ export default function DataCenterCloud() {
       }}>
         <div className="container">
           <div className="row">
-            <div className="col-12 text-center mb-5">
-              <h2 style={{ fontSize: '3rem', fontWeight: '600', marginBottom: '2rem' , color: '#1a1a1a'}}>
+            <div className="col-12 text-center mb-3">
+              <h2 style={{ fontSize: '3rem', fontWeight: '600', marginBottom: '1rem' , color: '#1a1a1a'}}>
                 Frequently Asked Questions
               </h2>
             </div>

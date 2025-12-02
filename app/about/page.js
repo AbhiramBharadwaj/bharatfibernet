@@ -171,7 +171,7 @@ const page = () => {
             <div className="col-lg-4 col-md-6">
               <div className="team-card-items wow fadeInUp" data-wow-delay=".2s">
                 <div className="team-image">
-                  <img src="assets/img/team/01.jpg" alt="Botte Venugopal" />
+                  <img src="/assets/img/p1.jpg" alt="Botte Venugopal" />
                 </div>
                 <div className="team-content text-center">
                   <h4>Botte Venugopal</h4>
@@ -190,7 +190,7 @@ const page = () => {
             <div className="col-lg-4 col-md-6">
               <div className="team-card-items wow fadeInUp" data-wow-delay=".4s">
                 <div className="team-image">
-                  <img src="assets/img/team/02.jpg" alt="Gaddam Poornachander" />
+                  <img src="/assets/img/p2.jpg" alt="Gaddam Poornachander" />
                 </div>
                 <div className="team-content text-center">
                   <h4>Gaddam Poornachander</h4>
@@ -206,7 +206,7 @@ const page = () => {
             <div className="col-lg-4 col-md-6">
               <div className="team-card-items wow fadeInUp" data-wow-delay=".6s">
                 <div className="team-image">
-                  <img src="assets/img/team/03.jpg" alt="Srikanth Bodla" />
+                  <img src="/assets/img/p3.jpg" alt="Srikanth Bodla" />
                 </div>
                 <div className="team-content text-center">
                   <h4>Srikanth Bodla</h4>
@@ -230,25 +230,25 @@ const page = () => {
       </section>
 
       {/* Our Team Section */}
-      <section className="team-section fix section-padding pt-0 bg-light">
+      <section className="team-section fix bg-light" style={{padding: '30px 0'}}>
         <div className="container">
-          <div className="section-title text-center mb-5">
+          <div className="section-title text-center mb-3">
             <h2 className="wow fadeInUp" data-wow-delay=".3s">
               The People Who Keep You Connected
             </h2>
-            <p className="mt-4 wow fadeInUp" data-wow-delay=".4s" style={{fontSize: '1.1rem'}}>
+            <p className="mt-3 wow fadeInUp" data-wow-delay=".4s" style={{fontSize: '1.1rem'}}>
               Every smooth and uninterrupted connection has a hardworking team behind it.
             </p>
-            <p className="mt-3 wow fadeInUp" data-wow-delay=".5s" style={{fontSize: '1.1rem'}}>
+            <p className="mt-2 wow fadeInUp" data-wow-delay=".5s" style={{fontSize: '1.1rem'}}>
               Our engineers, network architects, and support staff put in their best every day to design, monitor, and maintain networks that keep your homes and businesses running fast and reliably.
             </p>
-            <p className="mt-3 wow fadeInUp" data-wow-delay=".6s" style={{fontSize: '1.1rem'}}>
+            <p className="mt-2 wow fadeInUp" data-wow-delay=".6s" style={{fontSize: '1.1rem'}}>
               From on-ground teams handling installations to technical experts offering round-the-clock support, everyone at Bharat VoIP works with one goal — keeping you connected always.
             </p>
-            <h4 className="mt-5 wow fadeInUp" data-wow-delay=".7s">
+            <h4 className="mt-3 wow fadeInUp" data-wow-delay=".7s">
               To deliver connectivity you can count on, every single day.
             </h4>
-            <div className="mt-5 wow fadeInUp" data-wow-delay=".8s">
+            <div className="mt-3 wow fadeInUp" data-wow-delay=".8s">
               <Link href="/service" className="theme-btn">
                 Explore Our Services
                 <i className="far fa-arrow-right" />
@@ -259,12 +259,12 @@ const page = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="cta-section section-padding">
+      <section className="cta-section" style={{padding: '30px 0'}}>
         <div className="container">
           <div className="row">
-            <div className="col-lg-6 mb-4 mb-lg-0">
-              <div className="cta-box text-center p-5 wow fadeInUp" data-wow-delay=".3s" style={{background: '#f8f9fa', borderRadius: '10px'}}>
-                <h4 className="mb-4">Ready to find the right solution for your business or home?</h4>
+            <div className="col-lg-6 mb-3 mb-lg-0">
+              <div className="cta-box text-center p-4 wow fadeInUp" data-wow-delay=".3s" style={{background: '#f8f9fa', borderRadius: '10px'}}>
+                <h4 className="mb-3">Ready to find the right solution for your business or home?</h4>
                 <Link href="/pricing" className="theme-btn">
                   See our plans
                   <i className="far fa-arrow-right" />
@@ -272,11 +272,11 @@ const page = () => {
               </div>
             </div>
             <div className="col-lg-6">
-              <div className="cta-box text-center p-5 wow fadeInUp" data-wow-delay=".5s" style={{background: '#f8f9fa', borderRadius: '10px'}}>
-                <h4 className="mb-4">Not sure what you're looking for?</h4>
-                <p className="mb-4">Let us recommend a solution for you.</p>
-                <form className="mt-4">
-                  <div className="mb-3">
+              <div className="cta-box text-center p-4 wow fadeInUp" data-wow-delay=".5s" style={{background: '#f8f9fa', borderRadius: '10px'}}>
+                <h4 className="mb-2">Not sure what you're looking for?</h4>
+                <p className="mb-3">Let us recommend a solution for you.</p>
+                <form className="mt-2">
+                  <div className="mb-2">
                     <input 
                       type="tel" 
                       className="form-control" 

@@ -550,7 +550,8 @@ const page = () => {
       </section>
 
       {/* Screen 5: Frequently Asked Questions */}
-      <section className="faq-section section-padding" style={{ 
+      <section className="faq-section" style={{ 
+        padding: '30px 0',
         backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url(/assets/img/4.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -558,9 +559,9 @@ const page = () => {
       }}>
         <div className="container">
           {/* Main Title */}
-          <div className="row mb-5">
+          <div className="row mb-3">
             <div className="col-lg-12 text-center">
-              <h2 className="mb-5" style={{fontSize: '2.5rem', fontWeight: '700'}}>
+              <h2 className="mb-3" style={{fontSize: '2.5rem', fontWeight: '700'}}>
                 Frequently Asked Questions
               </h2>
             </div>
@@ -575,26 +576,125 @@ const page = () => {
         </div>
       </section>
 
-      {/* Screen 6: CTA Section */}
-      <section className="cta-final-section section-padding bg-light">
+      {/* Screen 6: Need Guidance Section */}
+      <section style={{
+        background: 'linear-gradient(135deg, #b8d4e8 0%, #dfe9f3 25%, #fff5e6 50%, #ffc069 75%, #ff9d52 100%)',
+        padding: '30px 0'
+      }}>
         <div className="container">
           <div className="row">
-            <div className="col-lg-8 mx-auto text-center">
-              <h2 className="mb-4" style={{fontSize: '2.5rem', fontWeight: '700'}}>
-                Ready to Do Your Best Work?
+            <div className="col-lg-12">
+              <h2 style={{
+                textAlign: 'center',
+                fontSize: '36px',
+                fontWeight: '700',
+                color: '#1a1a1a',
+                marginBottom: '10px'
+              }}>
+                Need Guidance?
               </h2>
-              <p className="mb-5" style={{fontSize: '1.2rem', color: '#555'}}>
-                Let's Get You Started.
+              <p style={{
+                textAlign: 'center',
+                fontSize: '18px',
+                color: '#555',
+                marginBottom: '25px'
+              }}>
+                Connect with our experts today
               </p>
-              <div className="cta-buttons">
-                <Link href="/contact" className="theme-btn" style={{
-                  padding: '15px 40px',
-                  fontSize: '1.1rem',
+
+              <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: '15px',
+                marginBottom: '25px',
+                flexWrap: 'wrap'
+              }}>
+                <div style={{
+                  padding: '8px 20px',
+                  background: 'white',
+                  borderRadius: '25px',
+                  fontSize: '16px',
                   fontWeight: '600',
-                  textTransform: 'uppercase'
+                  color: '#333',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
                 }}>
-                  Get in Touch
-                  <i className="far fa-arrow-right ms-2" />
+                  Enquire
+                </div>
+                <div style={{
+                  padding: '8px 20px',
+                  background: 'white',
+                  borderRadius: '25px',
+                  fontSize: '16px',
+                  fontWeight: '600',
+                  color: '#333',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                }}>
+                  Email
+                </div>
+                <div style={{
+                  padding: '8px 20px',
+                  background: 'white',
+                  borderRadius: '25px',
+                  fontSize: '16px',
+                  fontWeight: '600',
+                  color: '#333',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                }}>
+                  Call Us
+                </div>
+              </div>
+
+              <div style={{
+                maxWidth: '600px',
+                margin: '0 auto',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '12px'
+              }}>
+                <input
+                  type="tel"
+                  placeholder="Enter Your Mobile Number"
+                  style={{
+                    padding: '14px 20px',
+                    borderRadius: '8px',
+                    border: '1px solid #ddd',
+                    fontSize: '15px',
+                    outline: 'none',
+                    color: '#333',
+                    backgroundColor: '#ffffff'
+                  }}
+                />
+                <input
+                  type="email"
+                  placeholder="Enter Your Email"
+                  style={{
+                    padding: '14px 20px',
+                    borderRadius: '8px',
+                    border: '1px solid #ddd',
+                    fontSize: '15px',
+                    outline: 'none',
+                    color: '#333',
+                    backgroundColor: '#ffffff'
+                  }}
+                />
+                <Link href="/contact">
+                  <button style={{
+                    width: '100%',
+                    padding: '14px',
+                    background: 'linear-gradient(135deg, #ff8c00 0%, #ff6f00 100%)',
+                    border: 'none',
+                    borderRadius: '8px',
+                    color: 'white',
+                    fontSize: '16px',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    transition: 'transform 0.2s'
+                  }}
+                  onMouseEnter={(e) => e.target.style.transform = 'scale(1.02)'}
+                  onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+                  >
+                    Let's Connect!
+                  </button>
                 </Link>
               </div>
             </div>

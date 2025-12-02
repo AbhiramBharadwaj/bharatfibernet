@@ -9,6 +9,7 @@ import Link from "next/link";
 import SERVICES_SECTION from "@/components/hero/SERVICES.jsx";
 import HeroSlider from "@/components/hero/HeroSlider";
 import GuidanceForm from "@/components/GuidanceForm";
+import LeasedLineSlider from "@/components/LeasedLineSlider";
 
 
 const page = () => {
@@ -125,7 +126,6 @@ const page = () => {
       {/* Service Section Start */}
       <SERVICES_SECTION />
       
-      
       {/* Team Section Start */}
       <section className="plan-section fix section-padding">
       <div className="container">
@@ -176,6 +176,15 @@ const page = () => {
     <div className="row g-4 mt-3 justify-content-center">
       {activeTab === 'corporate' && (
         <>
+          {/* Leased Line Interactive Slider */}
+          <div className="col-12">
+            <LeasedLineSlider />
+          </div>
+        </>
+      )}
+
+      {activeTab === 'corporate_old' && (
+        <>
           {/* B-MAX 500 */}
           <div className="col-xl-3 col-lg-4 col-md-6">
             <div className="plan-card">
@@ -216,7 +225,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+                <Link href="/contact">
+                  <button className="plan-btn">Get Started</button>
+                </Link>
+              </Link>
             </div>
           </div>
 
@@ -260,7 +273,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+                <Link href="/contact">
+                  <button className="plan-btn">Get Started</button>
+                </Link>
+              </Link>
             </div>
           </div>
 
@@ -304,7 +321,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+                <Link href="/contact">
+                  <button className="plan-btn">Get Started</button>
+                </Link>
+              </Link>
             </div>
           </div>
 
@@ -348,7 +369,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+                <Link href="/contact">
+                  <button className="plan-btn">Get Started</button>
+                </Link>
+              </Link>
             </div>
           </div>
 
@@ -392,7 +417,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+                <Link href="/contact">
+                  <button className="plan-btn">Get Started</button>
+                </Link>
+              </Link>
             </div>
           </div>
         </>
@@ -438,7 +467,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+
+                <button className="plan-btn">Get Started</button>
+
+              </Link>
             </div>
           </div>
 
@@ -480,7 +513,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+
+                <button className="plan-btn">Get Started</button>
+
+              </Link>
             </div>
           </div>
 
@@ -522,7 +559,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+
+                <button className="plan-btn">Get Started</button>
+
+              </Link>
             </div>
           </div>
 
@@ -564,7 +605,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+
+                <button className="plan-btn">Get Started</button>
+
+              </Link>
             </div>
           </div>
 
@@ -606,7 +651,103 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+
+                <button className="plan-btn">Get Started</button>
+
+              </Link>
+            </div>
+          </div>
+
+          {/* Express 15000 Business */}
+          <div className="col-xl-3 col-lg-4 col-md-6">
+            <div className="plan-card">
+              <div className="plan-card-header">
+                <div className="plan-icon">
+                  <img src="assets/img/hero/05.png" alt="Express 15000" />
+                </div>
+                <h4>Express 15000</h4>
+                <p className="plan-price">₹ 15000 / Month</p>
+              </div>
+
+              <ul className="plan-features">
+                <li>
+                  <i className="fas fa-check" />
+                  <span>
+                    <strong>1 Gbps</strong> Download Speed
+                  </span>
+                </li>
+                <li>
+                  <i className="fas fa-check" />
+                  <span>
+                    <strong>1 Gbps</strong> Upload Speed
+                  </span>
+                </li>
+                <li>
+                  <i className="fas fa-check" />
+                  <span>
+                    <strong>20 TB</strong> FUP Limit
+                  </span>
+                </li>
+                <li>
+                  <i className="fas fa-check" />
+                  <span>
+                    <strong>15 Mbps</strong> Speed Post FUP
+                  </span>
+                </li>
+              </ul>
+
+              <Link href="/contact">
+
+                <button className="plan-btn">Get Started</button>
+
+              </Link>
+            </div>
+          </div>
+
+          {/* Express 20000 Business */}
+          <div className="col-xl-3 col-lg-4 col-md-6">
+            <div className="plan-card">
+              <div className="plan-card-header">
+                <div className="plan-icon">
+                  <img src="assets/img/hero/06.png" alt="Express 20000" />
+                </div>
+                <h4>Express 20000</h4>
+                <p className="plan-price">₹ 20000 / Month</p>
+              </div>
+
+              <ul className="plan-features">
+                <li>
+                  <i className="fas fa-check" />
+                  <span>
+                    <strong>1 Gbps</strong> Download Speed
+                  </span>
+                </li>
+                <li>
+                  <i className="fas fa-check" />
+                  <span>
+                    <strong>1 Gbps</strong> Upload Speed
+                  </span>
+                </li>
+                <li>
+                  <i className="fas fa-check" />
+                  <span>
+                    <strong>30 TB</strong> FUP Limit
+                  </span>
+                </li>
+                <li>
+                  <i className="fas fa-check" />
+                  <span>
+                    <strong>15 Mbps</strong> Speed Post FUP
+                  </span>
+                </li>
+              </ul>
+
+              <Link href="/contact">
+
+                <button className="plan-btn">Get Started</button>
+
+              </Link>
             </div>
           </div>
         </>
@@ -654,7 +795,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+
+                <button className="plan-btn">Get Started</button>
+
+              </Link>
             </div>
           </div>
 
@@ -698,7 +843,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+
+                <button className="plan-btn">Get Started</button>
+
+              </Link>
             </div>
           </div>
 
@@ -742,7 +891,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+
+                <button className="plan-btn">Get Started</button>
+
+              </Link>
             </div>
           </div>
 
@@ -786,7 +939,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+
+                <button className="plan-btn">Get Started</button>
+
+              </Link>
             </div>
           </div>
 
@@ -837,7 +994,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+
+                <button className="plan-btn">Get Started</button>
+
+              </Link>
             </div>
           </div>
 
@@ -881,7 +1042,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+
+                <button className="plan-btn">Get Started</button>
+
+              </Link>
             </div>
           </div>
 
@@ -932,7 +1097,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+
+                <button className="plan-btn">Get Started</button>
+
+              </Link>
             </div>
           </div>
 
@@ -976,7 +1145,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+
+                <button className="plan-btn">Get Started</button>
+
+              </Link>
             </div>
           </div>
 
@@ -1020,7 +1193,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+
+                <button className="plan-btn">Get Started</button>
+
+              </Link>
             </div>
           </div>
 
@@ -1071,7 +1248,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+
+                <button className="plan-btn">Get Started</button>
+
+              </Link>
             </div>
           </div>
 
@@ -1115,7 +1296,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+
+                <button className="plan-btn">Get Started</button>
+
+              </Link>
             </div>
           </div>
 
@@ -1159,7 +1344,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+
+                <button className="plan-btn">Get Started</button>
+
+              </Link>
             </div>
           </div>
 
@@ -1203,7 +1392,11 @@ const page = () => {
                 </li>
               </ul>
 
-              <button className="plan-btn">Get Started</button>
+              <Link href="/contact">
+
+                <button className="plan-btn">Get Started</button>
+
+              </Link>
             </div>
           </div>
         </>
@@ -1382,7 +1575,72 @@ const page = () => {
 </section>
 
 {/* Other sections */}
-      <GuidanceForm />
+      {/* Need Guidance Section */}
+      <section style={{ 
+        background: 'linear-gradient(135deg, #b8d4e8 0%, #ffc069 50%, #ff9d52 100%)',
+        padding: '30px 0'
+      }}>
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-lg-6 text-center">
+              <h2 style={{
+                fontSize: '36px',
+                fontWeight: '700',
+                marginBottom: '10px',
+                color: '#000'
+              }}>
+                Need Guidance?
+              </h2>
+              <p style={{
+                fontSize: '18px',
+                color: '#000',
+                fontWeight: '500',
+                marginBottom: '20px'
+              }}>
+                We'd love to help you.
+              </p>
+
+              {/* Tabs */}
+              <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: '30px',
+                marginBottom: '20px',
+                flexWrap: 'wrap'
+              }}>
+                <span style={{ fontSize: '16px', fontWeight: '600', color: '#000', cursor: 'pointer' }}>
+                  Enquire
+                </span>
+                <span style={{ fontSize: '16px', fontWeight: '600', color: '#000', cursor: 'pointer' }}>
+                  Email
+                </span>
+                <span style={{ fontSize: '16px', fontWeight: '700', color: '#ff6b35', cursor: 'pointer' }}>
+                  Call Us
+                </span>
+              </div>
+
+              {/* Form */}
+              <form style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <input type="tel" placeholder="Mobile Number" required style={{
+                  width: '100%', padding: '14px 20px', borderRadius: '10px', border: 'none',
+                  fontSize: '15px', outline: 'none', backgroundColor: '#ffffff', color: '#666'
+                }} />
+                <input type="email" placeholder="Email Address" required style={{
+                  width: '100%', padding: '14px 20px', borderRadius: '10px', border: 'none',
+                  fontSize: '15px', outline: 'none', backgroundColor: '#ffffff', color: '#666'
+                }} />
+                <button type="submit" style={{
+                  width: '100%', padding: '14px', background: 'linear-gradient(135deg, #ff8c00 0%, #ff6f00 100%)',
+                  color: '#fff', border: 'none', borderRadius: '10px', fontSize: '16px', fontWeight: '700',
+                  cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '1px'
+                }}>
+                  LET'S CONNECT!
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* Other sections */}
 
     
@@ -1390,3 +1648,5 @@ const page = () => {
   );
 };
 export default page;
+
+

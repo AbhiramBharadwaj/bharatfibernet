@@ -222,7 +222,8 @@ export default function CybersecurityServices() {
       </section>
 
       {/* Screen 4 - FAQ Section */}
-      <section className="faq-section section-padding" style={{ 
+      <section className="faq-section" style={{ 
+        padding: '30px 0',
         backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url(/assets/img/1.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -230,8 +231,8 @@ export default function CybersecurityServices() {
       }}>
         <div className="container">
           <div className="row">
-            <div className="col-12 text-center mb-5">
-              <h2 style={{ fontSize: '3rem', fontWeight: '600', marginBottom: '2rem' , color: '#1a1a1a'}}>
+            <div className="col-12 text-center mb-3">
+              <h2 style={{ fontSize: '3rem', fontWeight: '600', marginBottom: '1rem' , color: '#1a1a1a'}}>
                 Frequently Asked Questions
               </h2>
             </div>
@@ -244,7 +245,7 @@ export default function CybersecurityServices() {
           </div>
 
           {/* Closing Statement */}
-          <div className="row mt-5">
+          <div className="row mt-3">
             <div className="col-12 text-center">
               <h3 style={{ fontSize: '2.5rem', fontWeight: '400', lineHeight: '1.4', marginBottom: '1rem' , color: '#1a1a1a'}}>
                 Advanced protection. Continuous visibility.<br />Trusted assurance.
