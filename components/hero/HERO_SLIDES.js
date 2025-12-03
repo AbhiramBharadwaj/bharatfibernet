@@ -31,7 +31,7 @@ export const HERO_SLIDES = [
         productive 24/7.
       </>
     ),
-    buttonText: "LEARN MORE",
+    buttonText: "Discover More",
     buttonLink: "/service",
   },
 
@@ -48,7 +48,7 @@ export const HERO_SLIDES = [
         Reliable internet with premium routing to keep your enterprise ahead.
       </>
     ),
-    buttonText: "LEARN MORE",
+    buttonText: "Discover More",
     buttonLink: "/service",
   },
 ];

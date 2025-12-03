@@ -10581,9 +10581,10 @@ p.sticky-label {
 /* Detail card below */
 .service-detail-card {
   border-radius: 18px;
-  border: 1px solid rgba(15, 23, 42, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 22px 20px;
-  background: #ffffff;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
 }
 
 .detail-heading {
@@ -10592,19 +10593,21 @@ p.sticky-label {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: 4px;
-  color: #6b7280;
+  color: #9ca3af;
 }
 
 .detail-title {
   font-size: 18px;
   font-weight: 700;
   margin: 0;
+  color: #ffffff;
 }
 
 .detail-text {
   font-size: 15px;
   margin: 0;
   line-height: 1.7;
+  color: #e5e7eb;
 }
 
 /* Mobile spacing tweaks */
@@ -10693,17 +10696,18 @@ p.sticky-label {
 ------------------------------------------- */
 .plan-tabs .plan-tab {
   padding: 10px 24px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 6px;
   margin: 0 6px;
-  color: #e5e7eb;
-  background: rgba(255, 255, 255, 0.05);
+  color: #000000;
+  background: rgba(255, 255, 255, 0.5);
   transition: 0.25s;
 }
 
 .plan-tabs .plan-tab:hover {
-  border-color: #f7931e;
-  color: #f7931e;
+  border-color: #000000;
+  color: #000000;
+  background: rgba(0, 0, 0, 0.08);
 }
 
 .plan-tabs .plan-tab.active {
@@ -10769,13 +10773,13 @@ p.sticky-label {
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 6px;
-  color: #ffffff;
+  color: #000000;
 }
 
 .plan-price {
   font-size: 15px;
   font-weight: 700;
-  color: #f7931e; /* orange brand */
+  color: #000000;
   margin: 0;
 }
 
@@ -10796,17 +10800,17 @@ p.sticky-label {
   font-size: 14px;
   line-height: 1.6;
   margin-bottom: 6px;
-  color: #e5e7eb;
+  color: #000000;
 }
 
 .plan-features i {
-  color: #f7931e; /* orange tick */
+  color: #000000;
   margin-top: 4px;
 }
 
 .plan-features strong {
   font-weight: 700;
-  color: #ffffff;
+  color: #000000;
 }
 
 /* -------------------------------------------
@@ -11038,9 +11042,9 @@ p.sticky-label {
   width: 100%;
   border-radius: 999px;
   padding: 0.65rem 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.02);
-  color: #e5e7eb;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.5);
+  color: #000000;
   font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
@@ -11058,9 +11062,9 @@ p.sticky-label {
 
 /* Hover state (non-active) */
 .service-tab-card:hover:not(.active) {
-  border-color: #f7931e;
-  color: #f7931e;
-  background: rgba(247, 147, 30, 0.08);
+  border-color: #000000;
+  color: #000000;
+  background: rgba(0, 0, 0, 0.08);
 }
 
 /* Active tab */

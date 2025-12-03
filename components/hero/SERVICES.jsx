@@ -18,20 +18,20 @@ export default function ServicesSection() {
     <section
       className="service-section section-padding pt-5"
       style={{
-        backgroundImage: 'url("/assets/img/background/pattern-3.png")',
+        backgroundImage: 'url("/assets/img/bg2.jpg")',
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "top center",
+        backgroundPosition: "center",
       }}
     >
       <div className="container">
         <div className="section-title text-center">
-          <h2 className="wow fadeInUp" data-wow-delay=".2s">
+          <h2 className="wow fadeInUp" data-wow-delay=".2s" style={{ color: '#000000' }}>
             Integrated Technology. <br />
             Seamless Connectivity.
           </h2>
 
-          <p className="mt-3 wow fadeInUp" data-wow-delay=".3s">
+          <p className="mt-3 wow fadeInUp" data-wow-delay=".3s" style={{ color: '#000000' }}>
             From infrastructure to innovation – we deliver end-to-end network,
             cloud, and security services that power digital transformation.
           </p>
@@ -39,6 +39,7 @@ export default function ServicesSection() {
           <p
             className="mt-2 fw-semibold wow fadeInUp services-subtitle"
             data-wow-delay=".35s"
+            style={{ color: '#000000' }}
           >
             Our services include
           </p>

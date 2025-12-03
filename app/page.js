@@ -68,11 +68,11 @@ const page = () => {
     <div className="row justify-content-center">
       <div className="col-lg-10">
         <div className="section-title text-center">
-          <h2 className="wow fadeInUp" data-wow-delay=".2s" style={{color: 'var(--theme)'}}>
+          <h2 className="wow fadeInUp" data-wow-delay=".2s" style={{color: '#000000'}}>
             Andhra & Telangana’s Most Trusted <br />
             Enterprise IT Network
           </h2>
-          <p className="mt-3 wow fadeInUp" data-wow-delay=".3s" style={{color: 'white'}}>
+          <p className="mt-3 wow fadeInUp" data-wow-delay=".3s" style={{color: '#000000'}}>
             Engineered for uptime, built for speed, trusted by businesses.
           </p>
         </div>
@@ -127,13 +127,18 @@ const page = () => {
       <SERVICES_SECTION />
       
       {/* Team Section Start */}
-      <section className="plan-section fix section-padding">
+      <section className="plan-section fix section-padding" style={{
+        backgroundImage: 'url(/assets/img/bg2.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}>
       <div className="container">
     {/* Heading */}
     <div className="section-title text-center">
-      <h2 className="wow fadeInUp" data-wow-delay=".2s" style={{color: 'var(--theme)'}}>
+      <h2 className="wow fadeInUp" data-wow-delay=".2s" style={{color: '#000000'}}>
         A Plan for Everyone.{" "}
-        <span className="plan-explore-link">Explore Yours.</span>
+        <span className="plan-explore-link" style={{color: '#000000'}}>Explore Yours.</span>
       </h2>
     </div>
 
@@ -166,7 +171,7 @@ const page = () => {
     {/* Subheading */}
     <div className="row justify-content-center mt-5">
       <div className="col-lg-10 text-center">
-        <p className="plan-subtitle" style={{color: 'white'}}>
+        <p className="plan-subtitle" style={{color: '#000000'}}>
           Tailored for You – Find Your Ideal Plan!
         </p>
       </div>
@@ -193,8 +198,8 @@ const page = () => {
                   <img src="assets/img/hero/04.png" alt="B-MAX 500" />
                 </div>
                 <h4>B-MAX 500</h4>
-                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: 'var(--theme)'}}>60 Mbps</h5>
-                <p style={{fontSize: '14px', color: '#666', marginBottom: '10px'}}>Download Speed 60 Mbps | FUP 600 GB | Post-FUP 4 Mbps</p>
+                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: '#000000'}}>60 Mbps</h5>
+                <p style={{fontSize: '14px', color: '#000000', marginBottom: '10px'}}>Download Speed 60 Mbps | FUP 600 GB | Post-FUP 4 Mbps</p>
                 <p className="plan-price">₹ 500 / Month</p>
               </div>
 
@@ -241,8 +246,8 @@ const page = () => {
                   <img src="assets/img/hero/05.png" alt="B-MAX 600" />
                 </div>
                 <h4>B-MAX 600</h4>
-                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: 'var(--theme)'}}>100 Mbps</h5>
-                <p style={{fontSize: '14px', color: '#666', marginBottom: '10px'}}>Download Speed 100 Mbps | FUP 1000 GB | Post-FUP 10 Mbps</p>
+                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: '#000000'}}>100 Mbps</h5>
+                <p style={{fontSize: '14px', color: '#000000', marginBottom: '10px'}}>Download Speed 100 Mbps | FUP 1000 GB | Post-FUP 10 Mbps</p>
                 <p className="plan-price">₹ 600 / Month</p>
               </div>
 
@@ -289,8 +294,8 @@ const page = () => {
                   <img src="assets/img/hero/06.png" alt="B-MAX 1000" />
                 </div>
                 <h4>B-MAX 1000</h4>
-                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: 'var(--theme)'}}>200 Mbps</h5>
-                <p style={{fontSize: '14px', color: '#666', marginBottom: '10px'}}>Download Speed 200 Mbps | FUP 2000 GB | Post-FUP 10 Mbps</p>
+                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: '#000000'}}>200 Mbps</h5>
+                <p style={{fontSize: '14px', color: '#000000', marginBottom: '10px'}}>Download Speed 200 Mbps | FUP 2000 GB | Post-FUP 10 Mbps</p>
                 <p className="plan-price">₹ 1000 / Month</p>
               </div>
 
@@ -337,8 +342,8 @@ const page = () => {
                   <img src="assets/img/hero/07.png" alt="B-MAX 1200" />
                 </div>
                 <h4>B-MAX 1200</h4>
-                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: 'var(--theme)'}}>300 Mbps</h5>
-                <p style={{fontSize: '14px', color: '#666', marginBottom: '10px'}}>Download Speed 300 Mbps | FUP Unlimited | Post-FUP 300 Mbps</p>
+                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: '#000000'}}>300 Mbps</h5>
+                <p style={{fontSize: '14px', color: '#000000', marginBottom: '10px'}}>Download Speed 300 Mbps | FUP Unlimited | Post-FUP 300 Mbps</p>
                 <p className="plan-price">₹ 1200 / Month</p>
               </div>
 
@@ -385,8 +390,8 @@ const page = () => {
                   <img src="assets/img/hero/04.png" alt="B-MAX 1700" />
                 </div>
                 <h4>B-MAX 1700</h4>
-                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: 'var(--theme)'}}>400 Mbps</h5>
-                <p style={{fontSize: '14px', color: '#666', marginBottom: '10px'}}>Download Speed 400 Mbps | FUP Unlimited | Post-FUP 400 Mbps</p>
+                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: '#000000'}}>400 Mbps</h5>
+                <p style={{fontSize: '14px', color: '#000000', marginBottom: '10px'}}>Download Speed 400 Mbps | FUP Unlimited | Post-FUP 400 Mbps</p>
                 <p className="plan-price">₹ 1700 / Month</p>
               </div>
 
@@ -763,8 +768,8 @@ const page = () => {
                   <img src="assets/img/hero/04.png" alt="BharatXpress-150" />
                 </div>
                 <h4>BHARATXPRESS-150</h4>
-                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: 'var(--theme)'}}>150 Mbps</h5>
-                <p style={{fontSize: '14px', color: '#666', marginBottom: '10px'}}>Unlimited Data | ₹699 / month</p>
+                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: '#000000'}}>150 Mbps</h5>
+                <p style={{fontSize: '14px', color: '#000000', marginBottom: '10px'}}>Unlimited Data | ₹699 / month</p>
                 <p className="plan-price">₹ 699 / Month</p>
               </div>
 
@@ -811,8 +816,8 @@ const page = () => {
                   <img src="assets/img/hero/05.png" alt="BharatXpress-200" />
                 </div>
                 <h4>BHARATXPRESS-200</h4>
-                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: 'var(--theme)'}}>200 Mbps</h5>
-                <p style={{fontSize: '14px', color: '#666', marginBottom: '10px'}}>Unlimited Data | ₹999 / month</p>
+                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: '#000000'}}>200 Mbps</h5>
+                <p style={{fontSize: '14px', color: '#000000', marginBottom: '10px'}}>Unlimited Data | ₹999 / month</p>
                 <p className="plan-price">₹ 999 / Month</p>
               </div>
 
@@ -859,8 +864,8 @@ const page = () => {
                   <img src="assets/img/hero/06.png" alt="BharatXpress-300" />
                 </div>
                 <h4>BHARATXPRESS-300</h4>
-                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: 'var(--theme)'}}>300 Mbps</h5>
-                <p style={{fontSize: '14px', color: '#666', marginBottom: '10px'}}>Unlimited Data | ₹1,199 / month</p>
+                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: '#000000'}}>300 Mbps</h5>
+                <p style={{fontSize: '14px', color: '#000000', marginBottom: '10px'}}>Unlimited Data | ₹1,199 / month</p>
                 <p className="plan-price">₹ 1,199 / Month</p>
               </div>
 
@@ -907,8 +912,8 @@ const page = () => {
                   <img src="assets/img/hero/07.png" alt="BharatXpress-400" />
                 </div>
                 <h4>BHARATXPRESS-400</h4>
-                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: 'var(--theme)'}}>400 Mbps</h5>
-                <p style={{fontSize: '14px', color: '#666', marginBottom: '10px'}}>Unlimited Data | ₹1,499 / month</p>
+                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: '#000000'}}>400 Mbps</h5>
+                <p style={{fontSize: '14px', color: '#000000', marginBottom: '10px'}}>Unlimited Data | ₹1,499 / month</p>
                 <p className="plan-price">₹ 1,499 / Month</p>
               </div>
 
@@ -949,7 +954,7 @@ const page = () => {
 
           {/* Section Heading - Combo Plans */}
           <div className="col-12 mt-5 mb-4 text-center">
-            <h3 style={{fontSize: '32px', fontWeight: 'bold', color: 'var(--theme)', display: 'inline-block'}}>
+            <h3 style={{fontSize: '32px', fontWeight: 'bold', color: '#000000', display: 'inline-block'}}>
               Combo Plans (Internet + IPTV)
             </h3>
           </div>
@@ -962,8 +967,8 @@ const page = () => {
                   <img src="assets/img/hero/04.png" alt="Combo 100" />
                 </div>
                 <h4>BHARATXPRESS COMBO-100</h4>
-                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: 'var(--theme)'}}>100 Mbps + IPTV</h5>
-                <p style={{fontSize: '14px', color: '#666', marginBottom: '10px'}}>Free IPTV on 6-month plan | Free IPTV + 2 months extra on 12-month plan</p>
+                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: '#000000'}}>100 Mbps + IPTV</h5>
+                <p style={{fontSize: '14px', color: '#000000', marginBottom: '10px'}}>Free IPTV on 6-month plan | Free IPTV + 2 months extra on 12-month plan</p>
                 <p className="plan-price">₹ 999 / Month</p>
               </div>
 
@@ -1010,8 +1015,8 @@ const page = () => {
                   <img src="assets/img/hero/05.png" alt="Combo 200" />
                 </div>
                 <h4>BHARATXPRESS COMBO-200</h4>
-                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: 'var(--theme)'}}>200 Mbps + IPTV</h5>
-                <p style={{fontSize: '14px', color: '#666', marginBottom: '10px'}}>Free IPTV on 6-month plan | Free IPTV + 2 months extra on 12-month plan</p>
+                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: '#000000'}}>200 Mbps + IPTV</h5>
+                <p style={{fontSize: '14px', color: '#000000', marginBottom: '10px'}}>Free IPTV on 6-month plan | Free IPTV + 2 months extra on 12-month plan</p>
                 <p className="plan-price">₹ 1,199 / Month</p>
               </div>
 
@@ -1052,7 +1057,7 @@ const page = () => {
 
           {/* Section Heading - OTT Entertainment */}
           <div className="col-12 mt-5 mb-4 text-center">
-            <h3 style={{fontSize: '32px', fontWeight: 'bold', color: 'var(--theme)', display: 'inline-block'}}>
+            <h3 style={{fontSize: '32px', fontWeight: 'bold', color: '#000000', display: 'inline-block'}}>
               OTT Entertainment Packs
             </h3>
           </div>
@@ -1065,8 +1070,8 @@ const page = () => {
                   <img src="assets/img/hero/04.png" alt="OTT 1 Month" />
                 </div>
                 <h4>OTT PLATFORMS (18)</h4>
-                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: 'var(--theme)'}}>1 Month Plan</h5>
-                <p style={{fontSize: '14px', color: '#666', marginBottom: '10px'}}>₹170 / month</p>
+                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: '#000000'}}>1 Month Plan</h5>
+                <p style={{fontSize: '14px', color: '#000000', marginBottom: '10px'}}>₹170 / month</p>
                 <p className="plan-price">₹ 170 / Month</p>
               </div>
 
@@ -1113,8 +1118,8 @@ const page = () => {
                   <img src="assets/img/hero/05.png" alt="OTT 6 Months" />
                 </div>
                 <h4>OTT PLATFORMS (18)</h4>
-                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: 'var(--theme)'}}>6 Months Plan</h5>
-                <p style={{fontSize: '14px', color: '#666', marginBottom: '10px'}}>₹1,020 (6 months)</p>
+                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: '#000000'}}>6 Months Plan</h5>
+                <p style={{fontSize: '14px', color: '#000000', marginBottom: '10px'}}>₹1,020 (6 months)</p>
                 <p className="plan-price">₹ 1,020 / 6 Months</p>
               </div>
 
@@ -1161,8 +1166,8 @@ const page = () => {
                   <img src="assets/img/hero/06.png" alt="OTT 12 Months" />
                 </div>
                 <h4>OTT PLATFORMS (18)</h4>
-                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: 'var(--theme)'}}>12 Months Plan</h5>
-                <p style={{fontSize: '14px', color: '#666', marginBottom: '10px'}}>₹2,040 (12 months)</p>
+                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: '#000000'}}>12 Months Plan</h5>
+                <p style={{fontSize: '14px', color: '#000000', marginBottom: '10px'}}>₹2,040 (12 months)</p>
                 <p className="plan-price">₹ 2,040 / 12 Months</p>
               </div>
 
@@ -1203,7 +1208,7 @@ const page = () => {
 
           {/* Section Heading - IPTV Channel Packs */}
           <div className="col-12 mt-5 mb-4 text-center">
-            <h3 style={{fontSize: '32px', fontWeight: 'bold', color: 'var(--theme)', display: 'inline-block'}}>
+            <h3 style={{fontSize: '32px', fontWeight: 'bold', color: '#000000', display: 'inline-block'}}>
               IPTV Channel Packs
             </h3>
           </div>
@@ -1215,9 +1220,9 @@ const page = () => {
                 <div className="plan-icon">
                   <img src="assets/img/hero/04.png" alt="Telugu Gold HD" />
                 </div>
-                <h4 style={{color: 'white'}}>TELUGU GOLD HD PACK</h4>
-                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: 'var(--theme)'}}>430 Channels</h5>
-                <p style={{fontSize: '14px', color: '#666', marginBottom: '10px'}}>₹300 / month | ₹1,800 (6 months) | ₹3,600 (12 months)</p>
+                <h4 style={{color: '#000000'}}>TELUGU GOLD HD PACK</h4>
+                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: '#000000'}}>430 Channels</h5>
+                <p style={{fontSize: '14px', color: '#000000', marginBottom: '10px'}}>₹300 / month | ₹1,800 (6 months) | ₹3,600 (12 months)</p>
                 <p className="plan-price">₹ 300 / Month</p>
               </div>
 
@@ -1263,9 +1268,9 @@ const page = () => {
                 <div className="plan-icon">
                   <img src="assets/img/hero/05.png" alt="Hindi Gold HD" />
                 </div>
-                <h4 style={{color: 'white'}}>HINDI GOLD HD PACK</h4>
-                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: 'var(--theme)'}}>440 Channels</h5>
-                <p style={{fontSize: '14px', color: '#666', marginBottom: '10px'}}>₹300 / month | ₹1,800 (6 months) | ₹3,600 (12 months)</p>
+                <h4 style={{color: '#000000'}}>HINDI GOLD HD PACK</h4>
+                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: '#000000'}}>440 Channels</h5>
+                <p style={{fontSize: '14px', color: '#000000', marginBottom: '10px'}}>₹300 / month | ₹1,800 (6 months) | ₹3,600 (12 months)</p>
                 <p className="plan-price">₹ 300 / Month</p>
               </div>
 
@@ -1311,9 +1316,9 @@ const page = () => {
                 <div className="plan-icon">
                   <img src="assets/img/hero/06.png" alt="Hindi Telugu Silver" />
                 </div>
-                <h4 style={{color: 'white'}}>HINDI TELUGU SILVER PACK</h4>
-                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: 'var(--theme)'}}>430 Channels</h5>
-                <p style={{fontSize: '14px', color: '#666', marginBottom: '10px'}}>₹300 / month | ₹1,800 (6 months) | ₹3,600 (12 months)</p>
+                <h4 style={{color: '#000000'}}>HINDI TELUGU SILVER PACK</h4>
+                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: '#000000'}}>430 Channels</h5>
+                <p style={{fontSize: '14px', color: '#000000', marginBottom: '10px'}}>₹300 / month | ₹1,800 (6 months) | ₹3,600 (12 months)</p>
                 <p className="plan-price">₹ 300 / Month</p>
               </div>
 
@@ -1359,9 +1364,9 @@ const page = () => {
                 <div className="plan-icon">
                   <img src="assets/img/hero/07.png" alt="Hindi Telugu Gold" />
                 </div>
-                <h4 style={{color: 'white'}}>HINDI TELUGU GOLD PACK</h4>
-                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: 'var(--theme)'}}>450 Channels</h5>
-                <p style={{fontSize: '14px', color: '#666', marginBottom: '10px'}}>₹300 / month | ₹1,800 (6 months) | ₹3,600 (12 months)</p>
+                <h4 style={{color: '#000000'}}>HINDI TELUGU GOLD PACK</h4>
+                <h5 style={{fontSize: '24px', fontWeight: 'bold', margin: '10px 0', color: '#000000'}}>450 Channels</h5>
+                <p style={{fontSize: '14px', color: '#000000', marginBottom: '10px'}}>₹300 / month | ₹1,800 (6 months) | ₹3,600 (12 months)</p>
                 <p className="plan-price">₹ 300 / Month</p>
               </div>
 
@@ -1468,8 +1473,8 @@ const page = () => {
             padding: '20px',
             textAlign: 'center'
           }}>
-            <h4 style={{ color: 'white', fontSize: '18px', fontWeight: '700', marginBottom: '5px' }}>Suraj S</h4>
-            <p className="role" style={{ color: 'white', fontSize: '14px', margin: 0, opacity: 0.95 }}>CFO</p>
+            <h4 style={{ color: '#000000', fontSize: '18px', fontWeight: '700', marginBottom: '5px' }}>Suraj S</h4>
+            <p className="role" style={{ color: '#000000', fontSize: '14px', margin: 0, opacity: 0.95 }}>CFO</p>
           </div>
         </div>
       </div>
@@ -1500,8 +1505,8 @@ const page = () => {
             padding: '20px',
             textAlign: 'center'
           }}>
-            <h4 style={{ color: 'white', fontSize: '18px', fontWeight: '700', marginBottom: '5px' }}>David R</h4>
-            <p className="role" style={{ color: 'white', fontSize: '14px', margin: 0, opacity: 0.95 }}>Operations Manager</p>
+            <h4 style={{ color: '#000000', fontSize: '18px', fontWeight: '700', marginBottom: '5px' }}>David R</h4>
+            <p className="role" style={{ color: '#000000', fontSize: '14px', margin: 0, opacity: 0.95 }}>Operations Manager</p>
           </div>
         </div>
       </div>
@@ -1532,8 +1537,8 @@ const page = () => {
             padding: '20px',
             textAlign: 'center'
           }}>
-            <h4 style={{ color: 'white', fontSize: '18px', fontWeight: '700', marginBottom: '5px' }}>Soujanya D</h4>
-            <p className="role" style={{ color: 'white', fontSize: '14px', margin: 0, opacity: 0.95 }}>HR Manager</p>
+            <h4 style={{ color: '#000000', fontSize: '18px', fontWeight: '700', marginBottom: '5px' }}>Soujanya D</h4>
+            <p className="role" style={{ color: '#000000', fontSize: '14px', margin: 0, opacity: 0.95 }}>HR Manager</p>
           </div>
         </div>
       </div>
@@ -1564,8 +1569,8 @@ const page = () => {
             padding: '20px',
             textAlign: 'center'
           }}>
-            <h4 style={{ color: 'white', fontSize: '18px', fontWeight: '700', marginBottom: '5px' }}>Mahesh K</h4>
-            <p className="role" style={{ color: 'white', fontSize: '14px', margin: 0, opacity: 0.95 }}>IT Director</p>
+            <h4 style={{ color: '#000000', fontSize: '18px', fontWeight: '700', marginBottom: '5px' }}>Mahesh K</h4>
+            <p className="role" style={{ color: '#000000', fontSize: '14px', margin: 0, opacity: 0.95 }}>IT Director</p>
           </div>
         </div>
       </div>
@@ -1623,11 +1628,11 @@ const page = () => {
               <form style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 <input type="tel" placeholder="Mobile Number" required style={{
                   width: '100%', padding: '14px 20px', borderRadius: '10px', border: 'none',
-                  fontSize: '15px', outline: 'none', backgroundColor: '#ffffff', color: '#666'
+                  fontSize: '15px', outline: 'none', backgroundColor: '#ffffff', color: '#000000'
                 }} />
                 <input type="email" placeholder="Email Address" required style={{
                   width: '100%', padding: '14px 20px', borderRadius: '10px', border: 'none',
-                  fontSize: '15px', outline: 'none', backgroundColor: '#ffffff', color: '#666'
+                  fontSize: '15px', outline: 'none', backgroundColor: '#ffffff', color: '#000000'
                 }} />
                 <button type="submit" style={{
                   width: '100%', padding: '14px', background: 'linear-gradient(135deg, #ff8c00 0%, #ff6f00 100%)',
@@ -1648,5 +1653,6 @@ const page = () => {
   );
 };
 export default page;
+
 
 

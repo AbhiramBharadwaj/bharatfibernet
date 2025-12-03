@@ -60,7 +60,7 @@ const page = () => {
               <h1 style={{ 
                 fontSize: '3.5rem', 
                 fontWeight: '700', 
-                marginBottom: '1.5rem',
+                marginBottom: '1rem',
                 color: '#1a1a1a'
               }}>
                 How Can We Help You?
@@ -111,7 +111,7 @@ const page = () => {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      marginBottom: '1.5rem'
+                      marginBottom: '1rem'
                     }}>
                       <i className={`fas ${category.icon}`} style={{ 
                         fontSize: '2rem', 
@@ -390,23 +390,16 @@ const page = () => {
           </div>
 
           {/* Screen 4: Additional Support Form */}
-          <div className="row mt-5 mb-5">
-            <div className="col-12 text-center mb-4">
+          <div className="row mt-4 mb-3">
+            <div className="col-12 text-center mb-3">
               <h2 style={{ 
                 fontSize: '2.5rem', 
                 fontWeight: '700', 
-                marginBottom: '1.5rem',
+                marginBottom: '0.3rem',
                 color: '#1a1a1a'
               }}>
                 Additional Support
               </h2>
-              <p style={{ 
-                fontSize: '1.05rem', 
-                color: '#666',
-                marginBottom: '0.5rem'
-              }}>
-                Please provide us with some basic information to help us get in touch with you in 3 workdays
-              </p>
               <p style={{ 
                 fontSize: '1.05rem', 
                 color: '#666'
@@ -418,30 +411,31 @@ const page = () => {
             <div className="col-lg-8 offset-lg-2">
               <div style={{
                 background: '#fff',
-                padding: '3rem',
+                padding: '1.5rem',
                 borderRadius: '15px',
                 border: '2px solid #ddd',
                 boxShadow: '0 5px 20px rgba(0,0,0,0.08)'
               }}>
                 <form>
                   {/* Business Category */}
-                  <div style={{ marginBottom: '1.5rem' }}>
+                  <div style={{ marginBottom: '0.6rem' }}>
                     <label style={{ 
                       fontSize: '1rem', 
                       fontWeight: '500', 
                       color: '#333',
-                      marginBottom: '0.5rem',
+                      marginBottom: '0.3rem',
                       display: 'block'
                     }}>
                       Business Category <span style={{ color: 'red' }}>*</span>
                     </label>
                     <select style={{
                       width: '100%',
-                      padding: '0.75rem',
+                      padding: '0.5rem',
                       fontSize: '1rem',
                       border: '1px solid #ddd',
                       borderRadius: '5px',
-                      background: '#fff'
+                      background: '#fff',
+                      appearance: 'auto'
                     }}>
                       <option>Please select</option>
                       <option>Home User</option>
@@ -456,22 +450,22 @@ const page = () => {
                   </div>
 
                   {/* Your Query */}
-                  <div style={{ marginBottom: '1.5rem' }}>
+                  <div style={{ marginBottom: '0.6rem' }}>
                     <label style={{ 
                       fontSize: '1rem', 
                       fontWeight: '500', 
                       color: '#333',
-                      marginBottom: '0.5rem',
+                      marginBottom: '0.3rem',
                       display: 'block'
                     }}>
                       Your Query <span style={{ color: 'red' }}>*</span>
                     </label>
                     <textarea 
                       placeholder="What is your query?"
-                      rows="5"
+                      rows="3"
                       style={{
                         width: '100%',
-                        padding: '0.75rem',
+                        padding: '0.5rem',
                         fontSize: '1rem',
                         border: '1px solid #ddd',
                         borderRadius: '5px',
@@ -481,12 +475,12 @@ const page = () => {
                   </div>
 
                   {/* Your Business */}
-                  <div style={{ marginBottom: '1.5rem' }}>
+                  <div style={{ marginBottom: '0.6rem' }}>
                     <label style={{ 
                       fontSize: '1rem', 
                       fontWeight: '500', 
                       color: '#333',
-                      marginBottom: '0.5rem',
+                      marginBottom: '0.3rem',
                       display: 'block'
                     }}>
                       Your Business <span style={{ color: 'red' }}>*</span>
@@ -503,174 +497,109 @@ const page = () => {
                     </div>
                   </div>
 
-                  {/* Company Name and Contact Name */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
-                    <div>
-                      <label style={{ 
-                        fontSize: '1rem', 
-                        fontWeight: '500', 
-                        color: '#333',
-                        marginBottom: '0.5rem',
-                        display: 'block'
-                      }}>
-                        Company Name <span style={{ color: 'red' }}>*</span>
-                      </label>
-                      <input 
-                        type="text"
-                        placeholder="Please enter your company name here"
-                        style={{
-                          width: '100%',
-                          padding: '0.75rem',
-                          fontSize: '1rem',
-                          border: '1px solid #ddd',
-                          borderRadius: '5px'
-                        }}
-                      />
-                    </div>
-                    <div>
-                      <label style={{ 
-                        fontSize: '1rem', 
-                        fontWeight: '500', 
-                        color: '#333',
-                        marginBottom: '0.5rem',
-                        display: 'block'
-                      }}>
-                        Contact name <span style={{ color: 'red' }}>*</span>
-                      </label>
-                      <input 
-                        type="text"
-                        placeholder="Please enter your contact name here"
-                        style={{
-                          width: '100%',
-                          padding: '0.75rem',
-                          fontSize: '1rem',
-                          border: '1px solid #ddd',
-                          borderRadius: '5px'
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Contact Number */}
-                  <div style={{ marginBottom: '1.5rem' }}>
+                  {/* Company Name */}
+                  <div style={{ marginBottom: '0.6rem' }}>
                     <label style={{ 
                       fontSize: '1rem', 
                       fontWeight: '500', 
                       color: '#333',
-                      marginBottom: '0.5rem',
+                      marginBottom: '0.3rem',
+                      display: 'block'
+                    }}>
+                      Company Name <span style={{ color: 'red' }}>*</span>
+                    </label>
+                    <input 
+                      type="text"
+                      placeholder="Please enter your company name here"
+                      style={{
+                        width: '100%',
+                        padding: '0.5rem',
+                        fontSize: '1rem',
+                        border: '1px solid #ddd',
+                        borderRadius: '5px'
+                      }}
+                    />
+                  </div>
+
+                  {/* Contact Name */}
+                  <div style={{ marginBottom: '0.6rem' }}>
+                    <label style={{ 
+                      fontSize: '1rem', 
+                      fontWeight: '500', 
+                      color: '#333',
+                      marginBottom: '0.3rem',
+                      display: 'block'
+                    }}>
+                      Contact name <span style={{ color: 'red' }}>*</span>
+                    </label>
+                    <input 
+                      type="text"
+                      placeholder="Please enter your contact name here"
+                      style={{
+                        width: '100%',
+                        padding: '0.5rem',
+                        fontSize: '1rem',
+                        border: '1px solid #ddd',
+                        borderRadius: '5px'
+                      }}
+                    />
+                  </div>
+
+                  {/* Contact Number */}
+                  <div style={{ marginBottom: '0.6rem' }}>
+                    <label style={{ 
+                      fontSize: '1rem', 
+                      fontWeight: '500', 
+                      color: '#333',
+                      marginBottom: '0.3rem',
                       display: 'block'
                     }}>
                       Contact Number
                     </label>
-                    <div style={{ display: 'grid', gridTemplateColumns: '150px 150px 1fr', gap: '1rem' }}>
-                      <select style={{
-                        padding: '0.75rem',
+                    <input 
+                      type="tel"
+                      placeholder="Contact Number"
+                      style={{
+                        width: '100%',
+                        padding: '0.5rem',
                         fontSize: '1rem',
                         border: '1px solid #ddd',
-                        borderRadius: '5px',
-                        background: '#fff'
-                      }}>
-                        <option>Please select</option>
-                        <option>+91 (India)</option>
-                        <option>+1 (USA)</option>
-                        <option>+44 (UK)</option>
-                      </select>
-                      <input 
-                        type="text"
-                        placeholder="Area Code"
-                        style={{
-                          padding: '0.75rem',
-                          fontSize: '1rem',
-                          border: '1px solid #ddd',
-                          borderRadius: '5px'
-                        }}
-                      />
-                      <input 
-                        type="text"
-                        placeholder="Contact Number"
-                        style={{
-                          padding: '0.75rem',
-                          fontSize: '1rem',
-                          border: '1px solid #ddd',
-                          borderRadius: '5px'
-                        }}
-                      />
-                    </div>
+                        borderRadius: '5px'
+                      }}
+                    />
                   </div>
 
-                  {/* Email and Verification Code */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
-                    <div>
-                      <label style={{ 
-                        fontSize: '1rem', 
-                        fontWeight: '500', 
-                        color: '#333',
-                        marginBottom: '0.5rem',
-                        display: 'block'
-                      }}>
-                        Email address <span style={{ color: 'red' }}>*</span>
-                      </label>
-                      <input 
-                        type="email"
-                        placeholder="Please enter your Email address here"
-                        style={{
-                          width: '100%',
-                          padding: '0.75rem',
-                          fontSize: '1rem',
-                          border: '1px solid #ddd',
-                          borderRadius: '5px'
-                        }}
-                      />
-                    </div>
-                    <div>
-                      <label style={{ 
-                        fontSize: '1rem', 
-                        fontWeight: '500', 
-                        color: '#333',
-                        marginBottom: '0.5rem',
-                        display: 'block'
-                      }}>
-                        Verification Code <span style={{ color: 'red' }}>*</span>
-                      </label>
-                      <div style={{ display: 'flex', gap: '0.5rem' }}>
-                        <input 
-                          type="text"
-                          placeholder="Please enter your Email verification code"
-                          style={{
-                            flex: 1,
-                            padding: '0.75rem',
-                            fontSize: '1rem',
-                            border: '1px solid #ddd',
-                            borderRadius: '5px'
-                          }}
-                        />
-                        <button 
-                          type="button"
-                          style={{
-                            padding: '0.75rem 1.5rem',
-                            fontSize: '1rem',
-                            background: '#fff',
-                            color: '#fd9330',
-                            border: '2px solid #fd9330',
-                            borderRadius: '5px',
-                            cursor: 'pointer',
-                            fontWeight: '600',
-                            whiteSpace: 'nowrap'
-                          }}
-                        >
-                          Get Code
-                        </button>
-                      </div>
-                    </div>
+                  {/* Email */}
+                  <div style={{ marginBottom: '0.6rem' }}>
+                    <label style={{ 
+                      fontSize: '1rem', 
+                      fontWeight: '500', 
+                      color: '#333',
+                      marginBottom: '0.3rem',
+                      display: 'block'
+                    }}>
+                      Email address <span style={{ color: 'red' }}>*</span>
+                    </label>
+                    <input 
+                      type="email"
+                      placeholder="Please enter your Email address here"
+                      style={{
+                        width: '100%',
+                        padding: '0.5rem',
+                        fontSize: '1rem',
+                        border: '1px solid #ddd',
+                        borderRadius: '5px'
+                      }}
+                    />
                   </div>
 
                   {/* Submit Button */}
-                  <div style={{ textAlign: 'center' }}>
+                  <div style={{ textAlign: 'center', marginTop: '0.5rem' }}>
                     <button 
                       type="submit"
                       style={{
-                        padding: '1rem 3rem',
-                        fontSize: '1.1rem',
+                        padding: '0.75rem 2.5rem',
+                        fontSize: '1rem',
                         background: '#fff',
                         color: '#1a1a1a',
                         border: '2px solid #1a1a1a',
@@ -697,7 +626,7 @@ const page = () => {
           </div>
 
           {/* Feel Free Section */}
-          <div className="row mt-5 mb-5">
+          <div className="row mt-3 mb-3">
             <div className="col-12 text-center">
               <h2 style={{ 
                 fontSize: '2.5rem', 
@@ -769,3 +698,8 @@ const page = () => {
 };
 
 export default page;
+
+
+
+
+

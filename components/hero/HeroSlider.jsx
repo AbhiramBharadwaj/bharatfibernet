@@ -29,11 +29,11 @@ export default function HeroSlider() {
           {/* LEFT SIDE CONTENT */}
 <div className="col-lg-6">
   <div className="hero-content">
-    <h1 className="wow fadeInUp" data-wow-delay=".2s">
+    <h1 className="wow fadeInUp" data-wow-delay=".2s" style={{ color: '#ffffff' }}>
       {slide.title}
     </h1>
 
-    <p className="hero-subtext text-white mt-3 wow fadeInUp" data-wow-delay=".3s">
+    <p className="hero-subtext mt-3 wow fadeInUp" data-wow-delay=".3s" style={{ color: '#ffffff' }}>
       {slide.subtitle}
     </p>
 
@@ -49,7 +49,7 @@ export default function HeroSlider() {
 
     <div className="d-flex align-items-center gap-4 mt-50 wow fadeInUp" data-wow-delay=".6s" style={{background: 'none !important', backgroundColor: 'transparent !important'}}>
       <img src="/assets/img/hero/client.png" alt="img" style={{background: 'none', backgroundColor: 'transparent'}} />
-      <p className="text-white" style={{background: 'none', backgroundColor: 'transparent', margin: 0, padding: 0, boxShadow: 'none', border: 'none'}}>
+      <p style={{background: 'none', backgroundColor: 'transparent', margin: 0, padding: 0, boxShadow: 'none', border: 'none', color: '#ffffff'}}>
         Trusted by 1M+ people <br />
         around the globe
       </p>
