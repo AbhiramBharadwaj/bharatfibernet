@@ -14,7 +14,7 @@ export const HERO_SLIDES = [
       </>
     ),
     buttonText: "Discover More",
-    buttonLink: "/service",
+    buttonLink: "/what-we-do",
   },
 
   {
@@ -32,7 +32,7 @@ export const HERO_SLIDES = [
       </>
     ),
     buttonText: "Discover More",
-    buttonLink: "/service",
+    buttonLink: "/what-we-do",
   },
 
   {
@@ -49,6 +49,6 @@ export const HERO_SLIDES = [
       </>
     ),
     buttonText: "Discover More",
-    buttonLink: "/service",
+    buttonLink: "/what-we-do",
   },
 ];

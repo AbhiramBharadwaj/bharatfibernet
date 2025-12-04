@@ -48,7 +48,6 @@ export default function HeroSlider() {
     </div>
 
     <div className="d-flex align-items-center gap-4 mt-50 wow fadeInUp" data-wow-delay=".6s" style={{background: 'none !important', backgroundColor: 'transparent !important'}}>
-      <img src="/assets/img/hero/client.png" alt="img" style={{background: 'none', backgroundColor: 'transparent'}} />
       <p style={{background: 'none', backgroundColor: 'transparent', margin: 0, padding: 0, boxShadow: 'none', border: 'none', color: '#ffffff'}}>
         Trusted by 1M+ people <br />
         around the globe
