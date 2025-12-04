@@ -43,7 +43,7 @@ const Footer1 = () => {
     }}
   >
     <li><Link href="/about" style={{ color: 'inherit', textDecoration: 'none' }}>Who We Are</Link></li>
-    <li><Link href="/service" style={{ color: 'inherit', textDecoration: 'none' }}>What We Do</Link></li>
+    <li><Link href="what-we-do" style={{ color: 'inherit', textDecoration: 'none' }}>What We Do</Link></li>
     <li><Link href="/knowledge" style={{ color: 'inherit', textDecoration: 'none' }}>Knowledge</Link></li>
     <li>Career</li>
     <li><Link href="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>Help &amp; Support</Link></li>
@@ -111,7 +111,7 @@ const Footer1 = () => {
         {/* -------- BOTTOM SINGLE LINE -------- */}
         <div className="py-3 text-center">
           <p className="mb-0">
-            <Link href="/about" style={{ color: 'inherit', textDecoration: 'none' }}>Who We Are</Link> | <Link href="/service" style={{ color: 'inherit', textDecoration: 'none' }}>What We Do</Link> | <Link href="/knowledge" style={{ color: 'inherit', textDecoration: 'none' }}>Knowledge</Link> | Career | <Link href="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>Help &amp; support</Link> | <Link href="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>Contact</Link>
+            <Link href="/about" style={{ color: 'inherit', textDecoration: 'none' }}>Who We Are</Link> | <Link href="what-we-do" style={{ color: 'inherit', textDecoration: 'none' }}>What We Do</Link> | <Link href="/knowledge" style={{ color: 'inherit', textDecoration: 'none' }}>Knowledge</Link> | Career | <Link href="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>Help &amp; support</Link> | <Link href="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>Contact</Link>
           </p>
         </div>
       </div>

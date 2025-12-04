@@ -249,7 +249,7 @@ const page = () => {
               To deliver connectivity you can count on, every single day.
             </h4>
             <div className="mt-3 wow fadeInUp" data-wow-delay=".8s">
-              <Link href="/service" className="theme-btn">
+              <Link href="what-we-do" className="theme-btn">
                 Explore Our Services
                 <i className="far fa-arrow-right" />
               </Link>
