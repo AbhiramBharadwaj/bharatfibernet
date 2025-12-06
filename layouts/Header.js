@@ -21,16 +21,18 @@ const NAV_ITEMS = [
         id: "what-4",
         href: "cybersecurity-services",
         title: "Cybersecurity services",
+        children: [
+          {
+            id: "cyber-1",
+            href: "firewall-rental-services",
+            title: "Firewall Rental Services",
+          },
+        ],
       },
       {
         id: "what-5",
         href: "internet-leased-lines",
         title: "Internet leased lines",
-      },
-      {
-        id: "what-6",
-        href: "firewall-rental-services",
-        title: "firewall rental services",
       },
       { id: "what-7", href: "crm", title: "CRM" },
       {
@@ -109,11 +111,26 @@ const Menu = ({ menu }) => {
               </Link>
               {hasChildren && (
                 <ul className="submenu">
-                  {item.children.map((child) => (
-                    <li key={child.id}>
-                      <Link href={child.href}>{child.title}</Link>
-                    </li>
-                  ))}
+                  {item.children.map((child) => {
+                    const hasNestedChildren = child.children && child.children.length > 0;
+                    return (
+                      <li key={child.id} className={hasNestedChildren ? "has-dropdown" : ""}>
+                        <Link href={child.href} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                          <span>{child.title}</span>
+                          {hasNestedChildren && <i className="fas fa-chevron-right" style={{ marginLeft: '8px', fontSize: '0.75em' }} />}
+                        </Link>
+                        {hasNestedChildren && (
+                          <ul className="submenu">
+                            {child.children.map((nestedChild) => (
+                              <li key={nestedChild.id}>
+                                <Link href={nestedChild.href}>{nestedChild.title}</Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               )}
             </li>
@@ -127,8 +144,11 @@ const Menu = ({ menu }) => {
 const MobileMenu = ({ menu }) => {
   const menuItems = menu ?? NAV_ITEMS;
   const [activeMenu, setActiveMenu] = useState("");
+  const [activeNestedMenu, setActiveNestedMenu] = useState("");
   const toggleMenu = (value) =>
     setActiveMenu((prev) => (prev === value ? "" : value));
+  const toggleNestedMenu = (value) =>
+    setActiveNestedMenu((prev) => (prev === value ? "" : value));
   return (
     <div className="mobile-menu fix mb-3 mean-container d-block d-xl-none">
       <div className="mean-bar">
@@ -159,11 +179,45 @@ const MobileMenu = ({ menu }) => {
                           display: activeMenu === item.id ? "block" : "none",
                         }}
                       >
-                        {item.children.map((child) => (
-                          <li key={child.id}>
-                            <Link href={child.href}>{child.title}</Link>
-                          </li>
-                        ))}
+                        {item.children.map((child) => {
+                          const hasNestedChildren = child.children && child.children.length > 0;
+                          return (
+                            <li key={child.id} className={hasNestedChildren ? "has-dropdown" : ""}>
+                              <Link href={child.href}>{child.title}</Link>
+                              {hasNestedChildren && (
+                                <>
+                                  <ul
+                                    className="submenu"
+                                    style={{
+                                      display: activeNestedMenu === child.id ? "block" : "none",
+                                      paddingLeft: "20px",
+                                    }}
+                                  >
+                                    {child.children.map((nestedChild) => (
+                                      <li key={nestedChild.id}>
+                                        <Link href={nestedChild.href}>{nestedChild.title}</Link>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                  <a
+                                    className="mean-expand"
+                                    href="#"
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      toggleNestedMenu(child.id);
+                                    }}
+                                  >
+                                    <i
+                                      className={`far ${
+                                        activeNestedMenu === child.id ? "fa-minus" : "fa-plus"
+                                      }`}
+                                    />
+                                  </a>
+                                </>
+                              )}
+                            </li>
+                          );
+                        })}
                       </ul>
                       <a
                         className="mean-expand"

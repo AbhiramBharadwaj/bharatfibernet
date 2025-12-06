@@ -133,7 +133,7 @@ const AboutTabs = () => {
           <div className="col-lg-6 wow fadeInUp" data-wow-delay=".4s">
             <div className="about-image-3">
               <img
-                src="assets/img/i2.jpeg"
+                src="/assets/img/w3.png"
                 alt="Bharat Fibernet Connectivity"
                 style={{
                   width: '100%',

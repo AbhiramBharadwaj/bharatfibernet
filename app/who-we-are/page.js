@@ -14,7 +14,7 @@ const page = () => {
 
       {/* Screen 2: Trusted by Businesses */}
       <section className="about-section fix section-padding pt-0" style={{
-        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url(/assets/img/1.jpg)',
+        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url(/assets/img/w3.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
@@ -24,7 +24,7 @@ const page = () => {
             <div className="col-lg-7 wow fadeInUp" data-wow-delay=".3s">
               <div className="about-image-3">
                 <img
-                  src="assets/img/i1.jpeg"
+                  src="/assets/img/w2.png"
                   alt="Trusted Business Connectivity"
                   style={{
                     width: '100%',
@@ -65,10 +65,7 @@ const page = () => {
 
       {/* Screen 3: We Believe in People */}
       <section className="about-section fix section-padding" style={{
-        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url(/assets/img/i2.jpeg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        background: '#ffffff'
       }}>
         <div className="container">
           <div className="row">
@@ -196,11 +193,47 @@ const page = () => {
           <h3 className="text-center mb-5 wow fadeInUp" data-wow-delay=".5s" style={{ color: '#000' }}>Our Leadership</h3>
 
           <div className="row g-4">
-            {/* CEO */}
+            {/* Founder & MD */}
             <div className="col-lg-4 col-md-6">
               <div className="team-card-items wow fadeInUp" data-wow-delay=".2s">
                 <div className="team-image">
-                  <img src="/assets/img/p1.jpg" alt="Botte Venugopal" />
+                  <img 
+                    src="/assets/img/p2.jpg" 
+                    alt="Gaddam Poornachander"
+                    style={{ 
+                      width: '100%', 
+                      height: '450px', 
+                      objectFit: 'cover',
+                      objectPosition: 'center top',
+                      borderRadius: '10px'
+                    }}
+                  />
+                </div>
+                <div className="team-content text-center">
+                  <h4 style={{ color: '#000' }}>Gaddam Poornachander</h4>
+                  <p style={{ color: '#333' }}>Founder & Managing Director</p>
+                  <p className="mt-3" style={{ fontSize: '0.95rem', color: '#333' }}>
+                    With over two decades in telecommunications and digital infrastructure, Mr. Gaddam Poornachander drives Bharat VoIP's growth with vision and purpose. His leadership has transformed the company into a trusted provider of Internet Leased Lines, Managed Network Services, and Smart Connectivity Solutions—delivering reliable performance and real business value to enterprises and institutions alike.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* CEO */}
+            <div className="col-lg-4 col-md-6">
+              <div className="team-card-items wow fadeInUp" data-wow-delay=".4s">
+                <div className="team-image">
+                  <img 
+                    src="/assets/img/p1.jpg" 
+                    alt="Botte Venugopal"
+                    style={{ 
+                      width: '100%', 
+                      height: '450px', 
+                      objectFit: 'cover',
+                      objectPosition: 'center top',
+                      borderRadius: '10px'
+                    }}
+                  />
                 </div>
                 <div className="team-content text-center">
                   <h4 style={{ color: '#000' }}>Botte Venugopal</h4>
@@ -215,27 +248,21 @@ const page = () => {
               </div>
             </div>
 
-            {/* Founder & MD */}
-            <div className="col-lg-4 col-md-6">
-              <div className="team-card-items wow fadeInUp" data-wow-delay=".4s">
-                <div className="team-image">
-                  <img src="/assets/img/p2.jpg" alt="Gaddam Poornachander" />
-                </div>
-                <div className="team-content text-center">
-                  <h4 style={{ color: '#000' }}>Gaddam Poornachander</h4>
-                  <p style={{ color: '#333' }}>Founder & Managing Director</p>
-                  <p className="mt-3" style={{ fontSize: '0.95rem', color: '#333' }}>
-                    With over two decades in telecommunications and digital infrastructure, Mr. Gaddam Poornachander drives Bharat VoIP's growth with vision and purpose. His leadership has transformed the company into a trusted provider of Internet Leased Lines, Managed Network Services, and Smart Connectivity Solutions—delivering reliable performance and real business value to enterprises and institutions alike.
-                  </p>
-                </div>
-              </div>
-            </div>
-
             {/* CTO */}
             <div className="col-lg-4 col-md-6">
               <div className="team-card-items wow fadeInUp" data-wow-delay=".6s">
                 <div className="team-image">
-                  <img src="/assets/img/p3.jpg" alt="Srikanth Bodla" />
+                  <img 
+                    src="/assets/img/p3.jpg" 
+                    alt="Srikanth Bodla"
+                    style={{ 
+                      width: '100%', 
+                      height: '450px', 
+                      objectFit: 'cover',
+                      objectPosition: 'center top',
+                      borderRadius: '10px'
+                    }}
+                  />
                 </div>
                 <div className="team-content text-center">
                   <h4 style={{ color: '#000' }}>Srikanth Bodla</h4>
