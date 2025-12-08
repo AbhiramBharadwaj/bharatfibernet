@@ -6,6 +6,8 @@ import { HERO_SLIDES } from "./HERO_SLIDES";
 
 export default function HeroSlider() {
   const [index, setIndex] = useState(0);
+  const [formStatus, setFormStatus] = useState({ state: "idle", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Auto slide every 6 seconds
   useEffect(() => {
@@ -17,6 +19,52 @@ export default function HeroSlider() {
   }, []);
 
   const slide = HERO_SLIDES[index];
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus({ state: "idle", message: "" });
+    setIsSubmitting(true);
+
+    const form = new FormData(e.target);
+    const name = (form.get("name") || "").trim();
+    const email = (form.get("email") || "").trim();
+    const phone = (form.get("phone") || "").trim();
+    const agreed = form.get("terms") === "on";
+
+    if (!name || !email || !phone || !agreed) {
+      setFormStatus({ state: "error", message: "Please fill all fields and agree to Terms & Conditions." });
+      setIsSubmitting(false);
+      return;
+    }
+
+    const message = `Lead captured from homepage hero form.`;
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          message,
+          type: "hero-lead",
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Submission failed. Please try again.");
+      }
+
+      setFormStatus({ state: "success", message: "Thanks! We received your request and will call you shortly." });
+      e.target.reset();
+    } catch (err) {
+      setFormStatus({ state: "error", message: err.message || "Something went wrong. Please try again." });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section
@@ -74,9 +122,7 @@ export default function HeroSlider() {
                 <h4>We are just a Call Away</h4>
                 <p>Enter your details below</p>
                 <form
-                  action="#"
-                  id="contact-form"
-                  method="POST"
+                  onSubmit={handleSubmit}
                   className="contact-form-item"
                 >
                   <div className="row g-4">
@@ -85,18 +131,18 @@ export default function HeroSlider() {
                         <input
                           type="text"
                           name="name"
-                          id="name"
                           placeholder="Your Name"
+                          required
                         />
                       </div>
                     </div>
                     <div className="col-lg-12">
                       <div className="form-clt">
                         <input
-                          type="text"
+                          type="email"
                           name="email"
-                          id="email"
                           placeholder="Email Address"
+                          required
                         />
                       </div>
                     </div>
@@ -105,8 +151,8 @@ export default function HeroSlider() {
                         <input
                           type="text"
                           name="phone"
-                          id="phone"
                           placeholder="Phone Number"
+                          required
                         />
                       </div>
                     </div>
@@ -115,8 +161,8 @@ export default function HeroSlider() {
                         <input
                           type="checkbox"
                           className="form-check-input"
-                          name="save-for-next"
                           id="saveForNext"
+                          name="terms"
                         />
                         <p>
                           I’ve Read and agreed to{" "}
@@ -126,8 +172,18 @@ export default function HeroSlider() {
                     </div>
                     <div className="col-lg-12">
                       <button type="submit" className="theme-btn">
-                        Get Started Now <i className="far fa-arrow-right" />
+                        {isSubmitting ? "Sending..." : "Get Started Now"} <i className="far fa-arrow-right" />
                       </button>
+                      {formStatus.state === "success" && (
+                        <p style={{ color: "#0b9c66", marginTop: "10px", fontWeight: 600 }}>
+                          {formStatus.message}
+                        </p>
+                      )}
+                      {formStatus.state === "error" && (
+                        <p style={{ color: "#d00", marginTop: "10px", fontWeight: 600 }}>
+                          {formStatus.message}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </form>
