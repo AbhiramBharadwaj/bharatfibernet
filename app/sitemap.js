@@ -1,5 +1,3 @@
-import { MetadataRoute } from "next";
-
 const siteUrl = "https://www.bharatfibernet.com";
 
 const staticRoutes = [
@@ -29,7 +27,7 @@ const staticRoutes = [
   "/team",
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default function sitemap() {
   const now = new Date();
   const lastmod = now.toISOString();
 
