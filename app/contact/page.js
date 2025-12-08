@@ -5,9 +5,79 @@ import NextLayout from "@/layouts/NextLayout";
 
 const Page = () => {
   const [selectedOption, setSelectedOption] = useState("");
+  const [status, setStatus] = useState({ state: "idle", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleOptionChange = (e) => {
     setSelectedOption(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ state: "idle", message: "" });
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.target);
+    const firstName = (formData.get("firstName") || "").trim();
+    const lastName = (formData.get("lastName") || "").trim();
+    const email = (formData.get("email") || "").trim();
+    const phone = (formData.get("phone") || "").trim();
+    const message = (formData.get("message") || "").trim();
+    const company = (formData.get("company") || "").trim();
+    const designation = (formData.get("designation") || "").trim();
+    const bandwidth = (formData.get("bandwidth") || "").trim();
+    const companySize = (formData.get("companySize") || "").trim();
+    const accountId = (formData.get("accountId") || "").trim();
+    const customerId = (formData.get("customerId") || "").trim();
+
+    if (!email || !message) {
+      setStatus({ state: "error", message: "Please fill in email and message." });
+      setIsSubmitting(false);
+      return;
+    }
+
+    const details = [
+      selectedOption ? `Enquiry Type: ${selectedOption}` : null,
+      company ? `Company: ${company}` : null,
+      designation ? `Designation: ${designation}` : null,
+      bandwidth ? `Required Bandwidth: ${bandwidth}` : null,
+      companySize ? `Company Size: ${companySize}` : null,
+      accountId ? `Account ID: ${accountId}` : null,
+      customerId ? `Customer ID: ${customerId}` : null,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const finalMessage = details
+      ? `${message}\n\n---\n${details}`
+      : message;
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: `${firstName} ${lastName}`.trim(),
+          email,
+          phone,
+          message: finalMessage,
+          type: selectedOption || "general",
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Failed to submit. Please try again.");
+      }
+
+      setStatus({ state: "success", message: "Thanks! We received your enquiry and will reach out shortly." });
+      e.target.reset();
+      setSelectedOption("");
+    } catch (error) {
+      setStatus({ state: "error", message: error.message || "Something went wrong." });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -110,12 +180,13 @@ const Page = () => {
                 padding: '3rem 2.5rem',
                 background: 'white'
               }}>
-                <form>
+                <form onSubmit={handleSubmit}>
                   {/* Common Fields - First Name & Last Name */}
                   <div className="row g-3 mb-3">
                     <div className="col-md-6">
                       <input 
                         type="text" 
+                        name="firstName"
                         placeholder="First Name"
                         required
                         style={{
@@ -132,6 +203,7 @@ const Page = () => {
                     <div className="col-md-6">
                       <input 
                         type="text" 
+                        name="lastName"
                         placeholder="Last Name"
                         required
                         style={{
@@ -153,6 +225,7 @@ const Page = () => {
                       <div className="col-md-6">
                         <input 
                           type="text" 
+                          name="company"
                           placeholder="Company Name"
                           style={{
                             width: '100%',
@@ -168,6 +241,7 @@ const Page = () => {
                       <div className="col-md-6">
                         <input 
                           type="text" 
+                          name="designation"
                           placeholder="Designation"
                           style={{
                             width: '100%',
@@ -188,6 +262,7 @@ const Page = () => {
                     <div className="col-md-6">
                       <input 
                         type="email" 
+                        name="email"
                         placeholder="Email"
                         required
                         style={{
@@ -204,6 +279,7 @@ const Page = () => {
                     <div className="col-md-6">
                       <input 
                         type="tel" 
+                        name="phone"
                         placeholder="Contact Number"
                         required
                         style={{
@@ -224,6 +300,7 @@ const Page = () => {
                     <div className="mb-3">
                       <input 
                         type="text" 
+                        name="bandwidth"
                         placeholder="Required Bandwidth (e.g., 100 Mbps, 1 Gbps)"
                         style={{
                           width: '100%',
@@ -242,6 +319,7 @@ const Page = () => {
                   {selectedOption === 'consultation' && (
                     <div className="mb-3">
                       <select 
+                        name="companySize"
                         style={{
                           width: '100%',
                           padding: '1rem 1.5rem',
@@ -267,6 +345,7 @@ const Page = () => {
                     <div className="mb-3">
                       <input 
                         type="text" 
+                        name="accountId"
                         placeholder="Account ID (if applicable)"
                         style={{
                           width: '100%',
@@ -286,6 +365,7 @@ const Page = () => {
                     <div className="mb-3">
                       <input 
                         type="text" 
+                        name="customerId"
                         placeholder="Customer ID / Registered Number"
                         style={{
                           width: '100%',
@@ -303,6 +383,7 @@ const Page = () => {
                   {/* Dynamic Message Textarea */}
                   <div className="mb-3">
                     <textarea 
+                      name="message"
                       placeholder={
                         selectedOption === 'home-broadband' ? "Tell us about your area or preferred plan." :
                         selectedOption === 'business-enterprise' ? "Share your business connectivity needs or location." :
@@ -335,6 +416,7 @@ const Page = () => {
                   <div className="text-center">
                     <button 
                       type="submit"
+                      disabled={isSubmitting}
                       style={{
                         padding: '1rem 3rem',
                         background: 'linear-gradient(135deg, #ff8c00 0%, #ff6f00 100%)',
@@ -350,8 +432,18 @@ const Page = () => {
                         boxShadow: '0 4px 15px rgba(255, 140, 0, 0.3)'
                       }}
                     >
-                      Submit!
+                      {isSubmitting ? 'Sending...' : 'Submit!'}
                     </button>
+                    {status.state === "success" && (
+                      <p style={{ color: '#0b9c66', marginTop: '12px', fontWeight: 600 }}>
+                        {status.message}
+                      </p>
+                    )}
+                    {status.state === "error" && (
+                      <p style={{ color: '#d00', marginTop: '12px', fontWeight: 600 }}>
+                        {status.message}
+                      </p>
+                    )}
                   </div>
                 </form>
               </div>
