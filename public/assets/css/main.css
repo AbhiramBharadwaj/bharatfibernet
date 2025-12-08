@@ -10505,13 +10505,26 @@ p.sticky-label {
 
 /* Base card look */
 .feature-card {
+  position: relative;
   background: #ffffff;
-  border: 1px solid rgba(15, 23, 42, 0.15); /* light border */
-  border-radius: 0; /* table-ish, no rounded corners */
-  padding: 24px 18px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 22px 18px;
   text-align: center;
   height: 100%;
   transition: all 0.25s ease;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(135deg, #f36a1d 0%, #0b9c66 100%);
 }
 
 .feature-card h5 {
@@ -10519,12 +10532,14 @@ p.sticky-label {
   font-size: 18px;
   line-height: 1.35;
   margin-bottom: 12px;
+  color: #0f172a;
 }
 
 .feature-card p {
   margin: 0;
   font-size: 15px;
   line-height: 1.7;
+  color: #4b5563;
 }
 
 /* ensure bold text inside paragraphs stays bold */
@@ -10534,16 +10549,14 @@ p.sticky-label {
 
 /* Hover state – dark blue background, white text */
 .feature-card:hover {
-  background: #f7931e !important;
-  color: #ffffff;
-  border-color: #f7931e !important;
-  transition: 0.25s ease;
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.12);
 }
 
 .feature-card:hover h5,
 .feature-card:hover p,
 .feature-card:hover strong {
-  color: #ffffff;
+  color: #0f172a;
 }
 
 /* Top row – “train” of services */
@@ -10678,16 +10691,16 @@ p.sticky-label {
 }
 
 .plan-section .section-title h2 {
-  color: #ffffff;
+  color: #0f172a;
 }
 
 .plan-section .plan-explore-link {
-  color: #f7931e;
+  color: #f36a1d;
   text-decoration: underline;
 }
 
 .plan-section .plan-subtitle {
-  color: #e5e7eb;
+  color: #4b5563;
   font-weight: 500;
 }
 
@@ -10696,31 +10709,33 @@ p.sticky-label {
 ------------------------------------------- */
 .plan-tabs .plan-tab {
   padding: 10px 24px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
   margin: 0 6px;
-  color: #000000;
-  background: rgba(255, 255, 255, 0.5);
+  color: #0f172a;
+  background: #ffffff;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.06);
   transition: 0.25s;
 }
 
 .plan-tabs .plan-tab:hover {
-  border-color: #000000;
-  color: #000000;
-  background: rgba(0, 0, 0, 0.08);
+  border-color: #f36a1d;
+  color: #0f172a;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
 }
 
 .plan-tabs .plan-tab.active {
-  background: linear-gradient(135deg, #f7931e, #ffb347);
-  border-color: #f7931e;
-  color: #050509 !important;
+  background: linear-gradient(135deg, #f36a1d 0%, #0b9c66 100%);
+  border-color: transparent;
+  color: #ffffff !important;
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.12);
 }
 
 /* -------------------------------------------
    PLAN CARD — ORANGE BRAND VERSION
 ------------------------------------------- */
 .plan-card {
-  background: rgba(255, 255, 255, 0.06); /* dark translucent */
+  background: #ffffff;
   border-radius: 22px;
   padding: 28px 24px 24px;
   display: flex;
@@ -10728,14 +10743,14 @@ p.sticky-label {
   align-items: stretch;
   height: 100%;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
   transition: 0.25s ease;
 }
 
 .plan-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 22px 46px rgba(15, 23, 42, 0.12);
 }
 
 /* -------------------------------------------
@@ -10748,20 +10763,14 @@ p.sticky-label {
 .plan-icon {
   width: 80px;
   height: 80px;
-  border-radius: 50%;
+  border-radius: 18px;
   margin: 0 auto 14px;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* Orange radial brand glow */
-  background: radial-gradient(
-    circle at top,
-    #f9b16e 0%,
-    #f7a04a 40%,
-    #f7931e 100%
-  );
-  box-shadow: 0 0 25px rgba(247, 147, 30, 0.4);
+  background: linear-gradient(135deg, #f36a1d 0%, #0b9c66 100%);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
 }
 
 .plan-icon img {
@@ -10773,13 +10782,13 @@ p.sticky-label {
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 6px;
-  color: #000000;
+  color: #0f172a;
 }
 
 .plan-price {
   font-size: 15px;
   font-weight: 700;
-  color: #000000;
+  color: #f36a1d;
   margin: 0;
 }
 
@@ -10800,17 +10809,17 @@ p.sticky-label {
   font-size: 14px;
   line-height: 1.6;
   margin-bottom: 6px;
-  color: #000000;
+  color: #1f2937;
 }
 
 .plan-features i {
-  color: #000000;
+  color: #0b9c66;
   margin-top: 4px;
 }
 
 .plan-features strong {
   font-weight: 700;
-  color: #000000;
+  color: #0f172a;
 }
 
 /* -------------------------------------------
@@ -10820,8 +10829,8 @@ p.sticky-label {
   border: none;
   border-radius: 999px;
   padding: 11px 18px;
-  background: #f7931e;
-  color: #0e0e0f;
+  background: linear-gradient(135deg, #f36a1d 0%, #0b9c66 100%);
+  color: #ffffff;
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
@@ -10831,7 +10840,7 @@ p.sticky-label {
 }
 
 .plan-btn:hover {
-  background: #ffb347;
+  background: linear-gradient(135deg, #ff8533 0%, #0fba7a 100%);
 }
 
 
@@ -11030,21 +11039,21 @@ p.sticky-label {
 }
 
 .service-section .section-title p {
-  color: #d1d5db; /* soft gray */
+  color: #0f172a;
 }
 
 .service-section .services-subtitle {
-  color: #f7931e; /* brand orange accent */
+  color: #0b9c66;
 }
 
 /* Tabs */
 .service-tab-card {
   width: 100%;
-  border-radius: 999px;
-  padding: 0.65rem 0.75rem;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  background: rgba(255, 255, 255, 0.5);
-  color: #000000;
+  border-radius: 16px;
+  padding: 0.7rem 1rem;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #0f172a;
   font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
@@ -11053,7 +11062,7 @@ p.sticky-label {
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
-  box-shadow: 0 0 0 0 transparent;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
 }
 
 .service-tab-card span {
@@ -11062,26 +11071,26 @@ p.sticky-label {
 
 /* Hover state (non-active) */
 .service-tab-card:hover:not(.active) {
-  border-color: #000000;
-  color: #000000;
-  background: rgba(0, 0, 0, 0.08);
+  border-color: #f36a1d;
+  color: #0f172a;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
 }
 
 /* Active tab */
 .service-tab-card.active {
-  background: linear-gradient(135deg, #f7931e, #ffb347);
-  color: #050509;
-  border-color: #f7931e;
-  box-shadow: 0 12px 30px rgba(247, 147, 30, 0.35);
+  background: linear-gradient(135deg, #f36a1d 0%, #0b9c66 100%);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.16);
 }
 
 /* Detail card */
 .service-detail-card {
-  background: #0b0c12;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.94) 0%, rgba(15, 23, 42, 0.86) 100%);
   border-radius: 24px;
   padding: 2rem 2.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.4);
 }
 
 .service-detail-card .detail-heading {

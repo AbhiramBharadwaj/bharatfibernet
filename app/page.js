@@ -57,10 +57,8 @@ const page = () => {
 <section
   className="about-section fix section-padding"
   style={{
-    backgroundImage: 'url("/assets/img/background/pattern-12.png")',
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
+    background:
+      "radial-gradient(circle at 20% 20%, rgba(243,106,29,0.08) 0, rgba(243,106,29,0) 32%), radial-gradient(circle at 80% 10%, rgba(11,156,102,0.08) 0, rgba(11,156,102,0) 28%), linear-gradient(135deg, #fffaf5 0%, #f3fbf6 100%)",
   }}
 >
   <div className="container">
@@ -127,12 +125,13 @@ const page = () => {
       <SERVICES_SECTION />
       
       {/* Team Section Start */}
-      <section className="plan-section fix section-padding" style={{
-        backgroundImage: 'url(/assets/img/bg2.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}>
+      <section
+        className="plan-section fix section-padding"
+        style={{
+          background:
+            "radial-gradient(circle at 18% 20%, rgba(243,106,29,0.14) 0, rgba(243,106,29,0) 32%), radial-gradient(circle at 82% 10%, rgba(11,156,102,0.14) 0, rgba(11,156,102,0) 30%), linear-gradient(135deg, #fffaf5 0%, #f3fbf6 100%)",
+        }}
+      >
       <div className="container">
     {/* Heading */}
     <div className="section-title text-center">
@@ -1450,31 +1449,31 @@ const page = () => {
       {/* 1 */}
       <div className="col-xl-3 col-lg-4 col-md-6">
         <div className="testimonial-card" style={{
-          background: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(10px)',
-          borderRadius: '15px',
-          padding: '30px',
-          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
-          border: '1px solid rgba(255, 255, 255, 0.3)',
+          background: '#ffffff',
+          borderRadius: '18px',
+          padding: '28px',
+          boxShadow: '0 14px 36px rgba(15, 23, 42, 0.1)',
+          border: '1px solid #e5e7eb',
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between'
         }}>
-          <p className="testimonial-text" style={{ color: '#555', fontSize: '15px', lineHeight: '1.7', marginBottom: '25px' }}>
+          <p className="testimonial-text" style={{ color: '#1f2937', fontSize: '15px', lineHeight: '1.7', marginBottom: '22px' }}>
             "We switched to this broadband provider because of their competitive
             pricing, and we haven't looked back since. The service is excellent,
             and we're saving money every month."
           </p>
 
           <div className="testimonial-footer" style={{
-            background: 'linear-gradient(135deg, #ff8c00 0%, #ff6f00 100%)',
-            borderRadius: '10px',
-            padding: '20px',
-            textAlign: 'center'
+            background: 'linear-gradient(135deg, #f36a1d 0%, #0b9c66 100%)',
+            borderRadius: '12px',
+            padding: '18px',
+            textAlign: 'center',
+            boxShadow: '0 10px 24px rgba(15, 23, 42, 0.12)'
           }}>
-            <h4 style={{ color: '#000000', fontSize: '18px', fontWeight: '700', marginBottom: '5px' }}>Suraj S</h4>
-            <p className="role" style={{ color: '#000000', fontSize: '14px', margin: 0, opacity: 0.95 }}>CFO</p>
+            <h4 style={{ color: '#ffffff', fontSize: '18px', fontWeight: '700', marginBottom: '5px' }}>Suraj S</h4>
+            <p className="role" style={{ color: '#fefefe', fontSize: '14px', margin: 0, opacity: 0.9 }}>CFO</p>
           </div>
         </div>
       </div>
@@ -1482,31 +1481,31 @@ const page = () => {
       {/* 2 */}
       <div className="col-xl-3 col-lg-4 col-md-6">
         <div className="testimonial-card" style={{
-          background: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(10px)',
-          borderRadius: '15px',
-          padding: '30px',
-          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
-          border: '1px solid rgba(255, 255, 255, 0.3)',
+          background: '#ffffff',
+          borderRadius: '18px',
+          padding: '28px',
+          boxShadow: '0 14px 36px rgba(15, 23, 42, 0.1)',
+          border: '1px solid #e5e7eb',
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between'
         }}>
-          <p className="testimonial-text" style={{ color: '#555', fontSize: '15px', lineHeight: '1.7', marginBottom: '25px' }}>
+          <p className="testimonial-text" style={{ color: '#1f2937', fontSize: '15px', lineHeight: '1.7', marginBottom: '22px' }}>
             "The installation process was seamless and quick. The technicians
             were professional and ensured everything was set up perfectly. We've
             had a smooth experience ever since."
           </p>
 
           <div className="testimonial-footer" style={{
-            background: 'linear-gradient(135deg, #ff8c00 0%, #ff6f00 100%)',
-            borderRadius: '10px',
-            padding: '20px',
-            textAlign: 'center'
+            background: 'linear-gradient(135deg, #f36a1d 0%, #0b9c66 100%)',
+            borderRadius: '12px',
+            padding: '18px',
+            textAlign: 'center',
+            boxShadow: '0 10px 24px rgba(15, 23, 42, 0.12)'
           }}>
-            <h4 style={{ color: '#000000', fontSize: '18px', fontWeight: '700', marginBottom: '5px' }}>David R</h4>
-            <p className="role" style={{ color: '#000000', fontSize: '14px', margin: 0, opacity: 0.95 }}>Operations Manager</p>
+            <h4 style={{ color: '#ffffff', fontSize: '18px', fontWeight: '700', marginBottom: '5px' }}>David R</h4>
+            <p className="role" style={{ color: '#fefefe', fontSize: '14px', margin: 0, opacity: 0.9 }}>Operations Manager</p>
           </div>
         </div>
       </div>
@@ -1514,31 +1513,31 @@ const page = () => {
       {/* 3 */}
       <div className="col-xl-3 col-lg-4 col-md-6">
         <div className="testimonial-card" style={{
-          background: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(10px)',
-          borderRadius: '15px',
-          padding: '30px',
-          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
-          border: '1px solid rgba(255, 255, 255, 0.3)',
+          background: '#ffffff',
+          borderRadius: '18px',
+          padding: '28px',
+          boxShadow: '0 14px 36px rgba(15, 23, 42, 0.1)',
+          border: '1px solid #e5e7eb',
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between'
         }}>
-          <p className="testimonial-text" style={{ color: '#555', fontSize: '15px', lineHeight: '1.7', marginBottom: '25px' }}>
+          <p className="testimonial-text" style={{ color: '#1f2937', fontSize: '15px', lineHeight: '1.7', marginBottom: '22px' }}>
             "We love that the plans are scalable and flexible to meet our
             growing business needs. Upgrading packages is simple, and our team
             is always connected."
           </p>
 
           <div className="testimonial-footer" style={{
-            background: 'linear-gradient(135deg, #ff8c00 0%, #ff6f00 100%)',
-            borderRadius: '10px',
-            padding: '20px',
-            textAlign: 'center'
+            background: 'linear-gradient(135deg, #f36a1d 0%, #0b9c66 100%)',
+            borderRadius: '12px',
+            padding: '18px',
+            textAlign: 'center',
+            boxShadow: '0 10px 24px rgba(15, 23, 42, 0.12)'
           }}>
-            <h4 style={{ color: '#000000', fontSize: '18px', fontWeight: '700', marginBottom: '5px' }}>Soujanya D</h4>
-            <p className="role" style={{ color: '#000000', fontSize: '14px', margin: 0, opacity: 0.95 }}>HR Manager</p>
+            <h4 style={{ color: '#ffffff', fontSize: '18px', fontWeight: '700', marginBottom: '5px' }}>Soujanya D</h4>
+            <p className="role" style={{ color: '#fefefe', fontSize: '14px', margin: 0, opacity: 0.9 }}>HR Manager</p>
           </div>
         </div>
       </div>
@@ -1546,31 +1545,31 @@ const page = () => {
       {/* 4 */}
       <div className="col-xl-3 col-lg-4 col-md-6">
         <div className="testimonial-card" style={{
-          background: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(10px)',
-          borderRadius: '15px',
-          padding: '30px',
-          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
-          border: '1px solid rgba(255, 255, 255, 0.3)',
+          background: '#ffffff',
+          borderRadius: '18px',
+          padding: '28px',
+          boxShadow: '0 14px 36px rgba(15, 23, 42, 0.1)',
+          border: '1px solid #e5e7eb',
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between'
         }}>
-          <p className="testimonial-text" style={{ color: '#555', fontSize: '15px', lineHeight: '1.7', marginBottom: '25px' }}>
+          <p className="testimonial-text" style={{ color: '#1f2937', fontSize: '15px', lineHeight: '1.7', marginBottom: '22px' }}>
             "Their enterprise solutions helped us improve uptime and performance.
             The network is incredibly reliable, and support is always available
             when needed."
           </p>
 
           <div className="testimonial-footer" style={{
-            background: 'linear-gradient(135deg, #ff8c00 0%, #ff6f00 100%)',
-            borderRadius: '10px',
-            padding: '20px',
-            textAlign: 'center'
+            background: 'linear-gradient(135deg, #f36a1d 0%, #0b9c66 100%)',
+            borderRadius: '12px',
+            padding: '18px',
+            textAlign: 'center',
+            boxShadow: '0 10px 24px rgba(15, 23, 42, 0.12)'
           }}>
-            <h4 style={{ color: '#000000', fontSize: '18px', fontWeight: '700', marginBottom: '5px' }}>Mahesh K</h4>
-            <p className="role" style={{ color: '#000000', fontSize: '14px', margin: 0, opacity: 0.95 }}>IT Director</p>
+            <h4 style={{ color: '#ffffff', fontSize: '18px', fontWeight: '700', marginBottom: '5px' }}>Mahesh K</h4>
+            <p className="role" style={{ color: '#fefefe', fontSize: '14px', margin: 0, opacity: 0.9 }}>IT Director</p>
           </div>
         </div>
       </div>
