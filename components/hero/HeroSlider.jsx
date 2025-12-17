@@ -118,7 +118,7 @@ export default function HeroSlider() {
 
           {/* RIGHT SIDE FORM (unchanged) */}
           <div className="col-lg-5 wow fadeInUp" data-wow-delay=".4s">
-              <div className="hero-contact-box">
+              <div className="hero-contact-box" style={{ position: "relative" }}>
                 <h4>We are just a Call Away</h4>
                 <p>Enter your details below</p>
                 <form
@@ -183,6 +183,23 @@ export default function HeroSlider() {
                         <p style={{ color: "#d00", marginTop: "10px", fontWeight: 600 }}>
                           {formStatus.message}
                         </p>
+                      )}
+                      {isSubmitting && (
+                        <div
+                          style={{
+                            position: "absolute",
+                            inset: 0,
+                            background: "rgba(255,255,255,0.75)",
+                            borderRadius: "18px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            fontWeight: 700,
+                            color: "#0f172a",
+                          }}
+                        >
+                          Sending...
+                        </div>
                       )}
                     </div>
                   </div>

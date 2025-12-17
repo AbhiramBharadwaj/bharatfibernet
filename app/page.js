@@ -14,6 +14,50 @@ import LeasedLineSlider from "@/components/LeasedLineSlider";
 
 const page = () => {
   const [activeTab, setActiveTab] = useState('business');
+  const [guidanceStatus, setGuidanceStatus] = useState({ state: 'idle', message: '' });
+  const [guidanceSubmitting, setGuidanceSubmitting] = useState(false);
+
+  const handleGuidanceSubmit = async (e) => {
+    e.preventDefault();
+    setGuidanceStatus({ state: 'idle', message: '' });
+    setGuidanceSubmitting(true);
+
+    const form = new FormData(e.target);
+    const phone = (form.get('guidance-phone') || '').trim();
+    const email = (form.get('guidance-email') || '').trim();
+
+    if (!phone || !email) {
+      setGuidanceStatus({ state: 'error', message: 'Please enter both phone and email.' });
+      setGuidanceSubmitting(false);
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Need Guidance Lead',
+          email,
+          phone,
+          message: 'Lead from homepage Need Guidance section',
+          type: 'guidance-lead',
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'Submission failed. Please try again.');
+      }
+
+      setGuidanceStatus({ state: 'success', message: 'Thank you! We will reach out shortly.' });
+      e.target.reset();
+    } catch (err) {
+      setGuidanceStatus({ state: 'error', message: err.message || 'Something went wrong. Please try again.' });
+    } finally {
+      setGuidanceSubmitting(false);
+    }
+  };
 
   return (
     <NextLayout header={1}>
@@ -1624,22 +1668,50 @@ const page = () => {
               </div>
 
               {/* Form */}
-              <form style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                <input type="tel" placeholder="Mobile Number" required style={{
+              <form
+                onSubmit={handleGuidanceSubmit}
+                style={{ display: 'flex', flexDirection: 'column', gap: '12px', position: 'relative' }}
+              >
+                <input type="tel" name="guidance-phone" placeholder="Mobile Number" required style={{
                   width: '100%', padding: '14px 20px', borderRadius: '10px', border: 'none',
                   fontSize: '15px', outline: 'none', backgroundColor: '#ffffff', color: '#000000'
                 }} />
-                <input type="email" placeholder="Email Address" required style={{
+                <input type="email" name="guidance-email" placeholder="Email Address" required style={{
                   width: '100%', padding: '14px 20px', borderRadius: '10px', border: 'none',
                   fontSize: '15px', outline: 'none', backgroundColor: '#ffffff', color: '#000000'
                 }} />
-                <button type="submit" style={{
+                <button type="submit" disabled={guidanceSubmitting} style={{
                   width: '100%', padding: '14px', background: 'linear-gradient(135deg, #ff8c00 0%, #ff6f00 100%)',
                   color: '#fff', border: 'none', borderRadius: '10px', fontSize: '16px', fontWeight: '700',
                   cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '1px'
                 }}>
-                  LET'S CONNECT!
+                  {guidanceSubmitting ? "Sending..." : "LET'S CONNECT!"}
                 </button>
+                {guidanceStatus.state === 'success' && (
+                  <p style={{ color: '#0b9c66', marginTop: '8px', fontWeight: 600 }}>
+                    {guidanceStatus.message}
+                  </p>
+                )}
+                {guidanceStatus.state === 'error' && (
+                  <p style={{ color: '#d00', marginTop: '8px', fontWeight: 600 }}>
+                    {guidanceStatus.message}
+                  </p>
+                )}
+                {guidanceSubmitting && (
+                  <div style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'rgba(255,255,255,0.8)',
+                    borderRadius: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontWeight: 700,
+                    color: '#0f172a'
+                  }}>
+                    Sending...
+                  </div>
+                )}
               </form>
             </div>
           </div>
