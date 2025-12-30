@@ -16,6 +16,15 @@ const page = () => {
   const [activeTab, setActiveTab] = useState('business');
   const [guidanceStatus, setGuidanceStatus] = useState({ state: 'idle', message: '' });
   const [guidanceSubmitting, setGuidanceSubmitting] = useState(false);
+  const businessPlans = [
+    { name: "Express 4000", price: "₹ 4000", download: "500 Mbps", upload: "500 Mbps", fup: "5 TB", postFup: "10 Mbps", icon: "fa-globe" },
+    { name: "Express 6000", price: "₹ 6000", download: "1 Gbps", upload: "1 Gbps", fup: "6 TB", postFup: "12 Mbps", icon: "fa-broadcast-tower" },
+    { name: "Express 8000", price: "₹ 8000", download: "1 Gbps", upload: "1 Gbps", fup: "8 TB", postFup: "12 Mbps", icon: "fa-satellite-dish" },
+    { name: "Express 10000", price: "₹ 10000", download: "1 Gbps", upload: "1 Gbps", fup: "10 TB", postFup: "15 Mbps", icon: "fa-wifi" },
+    { name: "Express 12000", price: "₹ 12000", download: "1 Gbps", upload: "1 Gbps", fup: "15 TB", postFup: "15 Mbps", icon: "fa-network-wired" },
+    { name: "Express 15000", price: "₹ 15000", download: "1 Gbps", upload: "1 Gbps", fup: "20 TB", postFup: "15 Mbps", icon: "fa-server" },
+    { name: "Express 20000", price: "₹ 20000", download: "1 Gbps", upload: "1 Gbps", fup: "30 TB", postFup: "15 Mbps", icon: "fa-project-diagram" },
+  ];
 
   const handleGuidanceSubmit = async (e) => {
     e.preventDefault();
@@ -477,327 +486,90 @@ const page = () => {
 
       {activeTab === 'business' && (
         <>
-          {/* Express 4000 Business */}
-          <div className="col-xl-3 col-lg-4 col-md-6">
-            <div className="plan-card">
-              <div className="plan-card-header">
-                <div className="plan-icon">
-                  <img src="assets/img/hero/04.png" alt="Express 4000" />
+          {businessPlans.map((plan) => (
+            <div key={plan.name} className="col-xl-3 col-lg-4 col-md-6">
+              <div
+                style={{
+                  background: "#ffffff",
+                  borderRadius: "22px",
+                  padding: "26px 24px 24px",
+                  textAlign: "center",
+                  border: "1px solid rgba(15, 23, 42, 0.08)",
+                  boxShadow: "0 16px 40px rgba(15, 23, 42, 0.08)",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}
+              >
+                <div>
+                  <div
+                    style={{
+                      width: "70px",
+                      height: "70px",
+                      borderRadius: "16px",
+                      background: "linear-gradient(135deg, #f36a1d 0%, #0b9c66 100%)",
+                      margin: "0 auto 16px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      boxShadow: "0 10px 24px rgba(243,106,29,0.22)",
+                    }}
+                  >
+                    <i className={`fas ${plan.icon}`} style={{ fontSize: "28px", color: "#fff" }} />
+                  </div>
+                  <h4 style={{ fontSize: "20px", fontWeight: "700", color: "#0f172a", marginBottom: "6px" }}>
+                    {plan.name}
+                  </h4>
+                  <p style={{ fontSize: "16px", fontWeight: "700", color: "#f36a1d", marginBottom: "16px" }}>
+                    {plan.price} <span style={{ fontSize: "14px", fontWeight: "500", color: "#6b7280" }}>/Month</span>
+                  </p>
+                  <ul style={{ listStyle: "none", padding: 0, margin: 0, textAlign: "left" }}>
+                    <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "14px", color: "#1f2937", marginBottom: "8px" }}>
+                      <i className="fas fa-check" style={{ color: "#0b9c66" }} />
+                      <span>
+                        <strong>{plan.download}</strong> Download Speed
+                      </span>
+                    </li>
+                    <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "14px", color: "#1f2937", marginBottom: "8px" }}>
+                      <i className="fas fa-check" style={{ color: "#0b9c66" }} />
+                      <span>
+                        <strong>{plan.upload}</strong> Upload Speed
+                      </span>
+                    </li>
+                    <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "14px", color: "#1f2937", marginBottom: "8px" }}>
+                      <i className="fas fa-check" style={{ color: "#0b9c66" }} />
+                      <span>
+                        <strong>{plan.fup}</strong> FUP Limit
+                      </span>
+                    </li>
+                    <li style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "14px", color: "#1f2937" }}>
+                      <i className="fas fa-check" style={{ color: "#0b9c66" }} />
+                      <span>
+                        <strong>{plan.postFup}</strong> Speed Post FUP
+                      </span>
+                    </li>
+                  </ul>
                 </div>
-                <h4>Express 4000</h4>
-                <p className="plan-price">₹ 4000 / Month</p>
+                <Link
+                  href="/contact"
+                  style={{
+                    marginTop: "18px",
+                    padding: "12px 18px",
+                    borderRadius: "999px",
+                    background: "linear-gradient(135deg, #f36a1d 0%, #0b9c66 100%)",
+                    color: "#fff",
+                    fontWeight: "600",
+                    fontSize: "14px",
+                    textDecoration: "none",
+                    display: "inline-block",
+                  }}
+                >
+                  Get Started
+                </Link>
               </div>
-
-              <ul className="plan-features">
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>500 Mbps</strong> Download Speed
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>500 Mbps</strong> Upload Speed
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>5 TB</strong> FUP Limit
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>10 Mbps</strong> Speed Post FUP
-                  </span>
-                </li>
-              </ul>
-
-              <Link href="/contact">
-
-                <button className="plan-btn">Get Started</button>
-
-              </Link>
             </div>
-          </div>
-
-          {/* Express 6000 Business */}
-          <div className="col-xl-3 col-lg-4 col-md-6">
-            <div className="plan-card">
-              <div className="plan-card-header">
-                <div className="plan-icon">
-                  <img src="assets/img/hero/05.png" alt="Express 6000" />
-                </div>
-                <h4>Express 6000</h4>
-                <p className="plan-price">₹ 6000 / Month</p>
-              </div>
-
-              <ul className="plan-features">
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>1 Gbps</strong> Download Speed
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>1 Gbps</strong> Upload Speed
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>6 TB</strong> FUP Limit
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>12 Mbps</strong> Speed Post FUP
-                  </span>
-                </li>
-              </ul>
-
-              <Link href="/contact">
-
-                <button className="plan-btn">Get Started</button>
-
-              </Link>
-            </div>
-          </div>
-
-          {/* Express 8000 Business */}
-          <div className="col-xl-3 col-lg-4 col-md-6">
-            <div className="plan-card">
-              <div className="plan-card-header">
-                <div className="plan-icon">
-                  <img src="assets/img/hero/06.png" alt="Express 8000" />
-                </div>
-                <h4>Express 8000</h4>
-                <p className="plan-price">₹ 8000 / Month</p>
-              </div>
-
-              <ul className="plan-features">
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>1 Gbps</strong> Download Speed
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>1 Gbps</strong> Upload Speed
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>8 TB</strong> FUP Limit
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>12 Mbps</strong> Speed Post FUP
-                  </span>
-                </li>
-              </ul>
-
-              <Link href="/contact">
-
-                <button className="plan-btn">Get Started</button>
-
-              </Link>
-            </div>
-          </div>
-
-          {/* Express 10000 Business */}
-          <div className="col-xl-3 col-lg-4 col-md-6">
-            <div className="plan-card">
-              <div className="plan-card-header">
-                <div className="plan-icon">
-                  <img src="assets/img/hero/07.png" alt="Express 10000" />
-                </div>
-                <h4>Express 10000</h4>
-                <p className="plan-price">₹ 10000 / Month</p>
-              </div>
-
-              <ul className="plan-features">
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>1 Gbps</strong> Download Speed
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>1 Gbps</strong> Upload Speed
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>10 TB</strong> FUP Limit
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>15 Mbps</strong> Speed Post FUP
-                  </span>
-                </li>
-              </ul>
-
-              <Link href="/contact">
-
-                <button className="plan-btn">Get Started</button>
-
-              </Link>
-            </div>
-          </div>
-
-          {/* Express 12000 Business */}
-          <div className="col-xl-3 col-lg-4 col-md-6">
-            <div className="plan-card">
-              <div className="plan-card-header">
-                <div className="plan-icon">
-                  <img src="assets/img/hero/04.png" alt="Express 12000" />
-                </div>
-                <h4>Express 12000</h4>
-                <p className="plan-price">₹ 12000 / Month</p>
-              </div>
-
-              <ul className="plan-features">
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>1 Gbps</strong> Download Speed
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>1 Gbps</strong> Upload Speed
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>15 TB</strong> FUP Limit
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>15 Mbps</strong> Speed Post FUP
-                  </span>
-                </li>
-              </ul>
-
-              <Link href="/contact">
-
-                <button className="plan-btn">Get Started</button>
-
-              </Link>
-            </div>
-          </div>
-
-          {/* Express 15000 Business */}
-          <div className="col-xl-3 col-lg-4 col-md-6">
-            <div className="plan-card">
-              <div className="plan-card-header">
-                <div className="plan-icon">
-                  <img src="assets/img/hero/05.png" alt="Express 15000" />
-                </div>
-                <h4>Express 15000</h4>
-                <p className="plan-price">₹ 15000 / Month</p>
-              </div>
-
-              <ul className="plan-features">
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>1 Gbps</strong> Download Speed
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>1 Gbps</strong> Upload Speed
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>20 TB</strong> FUP Limit
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>15 Mbps</strong> Speed Post FUP
-                  </span>
-                </li>
-              </ul>
-
-              <Link href="/contact">
-
-                <button className="plan-btn">Get Started</button>
-
-              </Link>
-            </div>
-          </div>
-
-          {/* Express 20000 Business */}
-          <div className="col-xl-3 col-lg-4 col-md-6">
-            <div className="plan-card">
-              <div className="plan-card-header">
-                <div className="plan-icon">
-                  <img src="assets/img/hero/06.png" alt="Express 20000" />
-                </div>
-                <h4>Express 20000</h4>
-                <p className="plan-price">₹ 20000 / Month</p>
-              </div>
-
-              <ul className="plan-features">
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>1 Gbps</strong> Download Speed
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>1 Gbps</strong> Upload Speed
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>30 TB</strong> FUP Limit
-                  </span>
-                </li>
-                <li>
-                  <i className="fas fa-check" />
-                  <span>
-                    <strong>15 Mbps</strong> Speed Post FUP
-                  </span>
-                </li>
-              </ul>
-
-              <Link href="/contact">
-
-                <button className="plan-btn">Get Started</button>
-
-              </Link>
-            </div>
-          </div>
+          ))}
         </>
       )}
 
