@@ -263,15 +263,15 @@ const page = () => {
       {activeTab === "business" && (
         <section
           className="pricing-section section-padding"
-          style={{ background: palette.deepGreen, color: "#fff" }}
+          style={{ background: "#ffffff" }}
         >
           <div className="container">
             <div className="section-title text-center">
-              <span className="sub-content wow fadeInUp" style={{ color: "#dff6ed" }}>
-                <img src="assets/img/bale.png" alt="img" style={{ filter: "brightness(0) invert(1)" }} />
+              <span className="sub-content wow fadeInUp" style={{ color: palette.orange }}>
+                <img src="assets/img/bale.png" alt="img" />
                 Business SME Plans
               </span>
-              <h2 className="wow fadeInUp" data-wow-delay=".3s" style={{ color: "#fff" }}>
+              <h2 className="wow fadeInUp" data-wow-delay=".3s" style={{ color: palette.dark }}>
                 Flexible Internet for Growing Businesses
               </h2>
               <p
@@ -281,7 +281,7 @@ const page = () => {
                   maxWidth: "900px",
                   margin: "20px auto 0",
                   lineHeight: "1.8",
-                  color: "#e7f4ed",
+                  color: palette.muted,
                 }}
               >
                 Keep your business connected with high-performance SME broadband designed for productivity and
@@ -296,24 +296,24 @@ const page = () => {
                   maxWidth: "900px",
                   margin: "20px auto 0",
                   lineHeight: "1.8",
-                  color: "#e7f4ed",
+                  color: palette.muted,
                 }}
               >
                 Scale seamlessly as your team and workloads grow. Every plan includes unlimited data (Fair Usage Policy
                 applies), prioritized business support, and quick upgrade options so your operations never slow down.
               </p>
               <div className="wow fadeInUp" data-wow-delay=".6s" style={{ margin: "30px 0 20px" }}>
-                <h5 style={{ color: "#fff" }}>Starting at ₹4,000 / month + 18% GST</h5>
-                <p style={{ color: "#e7f4ed" }}>Find the right business plan and get connected today.</p>
+                <h5 style={{ color: palette.dark }}>Starting at ₹4,000 / month + 18% GST</h5>
+                <p style={{ color: palette.muted }}>Find the right business plan and get connected today.</p>
                 <Link
                   href="/contact"
                   className="theme-btn mt-2"
                   style={{
-                    background: "#fff",
-                    color: palette.green,
+                    background: palette.orange,
+                    color: "#fff",
                     border: "none",
-                    fontWeight: "700",
-                    boxShadow: subtleShadow,
+                    fontWeight: "600",
+                    boxShadow: "0 10px 22px rgba(243,106,29,0.28)",
                   }}
                 >
                   Check Availability
@@ -323,7 +323,7 @@ const page = () => {
 
             <div className="row mt-5 mb-5">
               <div className="col-12">
-                <h3 className="text-center mb-5 wow fadeInUp" style={{ color: "#fff", fontWeight: "700" }}>
+                <h3 className="text-center mb-5 wow fadeInUp" style={{ color: palette.dark, fontWeight: "700" }}>
                   Why Businesses Choose Bharath VoIP
                 </h3>
               </div>
@@ -366,14 +366,13 @@ const page = () => {
                 >
                   <div
                     style={{
-                      background: "rgba(255,255,255,0.08)",
-                      backdropFilter: "blur(4px)",
+                      background: "#ffffff",
                       borderRadius: "18px",
                       padding: "30px 20px",
                       textAlign: "center",
-                      border: glassBorder,
+                      border: `1px solid ${palette.border}`,
                       height: "100%",
-                      boxShadow: "0 12px 32px rgba(0,0,0,0.12)",
+                      boxShadow: subtleShadow,
                     }}
                   >
                     <div
@@ -381,20 +380,20 @@ const page = () => {
                         width: "70px",
                         height: "70px",
                         borderRadius: "14px",
-                        background: "#fff",
+                        background: palette.softGradient,
                         margin: "0 auto 20px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        color: palette.green,
-                        boxShadow: "0 8px 20px rgba(0,0,0,0.12)",
+                        color: palette.orange,
+                        boxShadow: "0 8px 20px rgba(15,23,42,0.08)",
                       }}
                     >
                       <i className={item.icon} style={{ fontSize: "32px" }}></i>
                     </div>
                     <h4
                       style={{
-                        color: "#fff",
+                        color: palette.dark,
                         fontSize: "18px",
                         fontWeight: "600",
                         marginBottom: "12px",
@@ -402,17 +401,17 @@ const page = () => {
                     >
                       {item.title}
                     </h4>
-                    <p style={{ color: "#dff6ed", fontSize: "14px", lineHeight: "1.6" }}>{item.desc}</p>
+                    <p style={{ color: palette.muted, fontSize: "14px", lineHeight: "1.6" }}>{item.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
 
             <div className="section-title text-center mt-5 mb-5">
-              <h3 className="wow fadeInUp" style={{ color: "#fff", fontWeight: "700" }}>
+              <h3 className="wow fadeInUp" style={{ color: palette.dark, fontWeight: "700" }}>
                 Our Business SME Plans
               </h3>
-              <p className="wow fadeInUp" data-wow-delay=".2s" style={{ color: "#dff6ed" }}>
+              <p className="wow fadeInUp" data-wow-delay=".2s" style={{ color: palette.muted }}>
                 For teams that demand speed, reliability, and scalability.
               </p>
             </div>
@@ -472,17 +471,17 @@ const page = () => {
               ].map((plan) => (
                 <div
                   key={plan.name}
-                  className="col-xl-3 col-lg-4 col-md-6 wow fadeInUp mb-4"
+                  className="col-xl-4 col-lg-4 col-md-6 wow fadeInUp mb-4"
                   data-wow-delay={plan.delay}
                 >
                   <div
                     style={{
-                      background: "rgba(255,255,255,0.1)",
-                      borderRadius: "20px",
-                      padding: "32px 24px",
+                      background: "#ffffff",
+                      borderRadius: "16px",
+                      padding: "28px 22px 24px",
                       textAlign: "center",
-                      border: glassBorder,
-                      boxShadow: "0 16px 38px rgba(0,0,0,0.18)",
+                      border: `1px solid ${palette.border}`,
+                      boxShadow: "0 14px 30px rgba(15, 23, 42, 0.08)",
                       height: "100%",
                       display: "flex",
                       flexDirection: "column",
@@ -492,54 +491,55 @@ const page = () => {
                     <div>
                       <div
                         style={{
-                          width: "78px",
-                          height: "78px",
-                          borderRadius: "18px",
-                          background: "rgba(255,255,255,0.14)",
-                          margin: "0 auto 18px",
+                          width: "64px",
+                          height: "64px",
+                          borderRadius: "50%",
+                          background: palette.softGradient,
+                          margin: "0 auto 16px",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
+                          boxShadow: "0 8px 18px rgba(15, 23, 42, 0.08)",
                         }}
                       >
-                        <i className={`fas ${plan.icon}`} style={{ fontSize: "32px", color: "#fff" }}></i>
+                        <i className={`fas ${plan.icon}`} style={{ fontSize: "26px", color: palette.orange }}></i>
                       </div>
                       <h3
                         style={{
-                          color: "#fff",
-                          fontSize: "22px",
+                          color: palette.dark,
+                          fontSize: "20px",
                           fontWeight: "700",
-                          marginBottom: "5px",
+                          marginBottom: "6px",
                         }}
                       >
                         {plan.name}
                       </h3>
                       <h2
                         style={{
-                          color: "#fef3e7",
-                          fontSize: "32px",
+                          color: palette.orange,
+                          fontSize: "22px",
                           fontWeight: "bold",
-                          margin: "12px 0",
+                          margin: "10px 0 16px",
                         }}
                       >
                         {plan.price}{" "}
-                        <span style={{ fontSize: "16px", color: "#dff6ed", fontWeight: "400" }}>
+                        <span style={{ fontSize: "14px", color: palette.muted, fontWeight: "500" }}>
                           /Month
                         </span>
                       </h2>
-                      <ul style={{ listStyle: "none", padding: 0, marginTop: "18px", textAlign: "left" }}>
+                      <ul style={{ listStyle: "none", padding: 0, marginTop: "4px", textAlign: "left" }}>
                         <li
                           style={{
-                            color: "#fff",
-                            marginBottom: "10px",
-                            fontSize: "14px",
+                            color: palette.text,
+                            marginBottom: "8px",
+                            fontSize: "13px",
                             display: "flex",
                             alignItems: "center",
                           }}
                         >
                           <i
                             className="fas fa-check-circle"
-                            style={{ color: "#fef3e7", marginRight: "10px", fontSize: "16px" }}
+                            style={{ color: palette.orange, marginRight: "10px", fontSize: "16px" }}
                           ></i>
                           <span>
                             <strong>{plan.download}</strong> Download
@@ -547,16 +547,16 @@ const page = () => {
                         </li>
                         <li
                           style={{
-                            color: "#fff",
-                            marginBottom: "10px",
-                            fontSize: "14px",
+                            color: palette.text,
+                            marginBottom: "8px",
+                            fontSize: "13px",
                             display: "flex",
                             alignItems: "center",
                           }}
                         >
                           <i
                             className="fas fa-check-circle"
-                            style={{ color: "#fef3e7", marginRight: "10px", fontSize: "16px" }}
+                            style={{ color: palette.orange, marginRight: "10px", fontSize: "16px" }}
                           ></i>
                           <span>
                             <strong>{plan.upload}</strong> Upload
@@ -564,16 +564,16 @@ const page = () => {
                         </li>
                         <li
                           style={{
-                            color: "#fff",
-                            marginBottom: "10px",
-                            fontSize: "14px",
+                            color: palette.text,
+                            marginBottom: "8px",
+                            fontSize: "13px",
                             display: "flex",
                             alignItems: "center",
                           }}
                         >
                           <i
                             className="fas fa-check-circle"
-                            style={{ color: "#fef3e7", marginRight: "10px", fontSize: "16px" }}
+                            style={{ color: palette.orange, marginRight: "10px", fontSize: "16px" }}
                           ></i>
                           <span>
                             <strong>{plan.fup}</strong> FUP Limit
@@ -581,16 +581,16 @@ const page = () => {
                         </li>
                         <li
                           style={{
-                            color: "#fff",
-                            marginBottom: "10px",
-                            fontSize: "14px",
+                            color: palette.text,
+                            marginBottom: "0",
+                            fontSize: "13px",
                             display: "flex",
                             alignItems: "center",
                           }}
                         >
                           <i
                             className="fas fa-check-circle"
-                            style={{ color: "#fef3e7", marginRight: "10px", fontSize: "16px" }}
+                            style={{ color: palette.orange, marginRight: "10px", fontSize: "16px" }}
                           ></i>
                           <span>
                             <strong>{plan.postFup}</strong> Post-FUP
@@ -601,16 +601,16 @@ const page = () => {
                     <Link
                       href="/contact"
                       style={{
-                        background: "#fff",
-                        color: palette.green,
-                        padding: "13px 30px",
-                        borderRadius: "999px",
+                        background: palette.orange,
+                        color: "#fff",
+                        padding: "10px 18px",
+                        borderRadius: "6px",
                         textDecoration: "none",
-                        fontWeight: "700",
-                        fontSize: "15px",
+                        fontWeight: "600",
+                        fontSize: "14px",
                         display: "inline-block",
-                        marginTop: "22px",
-                        boxShadow: "0 12px 28px rgba(0,0,0,0.14)",
+                        marginTop: "18px",
+                        boxShadow: "0 6px 14px rgba(243,106,29,0.18)",
                       }}
                     >
                       Get Started
@@ -783,11 +783,11 @@ const page = () => {
                   <div
                     style={{
                       background: "#fff",
-                      borderRadius: "20px",
-                      padding: "32px 24px",
+                      borderRadius: "16px",
+                      padding: "28px 22px 24px",
                       textAlign: "center",
                       border: `1px solid ${palette.border}`,
-                      boxShadow: cardShadow,
+                      boxShadow: "0 14px 30px rgba(15, 23, 42, 0.08)",
                       height: "100%",
                       display: "flex",
                       flexDirection: "column",
@@ -799,33 +799,24 @@ const page = () => {
                         style={{
                           width: "64px",
                           height: "64px",
-                          borderRadius: "16px",
+                          borderRadius: "50%",
                           background: palette.softGradient,
-                          margin: "0 auto 14px",
+                          margin: "0 auto 16px",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
                           color: palette.orange,
-                          boxShadow: "0 10px 22px rgba(15,23,42,0.08)",
+                          boxShadow: "0 8px 18px rgba(15,23,42,0.08)",
                         }}
                       >
-                        <i className="fas fa-home" style={{ fontSize: "26px" }}></i>
+                        <i className="fas fa-home" style={{ fontSize: "24px" }}></i>
                       </div>
-                      <div
-                        style={{
-                          width: "56px",
-                          height: "6px",
-                          background: palette.buttonGradient,
-                          borderRadius: "999px",
-                          margin: "0 auto 16px",
-                        }}
-                      />
                       <h3
                         style={{
                           color: palette.dark,
-                          fontSize: "22px",
+                          fontSize: "20px",
                           fontWeight: "700",
-                          marginBottom: "5px",
+                          marginBottom: "6px",
                         }}
                       >
                         {plan.name}
@@ -833,23 +824,19 @@ const page = () => {
                       <h2
                         style={{
                           color: palette.orange,
-                          fontSize: "32px",
+                          fontSize: "22px",
                           fontWeight: "bold",
-                          margin: "12px 0",
+                          margin: "10px 0 16px",
                         }}
                       >
                         {plan.price} <span style={{ fontSize: "16px", fontWeight: "400", color: palette.muted }}>/Month</span>
                       </h2>
                       <div
                         style={{
-                          background: palette.softGradient,
-                          borderRadius: "12px",
-                          padding: "10px",
-                          margin: "14px 0",
-                          color: palette.text,
-                          fontWeight: "600",
+                          color: palette.muted,
+                          fontWeight: "500",
                           fontSize: "13px",
-                          border: `1px solid ${palette.border}`,
+                          marginBottom: "12px",
                         }}
                       >
                         + GST 18% | Unlimited Data
@@ -858,8 +845,8 @@ const page = () => {
                         <li
                           style={{
                             color: palette.text,
-                            marginBottom: "10px",
-                            fontSize: "14px",
+                            marginBottom: "8px",
+                            fontSize: "13px",
                             display: "flex",
                             alignItems: "center",
                           }}
@@ -875,8 +862,8 @@ const page = () => {
                         <li
                           style={{
                             color: palette.text,
-                            marginBottom: "10px",
-                            fontSize: "14px",
+                            marginBottom: "8px",
+                            fontSize: "13px",
                             display: "flex",
                             alignItems: "center",
                           }}
@@ -892,8 +879,8 @@ const page = () => {
                         <li
                           style={{
                             color: palette.text,
-                            marginBottom: "10px",
-                            fontSize: "14px",
+                            marginBottom: "0",
+                            fontSize: "13px",
                             display: "flex",
                             alignItems: "center",
                           }}
@@ -913,14 +900,14 @@ const page = () => {
                       style={{
                         background: palette.buttonGradient,
                         color: "#fff",
-                        padding: "13px 30px",
-                        borderRadius: "999px",
+                        padding: "10px 18px",
+                        borderRadius: "6px",
                         textDecoration: "none",
                         fontWeight: "700",
-                        fontSize: "15px",
+                        fontSize: "14px",
                         display: "inline-block",
-                        marginTop: "22px",
-                        boxShadow: cardShadow,
+                        marginTop: "18px",
+                        boxShadow: "0 6px 14px rgba(15, 23, 42, 0.12)",
                       }}
                     >
                       Get Started
