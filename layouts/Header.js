@@ -348,6 +348,30 @@ const Header1 = ({ menu }) => {
   return (
     <Fragment>
       <header id="header-sticky" className="header-1">
+        <div className="header-top-bar">
+          <div className="container-fluid">
+            <div className="header-top-inner">
+              <div className="header-top-left">
+                <a className="top-link" href="tel:+917799906341">
+                  <i className="fas fa-phone-alt" />
+                  Call: +91 7799906341
+                </a>
+                <a className="top-link" href="mailto:info@bharatvoip.com">
+                  <i className="far fa-envelope" />
+                  info@bharatvoip.com
+                </a>
+              </div>
+              <div className="header-top-right">
+                <a href="#" aria-label="Facebook">
+                  <i className="fab fa-facebook-f" />
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                  <i className="fab fa-linkedin-in" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="container-fluid">
           <div className="mega-menu-wrapper">
             <div className="header-main">
