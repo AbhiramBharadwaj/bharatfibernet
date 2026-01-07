@@ -10,6 +10,8 @@ const CATEGORY_OPTIONS = [
   "White Papers",
 ];
 
+const JOB_CATEGORY_OPTIONS = ["Sales", "Technical", "Administration"];
+
 const initialFormState = {
   title: "",
   slug: "",
@@ -30,10 +32,20 @@ const formatDateTime = (value) => {
 export default function AdminPage() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [jobsLoading, setJobsLoading] = useState(true);
+  const [activeSection, setActiveSection] = useState("knowledge");
   const [formState, setFormState] = useState(initialFormState);
   const [editingId, setEditingId] = useState(null);
   const [error, setError] = useState("");
   const [status, setStatus] = useState("");
+  const [jobs, setJobs] = useState([]);
+  const [jobFormState, setJobFormState] = useState({
+    title: "",
+    category: JOB_CATEGORY_OPTIONS[0],
+  });
+  const [editingJobId, setEditingJobId] = useState(null);
+  const [jobStatus, setJobStatus] = useState("");
+  const [jobError, setJobError] = useState("");
 
   const inputStyle = {
     padding: "0.8rem 0.9rem",
@@ -75,8 +87,23 @@ export default function AdminPage() {
     }
   };
 
+  const fetchJobs = async () => {
+    setJobsLoading(true);
+    setJobError("");
+    try {
+      const response = await fetch("/api/jobs");
+      const data = await response.json();
+      setJobs(data.jobs || []);
+    } catch (err) {
+      setJobError("Unable to load job openings.");
+    } finally {
+      setJobsLoading(false);
+    }
+  };
+
   useEffect(() => {
     fetchPosts();
+    fetchJobs();
   }, []);
 
   const sortedPosts = useMemo(() => {
@@ -114,6 +141,26 @@ export default function AdminPage() {
     setFormState(initialFormState);
   };
 
+  const handleJobChange = (event) => {
+    const { name, value } = event.target;
+    setJobFormState((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleJobEdit = (job) => {
+    setEditingJobId(job._id);
+    setJobFormState({
+      title: job.title || "",
+      category: job.category || JOB_CATEGORY_OPTIONS[0],
+    });
+    setJobStatus("");
+    setJobError("");
+  };
+
+  const resetJobForm = () => {
+    setEditingJobId(null);
+    setJobFormState({ title: "", category: JOB_CATEGORY_OPTIONS[0] });
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setStatus("");
@@ -147,6 +194,34 @@ export default function AdminPage() {
     }
   };
 
+  const handleJobSubmit = async (event) => {
+    event.preventDefault();
+    setJobStatus("");
+    setJobError("");
+
+    try {
+      const response = await fetch(
+        editingJobId ? `/api/jobs/${editingJobId}` : "/api/jobs",
+        {
+          method: editingJobId ? "PATCH" : "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(jobFormState),
+        }
+      );
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Request failed.");
+      }
+
+      setJobStatus(editingJobId ? "Opening updated." : "Opening created.");
+      resetJobForm();
+      fetchJobs();
+    } catch (err) {
+      setJobError(err.message || "Something went wrong.");
+    }
+  };
+
   const handleDelete = async (postId) => {
     if (!confirm("Delete this post?")) return;
 
@@ -162,6 +237,24 @@ export default function AdminPage() {
       fetchPosts();
     } catch (err) {
       setError(err.message || "Unable to delete.");
+    }
+  };
+
+  const handleJobDelete = async (jobId) => {
+    if (!confirm("Delete this opening?")) return;
+
+    setJobStatus("");
+    setJobError("");
+    try {
+      const response = await fetch(`/api/jobs/${jobId}`, { method: "DELETE" });
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Delete failed.");
+      }
+      setJobStatus("Opening deleted.");
+      fetchJobs();
+    } catch (err) {
+      setJobError(err.message || "Unable to delete.");
     }
   };
 
@@ -184,226 +277,411 @@ export default function AdminPage() {
           }}
         >
           <h1 style={{ fontSize: "2.4rem", fontWeight: 700, marginBottom: "0.6rem" }}>
-            Knowledge Admin
+            Admin Console
           </h1>
           <p style={{ color: "#3b4453", marginBottom: 0, fontSize: "1.05rem" }}>
-            Add, update, or delete Knowledge Center posts.
+            Manage Knowledge posts and Career openings.
           </p>
+          <div style={{ display: "flex", gap: "0.75rem", marginTop: "1.2rem", flexWrap: "wrap" }}>
+            <button
+              type="button"
+              onClick={() => setActiveSection("knowledge")}
+              style={{
+                padding: "0.6rem 1.4rem",
+                borderRadius: "999px",
+                border: activeSection === "knowledge" ? "none" : "1px solid #cfd4dc",
+                background: activeSection === "knowledge" ? "#28a745" : "#fff",
+                color: activeSection === "knowledge" ? "#fff" : "#1f2937",
+                fontWeight: 600,
+                cursor: "pointer",
+              }}
+            >
+              Knowledge
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveSection("career")}
+              style={{
+                padding: "0.6rem 1.4rem",
+                borderRadius: "999px",
+                border: activeSection === "career" ? "none" : "1px solid #cfd4dc",
+                background: activeSection === "career" ? "#2563eb" : "#fff",
+                color: activeSection === "career" ? "#fff" : "#1f2937",
+                fontWeight: 600,
+                cursor: "pointer",
+              }}
+            >
+              Career Openings
+            </button>
+          </div>
         </div>
 
-        <section
-          style={{ ...cardStyle, marginBottom: "2.8rem" }}
-        >
-          <h2 style={{ fontSize: "1.4rem", fontWeight: 600, marginBottom: "1rem" }}>
-            {editingId ? "Edit Post" : "Create Post"}
-          </h2>
-          <form onSubmit={handleSubmit}>
-            <div style={{ display: "grid", gap: "1rem", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
-              <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937" }}>
-                Title
-                <input
-                  id="post-title"
-                  name="title"
-                  placeholder="Title"
-                  value={formState.title}
-                  onChange={handleChange}
-                  required
-                  style={inputStyle}
-                />
-              </label>
-              <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937" }}>
-                Slug (optional)
-                <input
-                  id="post-slug"
-                  name="slug"
-                  placeholder="Slug (optional)"
-                  value={formState.slug}
-                  onChange={handleChange}
-                  style={inputStyle}
-                />
-              </label>
-              <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937" }}>
-                Category
-                <select
-                  id="post-category"
-                  name="category"
-                  value={formState.category}
-                  onChange={handleChange}
-                  style={inputStyle}
-                >
-                  {CATEGORY_OPTIONS.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937" }}>
-                Image URL
-                <input
-                  id="post-image"
-                  name="image"
-                  placeholder="Image URL"
-                  value={formState.image}
-                  onChange={handleChange}
-                  style={inputStyle}
-                />
-              </label>
-              <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937" }}>
-                Publish Date
-                <input
-                  id="post-date"
-                  name="date"
-                  type="datetime-local"
-                  value={formState.date}
-                  onChange={handleChange}
-                  style={inputStyle}
-                />
-              </label>
-            </div>
-            <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937", marginTop: "1rem" }}>
-              Excerpt
-              <textarea
-                id="post-excerpt"
-                name="excerpt"
-                placeholder="Excerpt"
-                value={formState.excerpt}
-                onChange={handleChange}
-                required
-                rows={3}
-                style={textareaStyle}
-              />
-            </label>
-            <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937", marginTop: "1rem" }}>
-              Content (optional)
-              <textarea
-                id="post-content"
-                name="content"
-                placeholder="Content (optional)"
-                value={formState.content}
-                onChange={handleChange}
-                rows={6}
-                style={textareaStyle}
-              />
-            </label>
-            <div style={{ marginTop: "1rem", display: "flex", gap: "0.75rem" }}>
-              <button
-                type="submit"
-                style={{
-                  background: "#28a745",
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: "10px",
-                  padding: "0.8rem 1.6rem",
-                  fontWeight: 600,
-                  cursor: "pointer",
-                  boxShadow: "0 10px 22px rgba(40, 167, 69, 0.25)",
-                }}
-              >
-                {editingId ? "Update Post" : "Create Post"}
-              </button>
-              {editingId && (
-                <button
-                  type="button"
-                  onClick={resetForm}
-                  style={{
-                    background: "#fff",
-                    border: "1px solid #cfd4dc",
-                    borderRadius: "10px",
-                    padding: "0.8rem 1.5rem",
-                    cursor: "pointer",
-                  }}
-                >
-                  Cancel
-                </button>
-              )}
-            </div>
-            {status && <p style={{ color: "#1a7f37", marginTop: "0.75rem" }}>{status}</p>}
-            {error && <p style={{ color: "#b42318", marginTop: "0.75rem" }}>{error}</p>}
-          </form>
-        </section>
-
-        <section>
-          <h2 style={{ fontSize: "1.4rem", fontWeight: 600, marginBottom: "1rem" }}>
-            Existing Posts
-          </h2>
-          {loading ? (
-            <p>Loading posts...</p>
-          ) : (
-            <div style={{ display: "grid", gap: "1rem" }}>
-              {sortedPosts.map((post) => (
-                <div
-                  key={post._id}
-                  style={{
-                    border: "1px solid #e3e7ee",
-                    borderRadius: "14px",
-                    padding: "1.2rem 1.4rem",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    gap: "1.2rem",
-                    alignItems: "center",
-                    background: "#fff",
-                    boxShadow: "0 10px 25px rgba(20, 33, 61, 0.06)",
-                  }}
-                >
-                  <div>
-                    <h3 style={{ margin: "0 0 0.25rem", fontSize: "1.1rem" }}>
-                      {post.title}
-                    </h3>
-                    <div style={{ display: "flex", gap: "0.6rem", alignItems: "center" }}>
-                      <span
-                        style={{
-                          padding: "0.2rem 0.7rem",
-                          borderRadius: "999px",
-                          background: "#f0f4ff",
-                          color: "#1f7ae0",
-                          fontSize: "0.78rem",
-                          fontWeight: 600,
-                          textTransform: "uppercase",
-                          letterSpacing: "0.6px",
-                        }}
-                      >
-                        {post.category}
-                      </span>
-                      <span style={{ color: "#6b7280", fontSize: "0.95rem" }}>
-                        {post.date ? new Date(post.date).toLocaleDateString() : "No date"}
-                      </span>
-                    </div>
-                  </div>
-                  <div style={{ display: "flex", gap: "0.5rem" }}>
-                    <button
-                      onClick={() => handleEdit(post)}
-                      style={{
-                        border: "1px solid #28a745",
-                        background: "#fff",
-                        color: "#28a745",
-                        borderRadius: "10px",
-                        padding: "0.5rem 1rem",
-                        cursor: "pointer",
-                      }}
+        {activeSection === "knowledge" ? (
+          <>
+            <section style={{ ...cardStyle, marginBottom: "2.8rem" }}>
+              <h2 style={{ fontSize: "1.4rem", fontWeight: 600, marginBottom: "1rem" }}>
+                {editingId ? "Edit Post" : "Create Post"}
+              </h2>
+              <form onSubmit={handleSubmit}>
+                <div style={{ display: "grid", gap: "1rem", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+                  <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937" }}>
+                    Title
+                    <input
+                      id="post-title"
+                      name="title"
+                      placeholder="Title"
+                      value={formState.title}
+                      onChange={handleChange}
+                      required
+                      style={inputStyle}
+                    />
+                  </label>
+                  <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937" }}>
+                    Slug (optional)
+                    <input
+                      id="post-slug"
+                      name="slug"
+                      placeholder="Slug (optional)"
+                      value={formState.slug}
+                      onChange={handleChange}
+                      style={inputStyle}
+                    />
+                  </label>
+                  <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937" }}>
+                    Category
+                    <select
+                      id="post-category"
+                      name="category"
+                      value={formState.category}
+                      onChange={handleChange}
+                      style={inputStyle}
                     >
-                      Edit
-                    </button>
-                    <button
-                      onClick={() => handleDelete(post._id)}
-                      style={{
-                        border: "1px solid #d92d20",
-                        background: "#fff",
-                        color: "#d92d20",
-                        borderRadius: "10px",
-                        padding: "0.5rem 1rem",
-                        cursor: "pointer",
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </div>
+                      {CATEGORY_OPTIONS.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937" }}>
+                    Image URL
+                    <input
+                      id="post-image"
+                      name="image"
+                      placeholder="Image URL"
+                      value={formState.image}
+                      onChange={handleChange}
+                      style={inputStyle}
+                    />
+                  </label>
+                  <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937" }}>
+                    Publish Date
+                    <input
+                      id="post-date"
+                      name="date"
+                      type="datetime-local"
+                      value={formState.date}
+                      onChange={handleChange}
+                      style={inputStyle}
+                    />
+                  </label>
                 </div>
-              ))}
-              {!sortedPosts.length && <p>No posts yet.</p>}
-            </div>
-          )}
-        </section>
+                <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937", marginTop: "1rem" }}>
+                  Excerpt
+                  <textarea
+                    id="post-excerpt"
+                    name="excerpt"
+                    placeholder="Excerpt"
+                    value={formState.excerpt}
+                    onChange={handleChange}
+                    required
+                    rows={3}
+                    style={textareaStyle}
+                  />
+                </label>
+                <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937", marginTop: "1rem" }}>
+                  Content (optional)
+                  <textarea
+                    id="post-content"
+                    name="content"
+                    placeholder="Content (optional)"
+                    value={formState.content}
+                    onChange={handleChange}
+                    rows={6}
+                    style={textareaStyle}
+                  />
+                </label>
+                <div style={{ marginTop: "1rem", display: "flex", gap: "0.75rem" }}>
+                  <button
+                    type="submit"
+                    style={{
+                      background: "#28a745",
+                      color: "#fff",
+                      border: "none",
+                      borderRadius: "10px",
+                      padding: "0.8rem 1.6rem",
+                      fontWeight: 600,
+                      cursor: "pointer",
+                      boxShadow: "0 10px 22px rgba(40, 167, 69, 0.25)",
+                    }}
+                  >
+                    {editingId ? "Update Post" : "Create Post"}
+                  </button>
+                  {editingId && (
+                    <button
+                      type="button"
+                      onClick={resetForm}
+                      style={{
+                        background: "#fff",
+                        border: "1px solid #cfd4dc",
+                        borderRadius: "10px",
+                        padding: "0.8rem 1.5rem",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  )}
+                </div>
+                {status && <p style={{ color: "#1a7f37", marginTop: "0.75rem" }}>{status}</p>}
+                {error && <p style={{ color: "#b42318", marginTop: "0.75rem" }}>{error}</p>}
+              </form>
+            </section>
+
+            <section>
+              <h2 style={{ fontSize: "1.4rem", fontWeight: 600, marginBottom: "1rem" }}>
+                Existing Posts
+              </h2>
+              {loading ? (
+                <p>Loading posts...</p>
+              ) : (
+                <div style={{ display: "grid", gap: "1rem" }}>
+                  {sortedPosts.map((post) => (
+                    <div
+                      key={post._id}
+                      style={{
+                        border: "1px solid #e3e7ee",
+                        borderRadius: "14px",
+                        padding: "1.2rem 1.4rem",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        gap: "1.2rem",
+                        alignItems: "center",
+                        background: "#fff",
+                        boxShadow: "0 10px 25px rgba(20, 33, 61, 0.06)",
+                      }}
+                    >
+                      <div>
+                        <h3 style={{ margin: "0 0 0.25rem", fontSize: "1.1rem" }}>
+                          {post.title}
+                        </h3>
+                        <div style={{ display: "flex", gap: "0.6rem", alignItems: "center" }}>
+                          <span
+                            style={{
+                              padding: "0.2rem 0.7rem",
+                              borderRadius: "999px",
+                              background: "#f0f4ff",
+                              color: "#1f7ae0",
+                              fontSize: "0.78rem",
+                              fontWeight: 600,
+                              textTransform: "uppercase",
+                              letterSpacing: "0.6px",
+                            }}
+                          >
+                            {post.category}
+                          </span>
+                          <span style={{ color: "#6b7280", fontSize: "0.95rem" }}>
+                            {post.date ? new Date(post.date).toLocaleDateString() : "No date"}
+                          </span>
+                        </div>
+                      </div>
+                      <div style={{ display: "flex", gap: "0.5rem" }}>
+                        <button
+                          onClick={() => handleEdit(post)}
+                          style={{
+                            border: "1px solid #28a745",
+                            background: "#fff",
+                            color: "#28a745",
+                            borderRadius: "10px",
+                            padding: "0.5rem 1rem",
+                            cursor: "pointer",
+                          }}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleDelete(post._id)}
+                          style={{
+                            border: "1px solid #d92d20",
+                            background: "#fff",
+                            color: "#d92d20",
+                            borderRadius: "10px",
+                            padding: "0.5rem 1rem",
+                            cursor: "pointer",
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                  {!sortedPosts.length && <p>No posts yet.</p>}
+                </div>
+              )}
+            </section>
+          </>
+        ) : (
+          <>
+            <section style={{ ...cardStyle, marginBottom: "2.8rem" }}>
+              <h2 style={{ fontSize: "1.4rem", fontWeight: 600, marginBottom: "1rem" }}>
+                {editingJobId ? "Edit Opening" : "Create Opening"}
+              </h2>
+              <form onSubmit={handleJobSubmit}>
+                <div style={{ display: "grid", gap: "1rem", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
+                  <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937" }}>
+                    Job Title
+                    <input
+                      name="title"
+                      placeholder="Job title"
+                      value={jobFormState.title}
+                      onChange={handleJobChange}
+                      required
+                      style={inputStyle}
+                    />
+                  </label>
+                  <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937" }}>
+                    Category
+                    <select
+                      name="category"
+                      value={jobFormState.category}
+                      onChange={handleJobChange}
+                      style={inputStyle}
+                    >
+                      {JOB_CATEGORY_OPTIONS.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                </div>
+                <div style={{ marginTop: "1rem", display: "flex", gap: "0.75rem" }}>
+                  <button
+                    type="submit"
+                    style={{
+                      background: "#2563eb",
+                      color: "#fff",
+                      border: "none",
+                      borderRadius: "10px",
+                      padding: "0.8rem 1.6rem",
+                      fontWeight: 600,
+                      cursor: "pointer",
+                      boxShadow: "0 10px 22px rgba(37, 99, 235, 0.25)",
+                    }}
+                  >
+                    {editingJobId ? "Update Opening" : "Create Opening"}
+                  </button>
+                  {editingJobId && (
+                    <button
+                      type="button"
+                      onClick={resetJobForm}
+                      style={{
+                        background: "#fff",
+                        border: "1px solid #cfd4dc",
+                        borderRadius: "10px",
+                        padding: "0.8rem 1.5rem",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  )}
+                </div>
+                {jobStatus && <p style={{ color: "#1a7f37", marginTop: "0.75rem" }}>{jobStatus}</p>}
+                {jobError && <p style={{ color: "#b42318", marginTop: "0.75rem" }}>{jobError}</p>}
+              </form>
+            </section>
+
+            <section>
+              <h2 style={{ fontSize: "1.4rem", fontWeight: 600, marginBottom: "1rem" }}>
+                Current Openings
+              </h2>
+              {jobsLoading ? (
+                <p>Loading openings...</p>
+              ) : (
+                <div style={{ display: "grid", gap: "1rem" }}>
+                  {jobs.map((job) => (
+                    <div
+                      key={job._id}
+                      style={{
+                        border: "1px solid #e3e7ee",
+                        borderRadius: "14px",
+                        padding: "1.2rem 1.4rem",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        gap: "1.2rem",
+                        alignItems: "center",
+                        background: "#fff",
+                        boxShadow: "0 10px 25px rgba(20, 33, 61, 0.06)",
+                      }}
+                    >
+                      <div>
+                        <h3 style={{ margin: "0 0 0.25rem", fontSize: "1.1rem" }}>
+                          {job.title}
+                        </h3>
+                        <div style={{ display: "flex", gap: "0.6rem", alignItems: "center" }}>
+                          <span
+                            style={{
+                              padding: "0.2rem 0.7rem",
+                              borderRadius: "999px",
+                              background: "#eef2ff",
+                              color: "#1d4ed8",
+                              fontSize: "0.78rem",
+                              fontWeight: 600,
+                              textTransform: "uppercase",
+                              letterSpacing: "0.6px",
+                            }}
+                          >
+                            {job.category}
+                          </span>
+                        </div>
+                      </div>
+                      <div style={{ display: "flex", gap: "0.5rem" }}>
+                        <button
+                          onClick={() => handleJobEdit(job)}
+                          style={{
+                            border: "1px solid #2563eb",
+                            background: "#fff",
+                            color: "#2563eb",
+                            borderRadius: "10px",
+                            padding: "0.5rem 1rem",
+                            cursor: "pointer",
+                          }}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleJobDelete(job._id)}
+                          style={{
+                            border: "1px solid #d92d20",
+                            background: "#fff",
+                            color: "#d92d20",
+                            borderRadius: "10px",
+                            padding: "0.5rem 1rem",
+                            cursor: "pointer",
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                  {!jobs.length && <p>No openings yet.</p>}
+                </div>
+              )}
+            </section>
+          </>
+        )}
       </main>
     </NextLayout>
   );

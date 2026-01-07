@@ -2,9 +2,58 @@
 
 import Breadcrumb from "@/components/Breadcrumb";
 import NextLayout from "@/layouts/NextLayout";
-import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
+
+const JOB_CATEGORIES = ["All", "Sales", "Technical", "Administration"];
 
 export default function Career() {
+  const [jobs, setJobs] = useState([]);
+  const [loadingJobs, setLoadingJobs] = useState(true);
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadJobs = async () => {
+      try {
+        const response = await fetch("/api/jobs");
+        const data = await response.json();
+        if (isMounted) {
+          setJobs(Array.isArray(data.jobs) ? data.jobs : []);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setJobs([]);
+        }
+      } finally {
+        if (isMounted) {
+          setLoadingJobs(false);
+        }
+      }
+    };
+
+    loadJobs();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const filteredJobs = useMemo(() => {
+    const normalizedSearch = searchTerm.trim().toLowerCase();
+    return jobs.filter((job) => {
+      const jobCategory = (job.category || "").trim().toLowerCase();
+      const activeCategoryNormalized = activeCategory.trim().toLowerCase();
+      if (activeCategory !== "All" && jobCategory !== activeCategoryNormalized) {
+        return false;
+      }
+      if (normalizedSearch && !job.title?.toLowerCase().includes(normalizedSearch)) {
+        return false;
+      }
+      return true;
+    });
+  }, [activeCategory, jobs, searchTerm]);
+
   return (
     <NextLayout header={1} footer={1}>
       <Breadcrumb pageName="Career" />
@@ -222,50 +271,31 @@ export default function Career() {
                 display: 'flex',
                 marginBottom: '2rem'
               }}>
-                <button style={{ 
-                  flex: 1, 
-                  padding: '1rem', 
-                  border: 'none', 
-                  borderRight: '2px solid #000',
-                  background: 'white',
-                  fontSize: '1.1rem',
-                  fontWeight: '600',
-                  cursor: 'pointer'
-                }}>All</button>
-                <button style={{ 
-                  flex: 1, 
-                  padding: '1rem', 
-                  border: 'none', 
-                  borderRight: '2px solid #000',
-                  background: 'white',
-                  fontSize: '1.1rem',
-                  fontWeight: '600',
-                  cursor: 'pointer'
-                }}>Sales</button>
-                <button style={{ 
-                  flex: 1, 
-                  padding: '1rem', 
-                  border: 'none', 
-                  borderRight: '2px solid #000',
-                  background: 'white',
-                  fontSize: '1.1rem',
-                  fontWeight: '600',
-                  cursor: 'pointer'
-                }}>Technical</button>
-                <button style={{ 
-                  flex: 1, 
-                  padding: '1rem', 
-                  border: 'none',
-                  background: 'white',
-                  fontSize: '1.1rem',
-                  fontWeight: '600',
-                  cursor: 'pointer'
-                }}>Administration</button>
+                {JOB_CATEGORIES.map((category, index) => (
+                  <button
+                    key={category}
+                    onClick={() => setActiveCategory(category)}
+                    style={{ 
+                      flex: 1, 
+                      padding: '1rem', 
+                      border: 'none', 
+                      borderRight: index === JOB_CATEGORIES.length - 1 ? 'none' : '2px solid #000',
+                      background: 'white',
+                      fontSize: '1.1rem',
+                      fontWeight: '600',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    {category}
+                  </button>
+                ))}
               </div>
               
               <input 
                 type="text" 
                 placeholder="Search for a Job Title"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 style={{
                   width: '350px',
                   padding: '0.75rem 1.5rem',
@@ -281,17 +311,17 @@ export default function Career() {
           {/* Job Listings */}
           <div className="row mb-5">
             <div className="col-12">
-              <div style={{ border: '2px solid #000', padding: '1.5rem 2rem', marginBottom: '1.5rem', background: 'white' }}>
-                <h4 style={{ fontSize: '1.3rem', fontWeight: '700', margin: 0 }}>Lead/Datamining Executives</h4>
-              </div>
-              
-              <div style={{ border: '2px solid #000', padding: '1.5rem 2rem', marginBottom: '1.5rem', background: 'white' }}>
-                <h4 style={{ fontSize: '1.3rem', fontWeight: '700', margin: 0 }}>Sales Development Executive</h4>
-              </div>
-              
-              <div style={{ border: '2px solid #000', padding: '1.5rem 2rem', marginBottom: '1.5rem', background: 'white' }}>
-                <h4 style={{ fontSize: '1.3rem', fontWeight: '700', margin: 0 }}>Business Development Manager</h4>
-              </div>
+              {loadingJobs ? (
+                <p style={{ fontSize: '1.1rem', color: '#333' }}>Loading openings...</p>
+              ) : filteredJobs.length ? (
+                filteredJobs.map((job) => (
+                  <div key={job._id} style={{ border: '2px solid #000', padding: '1.5rem 2rem', marginBottom: '1.5rem', background: 'white' }}>
+                    <h4 style={{ fontSize: '1.3rem', fontWeight: '700', margin: 0 }}>{job.title}</h4>
+                  </div>
+                ))
+              ) : (
+                <p style={{ fontSize: '1.1rem', color: '#333' }}>No openings match your search.</p>
+              )}
             </div>
           </div>
 
@@ -382,9 +412,11 @@ export default function Career() {
                         }}
                       >
                         <option>Position you want to apply for</option>
-                        <option>Lead/Datamining Executives</option>
-                        <option>Sales Development Executive</option>
-                        <option>Business Development Manager</option>
+                        {jobs.map((job) => (
+                          <option key={job._id} value={job.title}>
+                            {job.title}
+                          </option>
+                        ))}
                       </select>
                     </div>
                     
