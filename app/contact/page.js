@@ -654,10 +654,10 @@ const Page = () => {
                     Office Hours
                   </h5>
                   <p style={{ fontSize: '1rem', color: '#333', marginBottom: '0.5rem', fontWeight: '600' }}>
-                    Mon – Fri: <span style={{ fontWeight: '400', color: '#666' }}>9:00 AM – 6:00 PM</span>
+                    Mon – Sat: <span style={{ fontWeight: '400', color: '#666' }}>9:00 AM – 6:00 PM</span>
                   </p>
                   <p style={{ fontSize: '1rem', color: '#333', marginBottom: '0.5rem', fontWeight: '600' }}>
-                    Sat, Sun & Holidays: <span style={{ fontWeight: '400', color: '#666' }}>Closed</span>
+                    Sun & Holidays: <span style={{ fontWeight: '400', color: '#666' }}>Closed for Regular Office</span>
                   </p>
                   <p style={{ fontSize: '0.85rem', color: '#666', margin: 0, fontStyle: 'italic' }}>
                     (Technical support available 24/7)
@@ -780,7 +780,7 @@ const Page = () => {
                       <i className="fab fa-whatsapp" style={{ fontSize: '1.3rem', color: '#666', transition: 'color 0.3s ease' }}></i>
                     </a>
                     <a 
-                      href="https://www.facebook.com/BharatFiberNetHyd/" 
+                      href="https://www.facebook.com/BharatFiberNetHyd?rdid=j4wsBerLi992ZsX9&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BjhF4jETM%2F#" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       style={{
@@ -806,7 +806,7 @@ const Page = () => {
                       <i className="fab fa-facebook-f" style={{ fontSize: '1.3rem', color: '#666', transition: 'color 0.3s ease' }}></i>
                     </a>
                     <a 
-                      href="https://www.linkedin.com/in/bharat-voip-communications-private-limited-595b82241/" 
+                      href="https://www.linkedin.com/company/bharatfibernet/?originalSubdomain=in" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       style={{

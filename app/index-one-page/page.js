@@ -489,22 +489,12 @@ const page = () => {
                   <div className="social-profile">
                     <ul>
                       <li>
-                        <a href="#">
-                          <i className="fab fa-twitter" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
+                        <a href="https://www.facebook.com/BharatFiberNetHyd?rdid=j4wsBerLi992ZsX9&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BjhF4jETM%2F#">
                           <i className="fab fa-facebook-f" />
                         </a>
                       </li>
                       <li>
-                        <a href="#">
-                          <i className="fab fa-instagram" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
+                        <a href="https://www.linkedin.com/company/bharatfibernet/?originalSubdomain=in">
                           <i className="fab fa-linkedin-in" />
                         </a>
                       </li>
@@ -532,22 +522,12 @@ const page = () => {
                   <div className="social-profile">
                     <ul>
                       <li>
-                        <a href="#">
-                          <i className="fab fa-twitter" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
+                        <a href="https://www.facebook.com/BharatFiberNetHyd?rdid=j4wsBerLi992ZsX9&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BjhF4jETM%2F#">
                           <i className="fab fa-facebook-f" />
                         </a>
                       </li>
                       <li>
-                        <a href="#">
-                          <i className="fab fa-instagram" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
+                        <a href="https://www.linkedin.com/company/bharatfibernet/?originalSubdomain=in">
                           <i className="fab fa-linkedin-in" />
                         </a>
                       </li>
@@ -575,22 +555,12 @@ const page = () => {
                   <div className="social-profile">
                     <ul>
                       <li>
-                        <a href="#">
-                          <i className="fab fa-twitter" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
+                        <a href="https://www.facebook.com/BharatFiberNetHyd?rdid=j4wsBerLi992ZsX9&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BjhF4jETM%2F#">
                           <i className="fab fa-facebook-f" />
                         </a>
                       </li>
                       <li>
-                        <a href="#">
-                          <i className="fab fa-instagram" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
+                        <a href="https://www.linkedin.com/company/bharatfibernet/?originalSubdomain=in">
                           <i className="fab fa-linkedin-in" />
                         </a>
                       </li>
@@ -618,22 +588,12 @@ const page = () => {
                   <div className="social-profile">
                     <ul>
                       <li>
-                        <a href="#">
-                          <i className="fab fa-twitter" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
+                        <a href="https://www.facebook.com/BharatFiberNetHyd?rdid=j4wsBerLi992ZsX9&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BjhF4jETM%2F#">
                           <i className="fab fa-facebook-f" />
                         </a>
                       </li>
                       <li>
-                        <a href="#">
-                          <i className="fab fa-instagram" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
+                        <a href="https://www.linkedin.com/company/bharatfibernet/?originalSubdomain=in">
                           <i className="fab fa-linkedin-in" />
                         </a>
                       </li>
@@ -661,22 +621,12 @@ const page = () => {
                   <div className="social-profile">
                     <ul>
                       <li>
-                        <a href="#">
-                          <i className="fab fa-twitter" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
+                        <a href="https://www.facebook.com/BharatFiberNetHyd?rdid=j4wsBerLi992ZsX9&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BjhF4jETM%2F#">
                           <i className="fab fa-facebook-f" />
                         </a>
                       </li>
                       <li>
-                        <a href="#">
-                          <i className="fab fa-instagram" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
+                        <a href="https://www.linkedin.com/company/bharatfibernet/?originalSubdomain=in">
                           <i className="fab fa-linkedin-in" />
                         </a>
                       </li>

@@ -66,27 +66,21 @@ const page = () => {
             >
               <div className="team-card-items style-2">
                 <div className="team-image">
-                  <img src="/assets/img/p3.jpg" alt="team-img" />
+                  <img
+                    src="/assets/img/p3.jpg"
+                    alt="team-img"
+                    style={{ width: "100%", height: "420px", objectFit: "cover", objectPosition: "center top" }}
+                  />
                   <div className="icon-list">
                     <ul>
                       <li>
-                        <a href="https://www.facebook.com/BharatFiberNetHyd/" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.facebook.com/BharatFiberNetHyd?rdid=j4wsBerLi992ZsX9&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BjhF4jETM%2F#" target="_blank" rel="noopener noreferrer">
                           <i className="fab fa-facebook-f" />
                         </a>
                       </li>
                       <li>
-                        <a href="#">
-                          <i className="fab fa-twitter" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.linkedin.com/in/bharat-voip-communications-private-limited-595b82241/" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.linkedin.com/company/bharatfibernet/?originalSubdomain=in" target="_blank" rel="noopener noreferrer">
                           <i className="fab fa-linkedin-in" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-pinterest-p" />
                         </a>
                       </li>
                     </ul>
@@ -106,27 +100,21 @@ const page = () => {
             >
               <div className="team-card-items style-2">
                 <div className="team-image">
-                  <img src="/assets/img/p2.jpg" alt="team-img" />
+                  <img
+                    src="/assets/img/p2.jpg"
+                    alt="team-img"
+                    style={{ width: "100%", height: "360px", objectFit: "cover", objectPosition: "center top" }}
+                  />
                   <div className="icon-list">
                     <ul>
                       <li>
-                        <a href="https://www.facebook.com/BharatFiberNetHyd/" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.facebook.com/BharatFiberNetHyd?rdid=j4wsBerLi992ZsX9&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BjhF4jETM%2F#" target="_blank" rel="noopener noreferrer">
                           <i className="fab fa-facebook-f" />
                         </a>
                       </li>
                       <li>
-                        <a href="#">
-                          <i className="fab fa-twitter" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.linkedin.com/in/bharat-voip-communications-private-limited-595b82241/" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.linkedin.com/company/bharatfibernet/?originalSubdomain=in" target="_blank" rel="noopener noreferrer">
                           <i className="fab fa-linkedin-in" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-pinterest-p" />
                         </a>
                       </li>
                     </ul>
@@ -146,27 +134,21 @@ const page = () => {
             >
               <div className="team-card-items style-2">
                 <div className="team-image">
-                  <img src="/assets/img/p1.jpg" alt="team-img" />
+                  <img
+                    src="/assets/img/p1.jpg"
+                    alt="team-img"
+                    style={{ width: "100%", height: "360px", objectFit: "cover", objectPosition: "center top" }}
+                  />
                   <div className="icon-list">
                     <ul>
                       <li>
-                        <a href="#">
+                        <a href="https://www.facebook.com/BharatFiberNetHyd?rdid=j4wsBerLi992ZsX9&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BjhF4jETM%2F#" target="_blank" rel="noopener noreferrer">
                           <i className="fab fa-facebook-f" />
                         </a>
                       </li>
                       <li>
-                        <a href="#">
-                          <i className="fab fa-twitter" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
+                        <a href="https://www.linkedin.com/company/bharatfibernet/?originalSubdomain=in" target="_blank" rel="noopener noreferrer">
                           <i className="fab fa-linkedin-in" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-pinterest-p" />
                         </a>
                       </li>
                     </ul>

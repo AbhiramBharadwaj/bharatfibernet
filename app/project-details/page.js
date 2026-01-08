@@ -90,17 +90,11 @@ const page = () => {
                   <div className="social-icon d-flex align-items-center">
                     <h5>Project Share</h5>
                     <div className="icon">
-                      <a href="#">
+                      <a href="https://www.facebook.com/BharatFiberNetHyd?rdid=j4wsBerLi992ZsX9&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BjhF4jETM%2F#">
                         <i className="fab fa-facebook-f" />
                       </a>
-                      <a href="#">
-                        <i className="fab fa-twitter" />
-                      </a>
-                      <a href="#">
-                        <i className="fab fa-vimeo-v" />
-                      </a>
-                      <a href="#">
-                        <i className="fab fa-pinterest-p" />
+                      <a href="https://www.linkedin.com/company/bharatfibernet/?originalSubdomain=in">
+                        <i className="fab fa-linkedin-in" />
                       </a>
                     </div>
                   </div>

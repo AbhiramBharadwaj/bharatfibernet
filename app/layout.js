@@ -35,6 +35,11 @@ export const metadata = {
   applicationName: "Bharat Fibernet",
   creator: "Bharat Fibernet",
   publisher: "Bharat Fibernet",
+  icons: {
+    icon: [{ url: "/assets/img/logo/logo.png", type: "image/png" }],
+    shortcut: ["/assets/img/logo/logo.png"],
+    apple: ["/assets/img/logo/logo.png"],
+  },
   alternates: {
     canonical: "/",
   },

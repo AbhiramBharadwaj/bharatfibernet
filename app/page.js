@@ -98,7 +98,7 @@ const page = () => {
         </p>
 
         <div className="mt-5 wow fadeInUp" data-wow-delay=".6s">
-          <Link href="/about" className="theme-btn">
+          <Link href="/who-we-are" className="theme-btn">
             Know More About Us <i className="far fa-arrow-right" />
           </Link>
         </div>

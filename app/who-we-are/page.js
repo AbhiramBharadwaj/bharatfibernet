@@ -174,101 +174,149 @@ const page = () => {
       </section>
 
       {/* Screen 5: Leadership Section */}
-      <section className="team-section fix section-padding" style={{
-        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url(/assets/img/4.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}>
+      <section
+        className="team-section fix section-padding"
+        style={{
+          background: "linear-gradient(180deg, #fff7f0 0%, #ffffff 55%, #fff7f0 100%)",
+        }}
+      >
         <div className="container">
           <div className="section-title text-center mb-5">
-            <h2 className="wow fadeInUp" data-wow-delay=".3s" style={{ color: '#000' }}>
+            <h2 className="wow fadeInUp" data-wow-delay=".3s" style={{ color: "#000" }}>
               Guided by Vision. Driven by Leadership.
             </h2>
-            <p className="mt-3 wow fadeInUp" data-wow-delay=".4s" style={{ fontSize: '1.1rem', color: '#333' }}>
-              At the core of Bharath VoIP's success is a leadership team that combines deep technical insight with a future-focused vision.
+            <p className="mt-3 wow fadeInUp" data-wow-delay=".4s" style={{ fontSize: "1.05rem", color: "#333" }}>
+              At the core of Bharat VoIP's success is a leadership team that blends deep technical insight with a future-focused vision.
             </p>
           </div>
 
-          <h3 className="text-center mb-5 wow fadeInUp" data-wow-delay=".5s" style={{ color: '#000' }}>Our Leadership</h3>
+          <h3 className="text-center mb-5 wow fadeInUp" data-wow-delay=".5s" style={{ color: "#000" }}>
+            Our Leadership
+          </h3>
 
-          <div className="row g-4">
-            {/* Founder & MD */}
+          <div className="row g-4 align-items-stretch" style={{ marginTop: "-20px" }}>
             <div className="col-lg-4 col-md-6">
-              <div className="team-card-items wow fadeInUp" data-wow-delay=".2s">
-                <div className="team-image">
-                  <img 
-                    src="/assets/img/p2.jpg" 
+              <div
+                className="team-card-items h-100 wow fadeInUp"
+                data-wow-delay=".2s"
+                style={{
+                  borderRadius: "14px",
+                  background: "#ffffff",
+                  boxShadow: "0 10px 22px rgba(17, 24, 39, 0.08)",
+                  overflow: "hidden",
+                  minHeight: "100%",
+                }}
+              >
+                <img
+                  src="/assets/img/p1.jpg"
+                  alt="Botte Venugopal"
+                  style={{
+                    width: "100%",
+                    height: "260px",
+                    objectFit: "cover",
+                    objectPosition: "center 18%",
+                  }}
+                />
+                <div className="team-content text-center p-3">
+                  <h4 className="mb-1" style={{ color: "#000" }}>
+                    Botte Venugopal
+                  </h4>
+                  <p className="mb-2" style={{ color: "#333" }}>
+                    Chief Executive Officer
+                  </p>
+                  <p style={{ fontSize: "0.9rem", color: "#333" }}>
+                    Leads Bharat VoIP with a focus on innovation and customer trust across enterprise connectivity.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-lg-4 col-md-6">
+              <div
+                className="team-card-items h-100 wow fadeInUp"
+                data-wow-delay=".4s"
+                style={{
+                  borderRadius: "18px",
+                  background: "#ffffff",
+                  boxShadow: "0 16px 30px rgba(17, 24, 39, 0.1)",
+                  overflow: "hidden",
+                  transform: "translateY(-14px)",
+                }}
+              >
+                <div style={{ position: "relative" }}>
+                  <img
+                    src="/assets/img/p2.jpg"
                     alt="Gaddam Poornachander"
-                    style={{ 
-                      width: '100%', 
-                      height: '450px', 
-                      objectFit: 'cover',
-                      objectPosition: 'center top',
-                      borderRadius: '10px'
+                    style={{
+                      width: "100%",
+                      height: "280px",
+                      objectFit: "cover",
+                      objectPosition: "center 28%",
+                      transform: "scale(1.0)",
                     }}
                   />
+                  <span
+                    style={{
+                      position: "absolute",
+                      left: "18px",
+                      bottom: "18px",
+                      padding: "6px 12px",
+                      borderRadius: "999px",
+                      background: "#ffefe4",
+                      color: "#c2410c",
+                      fontSize: "0.8rem",
+                      fontWeight: 600,
+                      letterSpacing: "0.02em",
+                    }}
+                  >
+                    Founder &amp; Managing Director
+                  </span>
                 </div>
-                <div className="team-content text-center">
-                  <h4 style={{ color: '#000' }}>Gaddam Poornachander</h4>
-                  <p style={{ color: '#333' }}>Founder & Managing Director</p>
-                  <p className="mt-3" style={{ fontSize: '0.95rem', color: '#333' }}>
-                    With over two decades in telecommunications and digital infrastructure, Mr. Gaddam Poornachander drives Bharat VoIP's growth with vision and purpose. His leadership has transformed the company into a trusted provider of Internet Leased Lines, Managed Network Services, and Smart Connectivity Solutions—delivering reliable performance and real business value to enterprises and institutions alike.
+                <div className="team-content text-center p-3">
+                  <h3 className="mb-1" style={{ color: "#000" }}>
+                    Gaddam Poornachander
+                  </h3>
+                  <p className="mb-2" style={{ color: "#333" }}>
+                    Founder &amp; Managing Director
+                  </p>
+                  <p style={{ fontSize: "0.9rem", color: "#333" }}>
+                    With over two decades in telecommunications and digital infrastructure, he drives Bharat VoIP's growth with vision and purpose.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* CEO */}
             <div className="col-lg-4 col-md-6">
-              <div className="team-card-items wow fadeInUp" data-wow-delay=".4s">
-                <div className="team-image">
-                  <img 
-                    src="/assets/img/p1.jpg" 
-                    alt="Botte Venugopal"
-                    style={{ 
-                      width: '100%', 
-                      height: '450px', 
-                      objectFit: 'cover',
-                      objectPosition: 'center top',
-                      borderRadius: '10px'
-                    }}
-                  />
-                </div>
-                <div className="team-content text-center">
-                  <h4 style={{ color: '#000' }}>Botte Venugopal</h4>
-                  <p style={{ color: '#333' }}>Chief Executive Officer</p>
-                  <p className="mt-3" style={{ fontSize: '0.95rem', color: '#333' }}>
-                    With a forward-thinking vision and rich experience in telecommunications and IT infrastructure, Mr. Botte Venugopal leads Bharat VoIP Communications Pvt. Ltd. with a focus on innovation and customer trust. Under his leadership, the company has grown from a regional provider to a trusted name in enterprise connectivity across Andhra Pradesh and Telangana.
+              <div
+                className="team-card-items h-100 wow fadeInUp"
+                data-wow-delay=".6s"
+                style={{
+                  borderRadius: "14px",
+                  background: "#ffffff",
+                  boxShadow: "0 10px 22px rgba(17, 24, 39, 0.08)",
+                  overflow: "hidden",
+                  minHeight: "100%",
+                }}
+              >
+                <img
+                  src="/assets/img/p3.jpg"
+                  alt="Srikanth Bodla"
+                  style={{
+                    width: "100%",
+                    height: "260px",
+                    objectFit: "cover",
+                    objectPosition: "center 18%",
+                  }}
+                />
+                <div className="team-content text-center p-3">
+                  <h4 className="mb-1" style={{ color: "#000" }}>
+                    Srikanth Bodla
+                  </h4>
+                  <p className="mb-2" style={{ color: "#333" }}>
+                    Chief Technology Officer
                   </p>
-                  <p className="mt-3 fw-bold" style={{ fontSize: '0.95rem', fontStyle: 'italic', color: '#333' }}>
-                    His belief: technology should simplify, not complicate — and reliability should be a given, not a luxury.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* CTO */}
-            <div className="col-lg-4 col-md-6">
-              <div className="team-card-items wow fadeInUp" data-wow-delay=".6s">
-                <div className="team-image">
-                  <img 
-                    src="/assets/img/p3.jpg" 
-                    alt="Srikanth Bodla"
-                    style={{ 
-                      width: '100%', 
-                      height: '450px', 
-                      objectFit: 'cover',
-                      objectPosition: 'center top',
-                      borderRadius: '10px'
-                    }}
-                  />
-                </div>
-                <div className="team-content text-center">
-                  <h4 style={{ color: '#000' }}>Srikanth Bodla</h4>
-                  <p style={{ color: '#333' }}>Chief Technology Officer</p>
-                  <p className="mt-3" style={{ fontSize: '0.95rem', color: '#333' }}>
-                    With over a decade of expertise in network operations and IT infrastructure, Mr. Srikanth Bodla ensures Bharat VoIP delivers seamless connectivity and superior uptime. His leadership in NOC management, network security, and performance optimization drives the company's commitment to reliable, scalable, and high-performing network solutions.
+                  <p style={{ fontSize: "0.9rem", color: "#333" }}>
+                    Drives network reliability, security, and performance optimization across the company.
                   </p>
                 </div>
               </div>
@@ -277,8 +325,8 @@ const page = () => {
 
           <div className="row mt-5">
             <div className="col-lg-12 text-center">
-              <p className="wow fadeInUp" data-wow-delay=".3s" style={{ fontSize: '1.1rem', color: '#333' }}>
-                Together, they've built an organization where technology and trust move hand in hand — and every connection tells a story of dependability.
+              <p className="wow fadeInUp" data-wow-delay=".3s" style={{ fontSize: "1.05rem", color: "#333" }}>
+                Together, they build an organization where technology and trust move hand in hand — and every connection tells a story of dependability.
               </p>
             </div>
           </div>

@@ -44,16 +44,10 @@ const page = () => {
                       </h5>
                     </div>
                     <div className="social-icon d-flex align-items-center">
-                      <a href="#" className="color-1">
+                      <a href="https://www.facebook.com/BharatFiberNetHyd?rdid=j4wsBerLi992ZsX9&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BjhF4jETM%2F#" className="color-1">
                         <i className="fab fa-facebook-f" />
                       </a>
-                      <a href="#" className="color-2">
-                        <i className="fab fa-twitter" />
-                      </a>
-                      <a href="#" className="color-3">
-                        <i className="fab fa-youtube" />
-                      </a>
-                      <a href="#" className="color-4">
+                      <a href="https://www.linkedin.com/company/bharatfibernet/?originalSubdomain=in" className="color-4">
                         <i className="fab fa-linkedin-in" />
                       </a>
                     </div>

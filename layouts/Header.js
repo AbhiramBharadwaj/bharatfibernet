@@ -317,16 +317,10 @@ const Sidebar = ({ sidebarToggle, close, menu }) => {
                   </Link>
                 </div>
                 <div className="social-icon d-flex align-items-center">
-                  <a href="#">
+                  <a href="https://www.facebook.com/BharatFiberNetHyd?rdid=j4wsBerLi992ZsX9&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BjhF4jETM%2F#">
                     <i className="fab fa-facebook-f" />
                   </a>
-                  <a href="#">
-                    <i className="fab fa-twitter" />
-                  </a>
-                  <a href="#">
-                    <i className="fab fa-youtube" />
-                  </a>
-                  <a href="#">
+                  <a href="https://www.linkedin.com/company/bharatfibernet/?originalSubdomain=in">
                     <i className="fab fa-linkedin-in" />
                   </a>
                 </div>
@@ -362,10 +356,10 @@ const Header1 = ({ menu }) => {
                 </a>
               </div>
               <div className="header-top-right">
-                <a href="#" aria-label="Facebook">
+                <a href="https://www.facebook.com/BharatFiberNetHyd?rdid=j4wsBerLi992ZsX9&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BjhF4jETM%2F#" aria-label="Facebook">
                   <i className="fab fa-facebook-f" />
                 </a>
-                <a href="#" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/company/bharatfibernet/?originalSubdomain=in" aria-label="LinkedIn">
                   <i className="fab fa-linkedin-in" />
                 </a>
               </div>

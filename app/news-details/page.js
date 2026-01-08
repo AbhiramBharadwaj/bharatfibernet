@@ -137,16 +137,10 @@ const page = () => {
                     <div className="col-lg-4 col-12 mt-3 mt-lg-0 text-lg-end">
                       <h4>Social Share</h4>
                       <div className="social-share">
-                        <a href="#">
+                        <a href="https://www.facebook.com/BharatFiberNetHyd?rdid=j4wsBerLi992ZsX9&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BjhF4jETM%2F#">
                           <i className="fab fa-facebook-f" />
                         </a>
-                        <a href="#">
-                          <i className="fab fa-twitter" />
-                        </a>
-                        <a href="#">
-                          <i className="fab fa-instagram" />
-                        </a>
-                        <a href="#">
+                        <a href="https://www.linkedin.com/company/bharatfibernet/?originalSubdomain=in">
                           <i className="fab fa-linkedin-in" />
                         </a>
                       </div>
@@ -398,20 +392,11 @@ const page = () => {
                       <h3>Never Miss News</h3>
                     </div>
                     <div className="social-link">
-                      <a href="#">
+                      <a href="https://www.facebook.com/BharatFiberNetHyd?rdid=j4wsBerLi992ZsX9&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BjhF4jETM%2F#">
                         <i className="fab fa-facebook-f" />
                       </a>
-                      <a href="#">
-                        <i className="fab fa-twitter" />
-                      </a>
-                      <a href="#">
-                        <i className="fab fa-instagram" />
-                      </a>
-                      <a href="#">
+                      <a href="https://www.linkedin.com/company/bharatfibernet/?originalSubdomain=in">
                         <i className="fab fa-linkedin-in" />
-                      </a>
-                      <a href="#">
-                        <i className="fab fa-youtube" />
                       </a>
                     </div>
                   </div>
