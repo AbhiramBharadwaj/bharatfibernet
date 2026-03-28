@@ -3,6 +3,17 @@ import NextLayout from "@/layouts/NextLayout";
 import Link from "next/link";
 import AboutTabs from "@/components/AboutTabs";
 
+const palette = {
+  ink: "#0f172a",
+  muted: "#475569",
+  accent: "#f36a1d",
+  accentSoft: "#fff2e6",
+  light: "#fff7f0",
+  panel: "#ffffff",
+  border: "#f2d7c4",
+  shadow: "0 14px 28px rgba(15, 23, 42, 0.08)",
+};
+
 const page = () => {
   return (
     <NextLayout header={1}>
@@ -13,12 +24,16 @@ const page = () => {
       <AboutTabs />
 
       {/* Screen 2: Trusted by Businesses */}
-      <section className="about-section fix section-padding pt-0" style={{
-        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url(/assets/img/w3.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}>
+      <section
+        className="about-section fix section-padding pt-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(180deg, rgba(255, 247, 240, 0.9) 0%, rgba(255, 255, 255, 0.95) 65%), url(/assets/img/w3.png)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="container">
           <div className="row g-4 align-items-center">
             <div className="col-lg-7 wow fadeInUp" data-wow-delay=".3s">
@@ -30,30 +45,34 @@ const page = () => {
                     width: '100%',
                     height: 'auto',
                     borderRadius: '15px',
-                    boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
+                    boxShadow: palette.shadow,
                   }}
                 />
               </div>
             </div>
             <div className="col-lg-5">
               <div className="about-content">
-                <h2 className="wow fadeInUp" data-wow-delay=".3s" style={{ color: '#000' }}>
+                <h2 className="wow fadeInUp" data-wow-delay=".3s" style={{ color: palette.ink }}>
                   Trusted by Businesses That Can't Afford to Pause
                 </h2>
-                <p className="mt-3 wow fadeInUp" data-wow-delay=".4s" style={{ color: '#333' }}>
+                <p className="mt-3 wow fadeInUp" data-wow-delay=".4s" style={{ color: palette.muted }}>
                   In a world where every second matters, downtime isn't an option.
                 </p>
-                <p className="mt-3 wow fadeInUp" data-wow-delay=".5s" style={{ color: '#333' }}>
+                <p className="mt-3 wow fadeInUp" data-wow-delay=".5s" style={{ color: palette.muted }}>
                   That's why enterprises across Andhra Pradesh and Telangana trust Bharath VoIP Communications for fast, secure, and consistent connectivity.
                 </p>
-                <p className="mt-3 wow fadeInUp" data-wow-delay=".6s" style={{ color: '#333' }}>
+                <p className="mt-3 wow fadeInUp" data-wow-delay=".6s" style={{ color: palette.muted }}>
                   We don't just deliver the internet - we deliver confidence. Our team listens, adapts, and engineers solutions that keep operations smooth, no matter what.
                 </p>
-                <p className="mt-3 wow fadeInUp" data-wow-delay=".7s" style={{ color: '#333' }}>
+                <p className="mt-3 wow fadeInUp" data-wow-delay=".7s" style={{ color: palette.muted }}>
                   With dual-link redundancy and multi-gateway routing, we ensure your business never skips a beat.
                 </p>
-                <div className="highlight-box mt-4 p-4 wow fadeInUp" data-wow-delay=".8s" style={{ border: '2px solid #ff6600', borderRadius: '10px', background: '#ffffff' }}>
-                  <h5 className="text-center" style={{ color: '#000' }}>
+                <div
+                  className="highlight-box mt-4 p-4 wow fadeInUp"
+                  data-wow-delay=".8s"
+                  style={{ border: `2px solid ${palette.accent}`, borderRadius: "12px", background: palette.panel }}
+                >
+                  <h5 className="text-center" style={{ color: palette.ink }}>
                     Helping your growth run on reliable digital rails. Because when your network performs flawlessly, so does your business.
                   </h5>
                 </div>
@@ -64,26 +83,28 @@ const page = () => {
       </section>
 
       {/* Screen 3: We Believe in People */}
-      <section className="about-section fix section-padding" style={{
-        background: '#ffffff'
-      }}>
+      <section className="about-section fix section-padding" style={{ background: palette.panel }}>
         <div className="container">
           <div className="row">
             <div className="col-lg-8 mx-auto text-center">
-              <h2 className="wow fadeInUp" data-wow-delay=".3s" style={{ color: '#000' }}>
+              <h2 className="wow fadeInUp" data-wow-delay=".3s" style={{ color: palette.ink }}>
                 We Believe in People, Not Just Technology
               </h2>
-              <p className="mt-4 wow fadeInUp" data-wow-delay=".4s" style={{ fontSize: '1.1rem', color: '#333' }}>
+              <p className="mt-4 wow fadeInUp" data-wow-delay=".4s" style={{ fontSize: '1.1rem', color: palette.muted }}>
                 At Bharath VoIP, technology is only as good as the difference it makes in people's lives.
               </p>
-              <p className="mt-3 wow fadeInUp" data-wow-delay=".5s" style={{ fontSize: '1.1rem', color: '#333' }}>
+              <p className="mt-3 wow fadeInUp" data-wow-delay=".5s" style={{ fontSize: '1.1rem', color: palette.muted }}>
                 We design our network solutions to keep your team connected, your data protected, and your operations running effortlessly.
               </p>
-              <p className="mt-3 wow fadeInUp" data-wow-delay=".6s" style={{ fontSize: '1.1rem', color: '#333' }}>
+              <p className="mt-3 wow fadeInUp" data-wow-delay=".6s" style={{ fontSize: '1.1rem', color: palette.muted }}>
                 With local expertise, proactive support, and human-first service, we make sure you can focus on what really matters - your growth.
               </p>
-              <div className="highlight-box mt-5 p-4 wow fadeInUp" data-wow-delay=".7s" style={{ border: '2px solid var(--theme)', borderRadius: '10px', background: '#f8f9fa' }}>
-                <h4 className="text-center" style={{ color: '#000' }}>
+              <div
+                className="highlight-box mt-5 p-4 wow fadeInUp"
+                data-wow-delay=".7s"
+                style={{ border: `2px solid ${palette.accent}`, borderRadius: "12px", background: palette.accentSoft }}
+              >
+                <h4 className="text-center" style={{ color: palette.ink }}>
                   Technology should simplify, not complicate. That's our belief.
                 </h4>
               </div>
@@ -93,79 +114,133 @@ const page = () => {
       </section>
 
       {/* Screen 4: Our Promise */}
-      <section className="service-section fix section-padding pt-0" style={{
-        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url(/assets/img/3.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}>
+      <section
+        className="service-section fix section-padding pt-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(180deg, rgba(255, 247, 240, 0.9) 0%, rgba(255, 255, 255, 0.95) 70%), url(/assets/img/3.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="container">
           <div className="section-title text-center mb-5">
-            <h2 className="wow fadeInUp" data-wow-delay=".3s" style={{ color: '#000' }}>
+            <h2 className="wow fadeInUp" data-wow-delay=".3s" style={{ color: palette.ink }}>
               Our Promise
             </h2>
-            <h4 className="wow fadeInUp mt-3" data-wow-delay=".4s" style={{ color: '#333' }}>
+            <h4 className="wow fadeInUp mt-3" data-wow-delay=".4s" style={{ color: palette.muted }}>
               Powering Your Digital Growth, Every Step of the Way
             </h4>
           </div>
 
           <div className="row g-4 justify-content-center">
             <div className="col-lg-4 col-md-6">
-              <div className="service-box-items wow fadeInUp" data-wow-delay=".2s" style={{ background: '#2a2e35', borderRadius: '15px', padding: '40px 30px', border: 'none' }}>
-                <div className="icon" style={{ marginBottom: '20px' }}>
-                  <i className="fas fa-check-circle" style={{ fontSize: '3rem', color: '#ff8c42' }}></i>
+              <div
+                className="service-box-items wow fadeInUp"
+                data-wow-delay=".2s"
+                style={{
+                  background: palette.panel,
+                  borderRadius: "16px",
+                  padding: "40px 30px",
+                  border: `1px solid ${palette.border}`,
+                  boxShadow: palette.shadow,
+                }}
+              >
+                <div className="icon" style={{ marginBottom: "20px" }}>
+                  <i className="fas fa-check-circle" style={{ fontSize: "3rem", color: palette.accent }}></i>
                 </div>
                 <div className="content">
-                  <h4 style={{ color: '#fff', marginBottom: '15px' }}>Uninterrupted Connectivity</h4>
-                  <p style={{ color: '#b0b0b0' }}>Keep working, playing, and growing without interruptions.</p>
+                  <h4 style={{ color: palette.ink, marginBottom: "15px" }}>Uninterrupted Connectivity</h4>
+                  <p style={{ color: palette.muted }}>Keep working, playing, and growing without interruptions.</p>
                 </div>
               </div>
             </div>
 
             <div className="col-lg-4 col-md-6">
-              <div className="service-box-items wow fadeInUp" data-wow-delay=".3s" style={{ background: '#2a2e35', borderRadius: '15px', padding: '40px 30px', border: 'none' }}>
-                <div className="icon" style={{ marginBottom: '20px' }}>
-                  <i className="fas fa-cogs" style={{ fontSize: '3rem', color: '#ff8c42' }}></i>
+              <div
+                className="service-box-items wow fadeInUp"
+                data-wow-delay=".3s"
+                style={{
+                  background: palette.panel,
+                  borderRadius: "16px",
+                  padding: "40px 30px",
+                  border: `1px solid ${palette.border}`,
+                  boxShadow: palette.shadow,
+                }}
+              >
+                <div className="icon" style={{ marginBottom: "20px" }}>
+                  <i className="fas fa-cogs" style={{ fontSize: "3rem", color: palette.accent }}></i>
                 </div>
                 <div className="content">
-                  <h4 style={{ color: '#fff', marginBottom: '15px' }}>Simple Setup & Support</h4>
-                  <p style={{ color: '#b0b0b0' }}>Setup and support made easy—no complications.</p>
+                  <h4 style={{ color: palette.ink, marginBottom: "15px" }}>Simple Setup & Support</h4>
+                  <p style={{ color: palette.muted }}>Setup and support made easy—no complications.</p>
                 </div>
               </div>
             </div>
 
             <div className="col-lg-4 col-md-6">
-              <div className="service-box-items wow fadeInUp" data-wow-delay=".4s" style={{ background: '#2a2e35', borderRadius: '15px', padding: '40px 30px', border: 'none' }}>
-                <div className="icon" style={{ marginBottom: '20px' }}>
-                  <i className="fas fa-headset" style={{ fontSize: '3rem', color: '#ff8c42' }}></i>
+              <div
+                className="service-box-items wow fadeInUp"
+                data-wow-delay=".4s"
+                style={{
+                  background: palette.panel,
+                  borderRadius: "16px",
+                  padding: "40px 30px",
+                  border: `1px solid ${palette.border}`,
+                  boxShadow: palette.shadow,
+                }}
+              >
+                <div className="icon" style={{ marginBottom: "20px" }}>
+                  <i className="fas fa-headset" style={{ fontSize: "3rem", color: palette.accent }}></i>
                 </div>
                 <div className="content">
-                  <h4 style={{ color: '#fff', marginBottom: '15px' }}>Quick Help</h4>
-                  <p style={{ color: '#b0b0b0' }}>Quick help when you need it, no downtime.</p>
+                  <h4 style={{ color: palette.ink, marginBottom: "15px" }}>Quick Help</h4>
+                  <p style={{ color: palette.muted }}>Quick help when you need it, no downtime.</p>
                 </div>
               </div>
             </div>
 
             <div className="col-lg-4 col-md-6">
-              <div className="service-box-items wow fadeInUp" data-wow-delay=".5s" style={{ background: '#2a2e35', borderRadius: '15px', padding: '40px 30px', border: 'none' }}>
-                <div className="icon" style={{ marginBottom: '20px' }}>
-                  <i className="fas fa-bolt" style={{ fontSize: '3rem', color: '#ff8c42' }}></i>
+              <div
+                className="service-box-items wow fadeInUp"
+                data-wow-delay=".5s"
+                style={{
+                  background: palette.panel,
+                  borderRadius: "16px",
+                  padding: "40px 30px",
+                  border: `1px solid ${palette.border}`,
+                  boxShadow: palette.shadow,
+                }}
+              >
+                <div className="icon" style={{ marginBottom: "20px" }}>
+                  <i className="fas fa-bolt" style={{ fontSize: "3rem", color: palette.accent }}></i>
                 </div>
                 <div className="content">
-                  <h4 style={{ color: '#fff', marginBottom: '15px' }}>Responsive Internet</h4>
-                  <p style={{ color: '#b0b0b0' }}>Responsive internet for work or entertainment.</p>
+                  <h4 style={{ color: palette.ink, marginBottom: "15px" }}>Responsive Internet</h4>
+                  <p style={{ color: palette.muted }}>Responsive internet for work or entertainment.</p>
                 </div>
               </div>
             </div>
 
             <div className="col-lg-4 col-md-6">
-              <div className="service-box-items wow fadeInUp" data-wow-delay=".6s" style={{ background: '#2a2e35', borderRadius: '15px', padding: '40px 30px', border: 'none' }}>
-                <div className="icon" style={{ marginBottom: '20px' }}>
-                  <i className="fas fa-tag" style={{ fontSize: '3rem', color: '#ff8c42' }}></i>
+              <div
+                className="service-box-items wow fadeInUp"
+                data-wow-delay=".6s"
+                style={{
+                  background: palette.panel,
+                  borderRadius: "16px",
+                  padding: "40px 30px",
+                  border: `1px solid ${palette.border}`,
+                  boxShadow: palette.shadow,
+                }}
+              >
+                <div className="icon" style={{ marginBottom: "20px" }}>
+                  <i className="fas fa-tag" style={{ fontSize: "3rem", color: palette.accent }}></i>
                 </div>
                 <div className="content">
-                  <h4 style={{ color: '#fff', marginBottom: '15px' }}>Affordable Plans</h4>
-                  <p style={{ color: '#b0b0b0' }}>Affordable plans designed for your needs.</p>
+                  <h4 style={{ color: palette.ink, marginBottom: "15px" }}>Affordable Plans</h4>
+                  <p style={{ color: palette.muted }}>Affordable plans designed for your needs.</p>
                 </div>
               </div>
             </div>
@@ -174,23 +249,18 @@ const page = () => {
       </section>
 
       {/* Screen 5: Leadership Section */}
-      <section
-        className="team-section fix section-padding"
-        style={{
-          background: "linear-gradient(180deg, #fff7f0 0%, #ffffff 55%, #fff7f0 100%)",
-        }}
-      >
+      <section className="team-section fix section-padding" style={{ background: palette.light }}>
         <div className="container">
           <div className="section-title text-center mb-5">
-            <h2 className="wow fadeInUp" data-wow-delay=".3s" style={{ color: "#000" }}>
+            <h2 className="wow fadeInUp" data-wow-delay=".3s" style={{ color: palette.ink }}>
               Guided by Vision. Driven by Leadership.
             </h2>
-            <p className="mt-3 wow fadeInUp" data-wow-delay=".4s" style={{ fontSize: "1.05rem", color: "#333" }}>
+            <p className="mt-3 wow fadeInUp" data-wow-delay=".4s" style={{ fontSize: "1.05rem", color: palette.muted }}>
               At the core of Bharat VoIP's success is a leadership team that blends deep technical insight with a future-focused vision.
             </p>
           </div>
 
-          <h3 className="text-center mb-5 wow fadeInUp" data-wow-delay=".5s" style={{ color: "#000" }}>
+          <h3 className="text-center mb-5 wow fadeInUp" data-wow-delay=".5s" style={{ color: palette.ink }}>
             Our Leadership
           </h3>
 
@@ -201,7 +271,7 @@ const page = () => {
                 data-wow-delay=".2s"
                 style={{
                   borderRadius: "14px",
-                  background: "#ffffff",
+                  background: palette.panel,
                   boxShadow: "0 10px 22px rgba(17, 24, 39, 0.08)",
                   overflow: "hidden",
                   minHeight: "100%",
@@ -218,13 +288,13 @@ const page = () => {
                   }}
                 />
                 <div className="team-content text-center p-3">
-                  <h4 className="mb-1" style={{ color: "#000" }}>
+                  <h4 className="mb-1" style={{ color: palette.ink }}>
                     Botte Venugopal
                   </h4>
-                  <p className="mb-2" style={{ color: "#333" }}>
+                  <p className="mb-2" style={{ color: palette.muted }}>
                     Chief Executive Officer
                   </p>
-                  <p style={{ fontSize: "0.9rem", color: "#333" }}>
+                  <p style={{ fontSize: "0.9rem", color: palette.muted }}>
                     Leads Bharat VoIP with a focus on innovation and customer trust across enterprise connectivity.
                   </p>
                 </div>
@@ -237,7 +307,7 @@ const page = () => {
                 data-wow-delay=".4s"
                 style={{
                   borderRadius: "18px",
-                  background: "#ffffff",
+                  background: palette.panel,
                   boxShadow: "0 16px 30px rgba(17, 24, 39, 0.1)",
                   overflow: "hidden",
                   transform: "translateY(-14px)",
@@ -262,8 +332,8 @@ const page = () => {
                       bottom: "18px",
                       padding: "6px 12px",
                       borderRadius: "999px",
-                      background: "#ffefe4",
-                      color: "#c2410c",
+                      background: palette.accentSoft,
+                      color: palette.accent,
                       fontSize: "0.8rem",
                       fontWeight: 600,
                       letterSpacing: "0.02em",
@@ -273,13 +343,13 @@ const page = () => {
                   </span>
                 </div>
                 <div className="team-content text-center p-3">
-                  <h3 className="mb-1" style={{ color: "#000" }}>
+                  <h3 className="mb-1" style={{ color: palette.ink }}>
                     Gaddam Poornachander
                   </h3>
-                  <p className="mb-2" style={{ color: "#333" }}>
+                  <p className="mb-2" style={{ color: palette.muted }}>
                     Founder &amp; Managing Director
                   </p>
-                  <p style={{ fontSize: "0.9rem", color: "#333" }}>
+                  <p style={{ fontSize: "0.9rem", color: palette.muted }}>
                     With over two decades in telecommunications and digital infrastructure, he drives Bharat VoIP's growth with vision and purpose.
                   </p>
                 </div>
@@ -292,7 +362,7 @@ const page = () => {
                 data-wow-delay=".6s"
                 style={{
                   borderRadius: "14px",
-                  background: "#ffffff",
+                  background: palette.panel,
                   boxShadow: "0 10px 22px rgba(17, 24, 39, 0.08)",
                   overflow: "hidden",
                   minHeight: "100%",
@@ -309,13 +379,13 @@ const page = () => {
                   }}
                 />
                 <div className="team-content text-center p-3">
-                  <h4 className="mb-1" style={{ color: "#000" }}>
+                  <h4 className="mb-1" style={{ color: palette.ink }}>
                     Srikanth Bodla
                   </h4>
-                  <p className="mb-2" style={{ color: "#333" }}>
+                  <p className="mb-2" style={{ color: palette.muted }}>
                     Chief Technology Officer
                   </p>
-                  <p style={{ fontSize: "0.9rem", color: "#333" }}>
+                  <p style={{ fontSize: "0.9rem", color: palette.muted }}>
                     Drives network reliability, security, and performance optimization across the company.
                   </p>
                 </div>
@@ -325,7 +395,7 @@ const page = () => {
 
           <div className="row mt-5">
             <div className="col-lg-12 text-center">
-              <p className="wow fadeInUp" data-wow-delay=".3s" style={{ fontSize: "1.05rem", color: "#333" }}>
+              <p className="wow fadeInUp" data-wow-delay=".3s" style={{ fontSize: "1.05rem", color: palette.muted }}>
                 Together, they build an organization where technology and trust move hand in hand — and every connection tells a story of dependability.
               </p>
             </div>
@@ -334,28 +404,32 @@ const page = () => {
       </section>
 
       {/* Our Team Section */}
-      <section className="team-section fix" style={{
-        padding: '30px 0',
-        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url(/assets/img/1.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}>
+      <section
+        className="team-section fix"
+        style={{
+          padding: "30px 0",
+          backgroundImage:
+            "linear-gradient(180deg, rgba(255, 247, 240, 0.9) 0%, rgba(255, 255, 255, 0.95) 60%), url(/assets/img/1.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="container">
           <div className="section-title text-center mb-3">
-            <h2 className="wow fadeInUp" data-wow-delay=".3s" style={{ color: '#000' }}>
+            <h2 className="wow fadeInUp" data-wow-delay=".3s" style={{ color: palette.ink }}>
               The People Who Keep You Connected
             </h2>
-            <p className="mt-3 wow fadeInUp" data-wow-delay=".4s" style={{ fontSize: '1.1rem', color: '#333' }}>
+            <p className="mt-3 wow fadeInUp" data-wow-delay=".4s" style={{ fontSize: "1.1rem", color: palette.muted }}>
               Every smooth and uninterrupted connection has a hardworking team behind it.
             </p>
-            <p className="mt-2 wow fadeInUp" data-wow-delay=".5s" style={{ fontSize: '1.1rem', color: '#333' }}>
+            <p className="mt-2 wow fadeInUp" data-wow-delay=".5s" style={{ fontSize: "1.1rem", color: palette.muted }}>
               Our engineers, network architects, and support staff put in their best every day to design, monitor, and maintain networks that keep your homes and businesses running fast and reliably.
             </p>
-            <p className="mt-2 wow fadeInUp" data-wow-delay=".6s" style={{ fontSize: '1.1rem', color: '#333' }}>
+            <p className="mt-2 wow fadeInUp" data-wow-delay=".6s" style={{ fontSize: "1.1rem", color: palette.muted }}>
               From on-ground teams handling installations to technical experts offering round-the-clock support, everyone at Bharat VoIP works with one goal — keeping you connected always.
             </p>
-            <h4 className="mt-3 wow fadeInUp" data-wow-delay=".7s" style={{ color: '#000' }}>
+            <h4 className="mt-3 wow fadeInUp" data-wow-delay=".7s" style={{ color: palette.ink }}>
               To deliver connectivity you can count on, every single day.
             </h4>
             <div className="mt-3 wow fadeInUp" data-wow-delay=".8s">
@@ -369,18 +443,36 @@ const page = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="cta-section" style={{
-        padding: '30px 0',
-        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url(/assets/img/2.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}>
+      <section
+        className="cta-section"
+        style={{
+          padding: "30px 0",
+          backgroundImage:
+            "linear-gradient(180deg, rgba(255, 247, 240, 0.9) 0%, rgba(255, 255, 255, 0.95) 60%), url(/assets/img/2.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="container">
           <div className="row g-4">
             <div className="col-lg-6">
-              <div className="cta-box text-center p-4 wow fadeInUp" data-wow-delay=".3s" style={{ background: '#f8f9fa', borderRadius: '10px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <h4 className="mb-3" style={{ color: '#000' }}>Ready to find the right solution for your business or home?</h4>
+              <div
+                className="cta-box text-center p-4 wow fadeInUp"
+                data-wow-delay=".3s"
+                style={{
+                  background: palette.panel,
+                  borderRadius: "14px",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  boxShadow: palette.shadow,
+                }}
+              >
+                <h4 className="mb-3" style={{ color: palette.ink }}>
+                  Ready to find the right solution for your business or home?
+                </h4>
                 <Link href="/pricing" className="theme-btn">
                   See our plans
                   <i className="far fa-arrow-right" />
@@ -388,9 +480,17 @@ const page = () => {
               </div>
             </div>
             <div className="col-lg-6">
-              <div className="cta-box text-center p-4 wow fadeInUp" data-wow-delay=".5s" style={{ background: '#f8f9fa', borderRadius: '10px' }}>
-                <h4 className="mb-2" style={{ color: '#000' }}>Not sure what you're looking for?</h4>
-                <p className="mb-3" style={{ color: '#333' }}>Let us recommend a solution for you.</p>
+              <div
+                className="cta-box text-center p-4 wow fadeInUp"
+                data-wow-delay=".5s"
+                style={{ background: palette.panel, borderRadius: "14px", boxShadow: palette.shadow }}
+              >
+                <h4 className="mb-2" style={{ color: palette.ink }}>
+                  Not sure what you're looking for?
+                </h4>
+                <p className="mb-3" style={{ color: palette.muted }}>
+                  Let us recommend a solution for you.
+                </p>
                 <form className="mt-2">
                   <div className="mb-2">
                     <input
@@ -398,7 +498,16 @@ const page = () => {
                       className="guidance-input"
                       placeholder="Mobile Number"
                       required
-                      style={{ width: '100%', borderRadius: '10px', border: '1px solid #d1d5db', background: '#ffffff', padding: '12px 14px', color: '#111827', fontSize: '14px', outline: 'none' }}
+                      style={{
+                        width: "100%",
+                        borderRadius: "10px",
+                        border: `1px solid ${palette.border}`,
+                        background: palette.panel,
+                        padding: "12px 14px",
+                        color: palette.ink,
+                        fontSize: "14px",
+                        outline: "none",
+                      }}
                     />
                   </div>
                   <div className="mb-2">
@@ -407,12 +516,36 @@ const page = () => {
                       className="guidance-input"
                       placeholder="Email Address"
                       required
-                      style={{ width: '100%', borderRadius: '10px', border: '1px solid #d1d5db', background: '#ffffff', padding: '12px 14px', color: '#111827', fontSize: '14px', outline: 'none' }}
+                      style={{
+                        width: "100%",
+                        borderRadius: "10px",
+                        border: `1px solid ${palette.border}`,
+                        background: palette.panel,
+                        padding: "12px 14px",
+                        color: palette.ink,
+                        fontSize: "14px",
+                        outline: "none",
+                      }}
                     />
                   </div>
-                  <button type="submit" className="guidance-btn" style={{ marginTop: '12px', border: 'none', borderRadius: '999px', padding: '12px 18px', background: 'linear-gradient(135deg, #f7931e, #ffb347)', color: '#ffffff', fontWeight: '700', fontSize: '15px', cursor: 'pointer', width: '100%' }}>
+                  <button
+                    type="submit"
+                    className="guidance-btn"
+                    style={{
+                      marginTop: "12px",
+                      border: "none",
+                      borderRadius: "999px",
+                      padding: "12px 18px",
+                      background: `linear-gradient(135deg, ${palette.accent}, #ffb347)`,
+                      color: "#ffffff",
+                      fontWeight: "700",
+                      fontSize: "15px",
+                      cursor: "pointer",
+                      width: "100%",
+                    }}
+                  >
                     Submit!
-                    <i className="far fa-arrow-right" style={{ marginLeft: '8px' }} />
+                    <i className="far fa-arrow-right" style={{ marginLeft: "8px" }} />
                   </button>
                 </form>
               </div>

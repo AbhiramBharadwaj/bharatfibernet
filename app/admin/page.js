@@ -3,24 +3,28 @@
 import { useEffect, useMemo, useState } from "react";
 import NextLayout from "@/layouts/NextLayout";
 
-const CATEGORY_OPTIONS = [
+const JOB_CATEGORY_OPTIONS = ["Sales", "Technical", "Administration"];
+const DEFAULT_POST_CATEGORIES = [
   "Articles",
   "Case Studies",
   "Multimedia",
   "White Papers",
 ];
 
-const JOB_CATEGORY_OPTIONS = ["Sales", "Technical", "Administration"];
-
 const initialFormState = {
   title: "",
   slug: "",
   excerpt: "",
-  category: CATEGORY_OPTIONS[0],
+  category: "",
   image: "",
   date: "",
   content: "",
 };
+
+const normalizeCategoryName = (value) =>
+  String(value || "")
+    .trim()
+    .replace(/\s+/g, " ");
 
 const formatDateTime = (value) => {
   if (!value) return "";
@@ -38,6 +42,10 @@ export default function AdminPage() {
   const [editingId, setEditingId] = useState(null);
   const [error, setError] = useState("");
   const [status, setStatus] = useState("");
+  const [categories, setCategories] = useState(DEFAULT_POST_CATEGORIES);
+  const [newCategory, setNewCategory] = useState("");
+  const [categoryStatus, setCategoryStatus] = useState("");
+  const [categoryError, setCategoryError] = useState("");
   const [jobs, setJobs] = useState([]);
   const [jobFormState, setJobFormState] = useState({
     title: "",
@@ -87,6 +95,26 @@ export default function AdminPage() {
     }
   };
 
+  const fetchCategories = async () => {
+    setCategoryError("");
+    try {
+      const response = await fetch("/api/categories");
+      if (!response.ok) {
+        throw new Error("Unable to load categories.");
+      }
+      const data = await response.json();
+      const names = Array.isArray(data.categories)
+        ? data.categories
+            .map((item) => normalizeCategoryName(item?.name))
+            .filter(Boolean)
+        : [];
+      setCategories(names.length ? names : DEFAULT_POST_CATEGORIES);
+    } catch (err) {
+      setCategories(DEFAULT_POST_CATEGORIES);
+      setCategoryError(err.message || "Unable to load categories.");
+    }
+  };
+
   const fetchJobs = async () => {
     setJobsLoading(true);
     setJobError("");
@@ -103,8 +131,19 @@ export default function AdminPage() {
 
   useEffect(() => {
     fetchPosts();
+    fetchCategories();
     fetchJobs();
   }, []);
+
+  useEffect(() => {
+    if (!categories.length) return;
+    setFormState((prev) => {
+      if (prev.category && categories.includes(prev.category)) {
+        return prev;
+      }
+      return { ...prev, category: categories[0] };
+    });
+  }, [categories]);
 
   const sortedPosts = useMemo(() => {
     const copy = [...posts];
@@ -115,6 +154,11 @@ export default function AdminPage() {
     });
     return copy;
   }, [posts]);
+
+  const postCategoryOptions = useMemo(() => {
+    const merged = [...categories, formState.category].filter(Boolean);
+    return Array.from(new Set(merged));
+  }, [categories, formState.category]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -127,7 +171,7 @@ export default function AdminPage() {
       title: post.title || "",
       slug: post.slug || "",
       excerpt: post.excerpt || "",
-      category: post.category || CATEGORY_OPTIONS[0],
+      category: post.category || categories[0] || DEFAULT_POST_CATEGORIES[0],
       image: post.image || "",
       date: formatDateTime(post.date),
       content: post.content || "",
@@ -138,7 +182,51 @@ export default function AdminPage() {
 
   const resetForm = () => {
     setEditingId(null);
-    setFormState(initialFormState);
+    setFormState((prev) => ({
+      ...initialFormState,
+      category: categories[0] || prev.category || "",
+    }));
+  };
+
+  const handleCreateCategory = async (event) => {
+    event.preventDefault();
+    setCategoryStatus("");
+    setCategoryError("");
+
+    const normalizedName = normalizeCategoryName(newCategory);
+    if (!normalizedName) {
+      setCategoryError("Category name is required.");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/categories", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: normalizedName }),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Unable to create category.");
+      }
+
+      const savedName =
+        normalizeCategoryName(data?.category?.name) || normalizedName;
+
+      const nextCategories = Array.from(
+        new Set([
+          ...categories,
+          savedName,
+        ])
+      );
+      setCategories(nextCategories);
+      setFormState((prev) => ({ ...prev, category: savedName }));
+      setNewCategory("");
+      setCategoryStatus("Category added.");
+    } catch (err) {
+      setCategoryError(err.message || "Unable to create category.");
+    }
   };
 
   const handleJobChange = (event) => {
@@ -320,6 +408,69 @@ export default function AdminPage() {
           <>
             <section style={{ ...cardStyle, marginBottom: "2.8rem" }}>
               <h2 style={{ fontSize: "1.4rem", fontWeight: 600, marginBottom: "1rem" }}>
+                Manage Categories
+              </h2>
+              <form
+                onSubmit={handleCreateCategory}
+                style={{ marginBottom: "2rem", display: "grid", gap: "0.75rem" }}
+              >
+                <div
+                  style={{
+                    display: "grid",
+                    gap: "0.75rem",
+                    gridTemplateColumns: "minmax(220px, 1fr) auto",
+                    alignItems: "center",
+                  }}
+                >
+                  <input
+                    id="new-category"
+                    name="new-category"
+                    placeholder="New category name"
+                    value={newCategory}
+                    onChange={(event) => setNewCategory(event.target.value)}
+                    style={inputStyle}
+                  />
+                  <button
+                    type="submit"
+                    style={{
+                      background: "#111827",
+                      color: "#fff",
+                      border: "none",
+                      borderRadius: "10px",
+                      padding: "0.8rem 1.2rem",
+                      fontWeight: 600,
+                      cursor: "pointer",
+                    }}
+                  >
+                    Add Category
+                  </button>
+                </div>
+                <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+                  {categories.map((name) => (
+                    <span
+                      key={name}
+                      style={{
+                        padding: "0.3rem 0.75rem",
+                        borderRadius: "999px",
+                        background: "#f0f4ff",
+                        color: "#1f7ae0",
+                        fontSize: "0.8rem",
+                        fontWeight: 600,
+                      }}
+                    >
+                      {name}
+                    </span>
+                  ))}
+                </div>
+                {categoryStatus && (
+                  <p style={{ color: "#1a7f37", margin: 0 }}>{categoryStatus}</p>
+                )}
+                {categoryError && (
+                  <p style={{ color: "#b42318", margin: 0 }}>{categoryError}</p>
+                )}
+              </form>
+
+              <h2 style={{ fontSize: "1.4rem", fontWeight: 600, marginBottom: "1rem" }}>
                 {editingId ? "Edit Post" : "Create Post"}
               </h2>
               <form onSubmit={handleSubmit}>
@@ -354,9 +505,10 @@ export default function AdminPage() {
                       name="category"
                       value={formState.category}
                       onChange={handleChange}
+                      required
                       style={inputStyle}
                     >
-                      {CATEGORY_OPTIONS.map((option) => (
+                      {postCategoryOptions.map((option) => (
                         <option key={option} value={option}>
                           {option}
                         </option>

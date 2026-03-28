@@ -5,8 +5,7 @@ import NextLayout from "@/layouts/NextLayout";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
-const CATEGORY_OPTIONS = [
-  "All",
+const DEFAULT_CATEGORIES = [
   "Articles",
   "Case Studies",
   "Multimedia",
@@ -30,11 +29,31 @@ const MONTH_OPTIONS = [
 
 const YEAR_OPTIONS = ["2025", "2024", "2023", "2022", "2021"];
 
-const CATEGORY_COLORS = {
-  Articles: "#28a745",
-  "Case Studies": "#fd9330",
-  Multimedia: "#1f7ae0",
-  "White Papers": "#0f766e",
+const CATEGORY_PALETTE = [
+  "#28a745",
+  "#fd9330",
+  "#1f7ae0",
+  "#0f766e",
+  "#dc2626",
+  "#7c3aed",
+  "#0ea5e9",
+  "#ca8a04",
+];
+
+const normalizeCategoryName = (value) =>
+  String(value || "")
+    .trim()
+    .replace(/\s+/g, " ");
+
+const getCategoryColor = (category) => {
+  const value = normalizeCategoryName(category).toLowerCase();
+  if (!value) return CATEGORY_PALETTE[0];
+
+  let hash = 0;
+  for (let index = 0; index < value.length; index += 1) {
+    hash = (hash * 31 + value.charCodeAt(index)) >>> 0;
+  }
+  return CATEGORY_PALETTE[hash % CATEGORY_PALETTE.length];
 };
 
 const formatDate = (value) => {
@@ -51,6 +70,7 @@ const formatDate = (value) => {
 export default function Knowledge() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [categories, setCategories] = useState(DEFAULT_CATEGORIES);
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("newest");
@@ -86,6 +106,37 @@ export default function Knowledge() {
     };
   }, []);
 
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadCategories = async () => {
+      try {
+        const response = await fetch("/api/categories");
+        if (!response.ok) {
+          throw new Error("Unable to load categories.");
+        }
+        const data = await response.json();
+        const names = Array.isArray(data.categories)
+          ? data.categories
+              .map((item) => normalizeCategoryName(item?.name))
+              .filter(Boolean)
+          : [];
+        if (isMounted) {
+          setCategories(names.length ? names : DEFAULT_CATEGORIES);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setCategories(DEFAULT_CATEGORIES);
+        }
+      }
+    };
+
+    loadCategories();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   const newestPosts = useMemo(() => {
     const copy = [...posts];
     copy.sort((a, b) => {
@@ -103,6 +154,14 @@ export default function Knowledge() {
     }
     return copy;
   }, [newestPosts, sortOrder]);
+
+  const categoryOptions = useMemo(() => {
+    const postCategories = posts
+      .map((post) => normalizeCategoryName(post.category))
+      .filter(Boolean);
+    const merged = ["All", ...categories, ...postCategories];
+    return Array.from(new Set(merged));
+  }, [categories, posts]);
 
   const filteredPosts = useMemo(() => {
     const normalizedSearch = searchTerm.trim().toLowerCase();
@@ -141,6 +200,12 @@ export default function Knowledge() {
   useEffect(() => {
     setCurrentPage(1);
   }, [activeCategory, filterMonth, filterYear, searchTerm, sortOrder]);
+
+  useEffect(() => {
+    if (!categoryOptions.includes(activeCategory)) {
+      setActiveCategory("All");
+    }
+  }, [activeCategory, categoryOptions]);
 
   const recentPost = newestPosts[0];
   const totalPages = Math.max(1, Math.ceil(filteredPosts.length / pageSize));
@@ -249,7 +314,7 @@ export default function Knowledge() {
                 flexWrap: 'wrap',
                 marginBottom: '2rem'
               }}>
-                {CATEGORY_OPTIONS.map((category) => {
+                {categoryOptions.map((category) => {
                   const isActive = activeCategory === category;
                   return (
                     <button
@@ -394,7 +459,7 @@ export default function Knowledge() {
               </div>
             ) : paginatedPosts.length ? (
               paginatedPosts.map((post) => {
-                const categoryColor = CATEGORY_COLORS[post.category] || '#28a745';
+                const categoryColor = getCategoryColor(post.category);
                 return (
                   <div className="col-lg-4 col-md-6" key={post._id}>
                     <Link href={`/knowledge/${post.slug || post._id}`} style={{ textDecoration: 'none' }}>
