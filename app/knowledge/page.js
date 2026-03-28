@@ -5,13 +5,6 @@ import NextLayout from "@/layouts/NextLayout";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
-const DEFAULT_CATEGORIES = [
-  "Articles",
-  "Case Studies",
-  "Multimedia",
-  "White Papers",
-];
-
 const MONTH_OPTIONS = [
   "January",
   "February",
@@ -70,7 +63,7 @@ const formatDate = (value) => {
 export default function Knowledge() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [categories, setCategories] = useState(DEFAULT_CATEGORIES);
+  const [categories, setCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("newest");
@@ -121,12 +114,13 @@ export default function Knowledge() {
               .map((item) => normalizeCategoryName(item?.name))
               .filter(Boolean)
           : [];
+        const uniqueNames = Array.from(new Set(names));
         if (isMounted) {
-          setCategories(names.length ? names : DEFAULT_CATEGORIES);
+          setCategories(uniqueNames);
         }
       } catch (err) {
         if (isMounted) {
-          setCategories(DEFAULT_CATEGORIES);
+          setCategories([]);
         }
       }
     };

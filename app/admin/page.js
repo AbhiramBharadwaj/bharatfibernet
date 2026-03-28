@@ -4,12 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import NextLayout from "@/layouts/NextLayout";
 
 const JOB_CATEGORY_OPTIONS = ["Sales", "Technical", "Administration"];
-const DEFAULT_POST_CATEGORIES = [
-  "Articles",
-  "Case Studies",
-  "Multimedia",
-  "White Papers",
-];
 
 const initialFormState = {
   title: "",
@@ -42,7 +36,7 @@ export default function AdminPage() {
   const [editingId, setEditingId] = useState(null);
   const [error, setError] = useState("");
   const [status, setStatus] = useState("");
-  const [categories, setCategories] = useState(DEFAULT_POST_CATEGORIES);
+  const [categories, setCategories] = useState([]);
   const [newCategory, setNewCategory] = useState("");
   const [categoryStatus, setCategoryStatus] = useState("");
   const [categoryError, setCategoryError] = useState("");
@@ -108,9 +102,10 @@ export default function AdminPage() {
             .map((item) => normalizeCategoryName(item?.name))
             .filter(Boolean)
         : [];
-      setCategories(names.length ? names : DEFAULT_POST_CATEGORIES);
+      const uniqueNames = Array.from(new Set(names));
+      setCategories(uniqueNames);
     } catch (err) {
-      setCategories(DEFAULT_POST_CATEGORIES);
+      setCategories([]);
       setCategoryError(err.message || "Unable to load categories.");
     }
   };
@@ -171,7 +166,7 @@ export default function AdminPage() {
       title: post.title || "",
       slug: post.slug || "",
       excerpt: post.excerpt || "",
-      category: post.category || categories[0] || DEFAULT_POST_CATEGORIES[0],
+      category: post.category || categories[0] || "",
       image: post.image || "",
       date: formatDateTime(post.date),
       content: post.content || "",
@@ -226,6 +221,50 @@ export default function AdminPage() {
       setCategoryStatus("Category added.");
     } catch (err) {
       setCategoryError(err.message || "Unable to create category.");
+    }
+  };
+
+  const handleDeleteCategory = async (categoryName) => {
+    const normalizedName = normalizeCategoryName(categoryName);
+    if (!normalizedName) {
+      return;
+    }
+    if (!confirm(`Delete category "${normalizedName}"?`)) {
+      return;
+    }
+
+    setCategoryStatus("");
+    setCategoryError("");
+
+    const slug = normalizedName
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "");
+
+    try {
+      const response = await fetch(`/api/categories/${slug}`, {
+        method: "DELETE",
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Unable to delete category.");
+      }
+
+      const nextCategories = categories.filter((item) => item !== normalizedName);
+      setCategories(nextCategories);
+      setFormState((prev) => {
+        if (prev.category !== normalizedName) {
+          return prev;
+        }
+        return {
+          ...prev,
+          category: nextCategories[0] || "",
+        };
+      });
+      setCategoryStatus("Category deleted.");
+    } catch (err) {
+      setCategoryError(err.message || "Unable to delete category.");
     }
   };
 
@@ -447,8 +486,11 @@ export default function AdminPage() {
                 </div>
                 <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
                   {categories.map((name) => (
-                    <span
+                    <button
+                      type="button"
                       key={name}
+                      onClick={() => handleDeleteCategory(name)}
+                      title={`Delete ${name}`}
                       style={{
                         padding: "0.3rem 0.75rem",
                         borderRadius: "999px",
@@ -456,10 +498,18 @@ export default function AdminPage() {
                         color: "#1f7ae0",
                         fontSize: "0.8rem",
                         fontWeight: 600,
+                        border: "1px solid #d6def4",
+                        cursor: "pointer",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "0.4rem",
                       }}
                     >
-                      {name}
-                    </span>
+                      <span>{name}</span>
+                      <span aria-hidden="true" style={{ color: "#d92d20" }}>
+                        x
+                      </span>
+                    </button>
                   ))}
                 </div>
                 {categoryStatus && (
@@ -508,6 +558,11 @@ export default function AdminPage() {
                       required
                       style={inputStyle}
                     >
+                      {!postCategoryOptions.length && (
+                        <option value="" disabled>
+                          No categories available
+                        </option>
+                      )}
                       {postCategoryOptions.map((option) => (
                         <option key={option} value={option}>
                           {option}

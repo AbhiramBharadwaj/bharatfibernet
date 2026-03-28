@@ -3,12 +3,6 @@ import clientPromise from "@/lib/mongodb";
 
 const DB_NAME = "bharatfibernet";
 const COLLECTION = "categories";
-const DEFAULT_CATEGORIES = [
-  "Articles",
-  "Case Studies",
-  "Multimedia",
-  "White Papers",
-];
 
 const slugify = (value) =>
   value
@@ -27,26 +21,8 @@ const getCollection = async () => {
   return client.db(DB_NAME).collection(COLLECTION);
 };
 
-const seedDefaultsIfNeeded = async (collection) => {
-  const existingCount = await collection.countDocuments();
-  if (existingCount > 0) {
-    return;
-  }
-
-  const now = new Date();
-  await collection.insertMany(
-    DEFAULT_CATEGORIES.map((name) => ({
-      name,
-      slug: slugify(name),
-      createdAt: now,
-      updatedAt: now,
-    }))
-  );
-};
-
 export async function GET() {
   const collection = await getCollection();
-  await seedDefaultsIfNeeded(collection);
 
   const categories = await collection
     .find({})
@@ -54,12 +30,23 @@ export async function GET() {
     .project({ name: 1, slug: 1 })
     .toArray();
 
+  const uniqueCategories = Array.from(
+    new Map(
+      categories.map((item) => [
+        item.slug || slugify(item.name),
+        {
+          _id: item._id,
+          name: normalizeCategoryName(item.name),
+          slug: item.slug || slugify(item.name),
+        },
+      ])
+    ).values()
+  ).filter((item) => item.name && item.slug);
+
+  uniqueCategories.sort((a, b) => a.name.localeCompare(b.name));
+
   return NextResponse.json({
-    categories: categories.map((item) => ({
-      _id: item._id,
-      name: item.name,
-      slug: item.slug,
-    })),
+    categories: uniqueCategories,
   });
 }
 
