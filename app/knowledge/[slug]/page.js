@@ -19,6 +19,25 @@ const formatDate = (value) => {
   });
 };
 
+const isPublicPost = (post, now = new Date()) => {
+  const status = post?.status || "published";
+  if (status === "draft") return false;
+  if (status === "scheduled") {
+    const date = new Date(post?.date);
+    if (Number.isNaN(date.getTime())) return false;
+    return date <= now;
+  }
+  return true;
+};
+
+const escapeHtml = (value) =>
+  String(value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+
 export default async function KnowledgePost({ params }) {
   const { slug } = params;
   const client = await clientPromise;
@@ -29,9 +48,14 @@ export default async function KnowledgePost({ params }) {
     post = await collection.findOne({ _id: new ObjectId(slug) });
   }
 
-  if (!post) {
+  if (!post || !isPublicPost(post)) {
     notFound();
   }
+
+  const hasHtmlContent = /<\/?[a-z][\s\S]*>/i.test(post.content || "");
+  const bodyHtml = hasHtmlContent
+    ? post.content
+    : `<p>${escapeHtml(post.content || post.excerpt || "")}</p>`;
 
   return (
     <NextLayout header={1} footer={1}>
@@ -88,13 +112,60 @@ export default async function KnowledgePost({ params }) {
                   }}
                 />
               )}
-              <p style={{ fontSize: "1.05rem", lineHeight: "1.9", color: "#333" }}>
-                {post.content || post.excerpt}
-              </p>
+              <div
+                className="knowledge-rich-content"
+                style={{ fontSize: "1.05rem", lineHeight: "1.9", color: "#333" }}
+                dangerouslySetInnerHTML={{ __html: bodyHtml }}
+              />
             </div>
           </div>
         </div>
       </section>
+      <style>{`
+        .knowledge-rich-content p {
+          margin: 0 0 1rem;
+        }
+        .knowledge-rich-content ul,
+        .knowledge-rich-content ol {
+          margin: 0.55rem 0 1rem;
+          padding-left: 1.65rem;
+        }
+        .knowledge-rich-content ul {
+          list-style: disc;
+        }
+        .knowledge-rich-content ol {
+          list-style: decimal;
+        }
+        .knowledge-rich-content li {
+          margin-bottom: 0.4rem;
+        }
+        .knowledge-rich-content h1,
+        .knowledge-rich-content h2,
+        .knowledge-rich-content h3 {
+          margin: 0.7rem 0 0.85rem;
+          line-height: 1.35;
+          color: #111827;
+        }
+        .knowledge-rich-content a {
+          color: #1d4ed8;
+          text-decoration: underline;
+        }
+        .knowledge-rich-content .ql-size-small {
+          font-size: 0.85em;
+        }
+        .knowledge-rich-content .ql-size-large {
+          font-size: 1.35em;
+        }
+        .knowledge-rich-content .ql-size-huge {
+          font-size: 1.8em;
+        }
+        .knowledge-rich-content .ql-font-serif {
+          font-family: Georgia, "Times New Roman", serif;
+        }
+        .knowledge-rich-content .ql-font-monospace {
+          font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        }
+      `}</style>
     </NextLayout>
   );
 }

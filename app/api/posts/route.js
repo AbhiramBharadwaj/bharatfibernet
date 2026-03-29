@@ -4,6 +4,7 @@ import clientPromise from "@/lib/mongodb";
 const DB_NAME = "bharatfibernet";
 const COLLECTION = "posts";
 const CATEGORY_COLLECTION = "categories";
+const VALID_STATUSES = new Set(["draft", "published", "scheduled"]);
 
 const slugify = (value) =>
   value
@@ -51,25 +52,58 @@ const ensureUniqueSlug = async (collection, baseSlug) => {
   return `${baseSlug}-${Date.now().toString(36)}`;
 };
 
+const parseDateOrNow = (value) => {
+  if (!value) return new Date();
+  const parsed = new Date(value);
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
+};
+
+const isPublicPost = (post, now = new Date()) => {
+  const status = post?.status || "published";
+  if (status === "draft") return false;
+  if (status === "scheduled") {
+    const date = new Date(post?.date);
+    if (Number.isNaN(date.getTime())) return false;
+    return date <= now;
+  }
+  return true;
+};
+
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const slug = searchParams.get("slug");
+  const includeAll = searchParams.get("includeAll") === "true";
 
   const client = await clientPromise;
   const collection = client.db(DB_NAME).collection(COLLECTION);
 
   if (slug) {
     const post = await collection.findOne({ slug });
+    if (!includeAll && post && !isPublicPost(post)) {
+      return NextResponse.json({ post: null });
+    }
     return NextResponse.json({ post });
   }
 
-  const posts = await collection.find({}).sort({ date: -1 }).toArray();
+  const now = new Date();
+  const query = includeAll
+    ? {}
+    : {
+        $or: [
+          { status: { $exists: false } },
+          { status: "published" },
+          { status: "scheduled", date: { $lte: now } },
+        ],
+      };
+
+  const posts = await collection.find(query).sort({ date: -1 }).toArray();
   return NextResponse.json({ posts });
 }
 
 export async function POST(request) {
   const body = await request.json();
-  const { title, excerpt, category, image, date, slug, content } = body || {};
+  const { title, excerpt, category, image, date, slug, content, status } =
+    body || {};
 
   if (!title || !excerpt || !category) {
     return NextResponse.json(
@@ -93,13 +127,29 @@ export async function POST(request) {
   const baseSlug = slugify(slug || title || "post");
   const finalSlug = await ensureUniqueSlug(collection, baseSlug);
   const now = new Date();
+  const postDate = parseDateOrNow(date);
+  const normalizedStatus = String(status || "published").toLowerCase();
+
+  if (!postDate) {
+    return NextResponse.json({ error: "Invalid publish date." }, { status: 400 });
+  }
+  if (!VALID_STATUSES.has(normalizedStatus)) {
+    return NextResponse.json({ error: "Invalid status." }, { status: 400 });
+  }
+  if (normalizedStatus === "scheduled" && !date) {
+    return NextResponse.json(
+      { error: "Scheduled posts require a publish date." },
+      { status: 400 }
+    );
+  }
 
   const post = {
     title,
     excerpt,
     category: finalCategory,
     image: image || "",
-    date: date ? new Date(date) : now,
+    date: postDate,
+    status: normalizedStatus,
     slug: finalSlug,
     content: content || "",
     createdAt: now,

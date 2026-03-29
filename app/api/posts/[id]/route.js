@@ -5,6 +5,7 @@ import clientPromise from "@/lib/mongodb";
 const DB_NAME = "bharatfibernet";
 const COLLECTION = "posts";
 const CATEGORY_COLLECTION = "categories";
+const VALID_STATUSES = new Set(["draft", "published", "scheduled"]);
 
 const slugify = (value) =>
   value
@@ -39,6 +40,11 @@ const ensureCategoryExists = async (db, categoryName) => {
   return normalized;
 };
 
+const parseDate = (value) => {
+  const parsed = new Date(value);
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
+};
+
 export async function PATCH(request, { params }) {
   const { id } = params;
   if (!ObjectId.isValid(id)) {
@@ -46,7 +52,8 @@ export async function PATCH(request, { params }) {
   }
 
   const body = await request.json();
-  const { title, excerpt, category, image, date, slug, content } = body || {};
+  const { title, excerpt, category, image, date, slug, content, status } =
+    body || {};
 
   const updates = {
     updatedAt: new Date(),
@@ -55,7 +62,13 @@ export async function PATCH(request, { params }) {
   if (title) updates.title = title;
   if (excerpt) updates.excerpt = excerpt;
   if (image !== undefined) updates.image = image;
-  if (date) updates.date = new Date(date);
+  if (date) {
+    const parsedDate = parseDate(date);
+    if (!parsedDate) {
+      return NextResponse.json({ error: "Invalid publish date." }, { status: 400 });
+    }
+    updates.date = parsedDate;
+  }
   if (content !== undefined) updates.content = content;
 
   const client = await clientPromise;
@@ -68,6 +81,30 @@ export async function PATCH(request, { params }) {
       return NextResponse.json({ error: "Invalid category." }, { status: 400 });
     }
     updates.category = normalizedCategory;
+  }
+
+  if (status !== undefined) {
+    const normalizedStatus = String(status).toLowerCase();
+    if (!VALID_STATUSES.has(normalizedStatus)) {
+      return NextResponse.json({ error: "Invalid status." }, { status: 400 });
+    }
+
+    if (normalizedStatus === "scheduled") {
+      const targetDate = updates.date || (await collection.findOne(
+        { _id: new ObjectId(id) },
+        { projection: { date: 1 } }
+      ))?.date;
+
+      const targetDateValue = targetDate ? new Date(targetDate) : null;
+      if (!targetDateValue || Number.isNaN(targetDateValue.getTime())) {
+        return NextResponse.json(
+          { error: "Scheduled posts require a valid publish date." },
+          { status: 400 }
+        );
+      }
+    }
+
+    updates.status = normalizedStatus;
   }
 
   if (slug) {
@@ -89,11 +126,12 @@ export async function PATCH(request, { params }) {
     { returnDocument: "after" }
   );
 
-  if (!result.value) {
+  const updatedPost = result?.value ?? result;
+  if (!updatedPost) {
     return NextResponse.json({ error: "Post not found." }, { status: 404 });
   }
 
-  return NextResponse.json({ post: result.value });
+  return NextResponse.json({ post: updatedPost });
 }
 
 export async function DELETE(request, { params }) {

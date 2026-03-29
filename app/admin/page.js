@@ -1,15 +1,19 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect, useMemo, useState } from "react";
 import NextLayout from "@/layouts/NextLayout";
+import "react-quill/dist/quill.snow.css";
 
 const JOB_CATEGORY_OPTIONS = ["Sales", "Technical", "Administration"];
+const POST_STATUS_OPTIONS = ["draft", "published", "scheduled"];
 
 const initialFormState = {
   title: "",
   slug: "",
   excerpt: "",
   category: "",
+  status: "draft",
   image: "",
   date: "",
   content: "",
@@ -27,6 +31,37 @@ const formatDateTime = (value) => {
   return date.toISOString().slice(0, 16);
 };
 
+const normalizeStatus = (value) => String(value || "").toLowerCase();
+
+const formatStatusLabel = (value) => {
+  const normalized = normalizeStatus(value);
+  if (!normalized) return "Published";
+  return normalized.charAt(0).toUpperCase() + normalized.slice(1);
+};
+
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
+const editorModules = {
+  toolbar: [
+    [{ font: [] }, { size: ["small", false, "large", "huge"] }],
+    ["bold", "italic", "underline", "strike"],
+    [{ list: "ordered" }, { list: "bullet" }],
+    ["link", "clean"],
+  ],
+};
+
+const editorFormats = [
+  "font",
+  "size",
+  "bold",
+  "italic",
+  "underline",
+  "strike",
+  "list",
+  "bullet",
+  "link",
+];
+
 export default function AdminPage() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -40,6 +75,13 @@ export default function AdminPage() {
   const [newCategory, setNewCategory] = useState("");
   const [categoryStatus, setCategoryStatus] = useState("");
   const [categoryError, setCategoryError] = useState("");
+  const [listSearch, setListSearch] = useState("");
+  const [listCategory, setListCategory] = useState("all");
+  const [listStatus, setListStatus] = useState("all");
+  const [listSort, setListSort] = useState("newest");
+  const [selectedPostIds, setSelectedPostIds] = useState([]);
+  const [bulkAction, setBulkAction] = useState("");
+  const [showContentPreview, setShowContentPreview] = useState(true);
   const [jobs, setJobs] = useState([]);
   const [jobFormState, setJobFormState] = useState({
     title: "",
@@ -79,7 +121,7 @@ export default function AdminPage() {
     setLoading(true);
     setError("");
     try {
-      const response = await fetch("/api/posts");
+      const response = await fetch("/api/posts?includeAll=true");
       const data = await response.json();
       setPosts(data.posts || []);
     } catch (err) {
@@ -140,20 +182,52 @@ export default function AdminPage() {
     });
   }, [categories]);
 
-  const sortedPosts = useMemo(() => {
-    const copy = [...posts];
+  const filteredPosts = useMemo(() => {
+    const normalizedSearch = listSearch.trim().toLowerCase();
+    const copy = posts.filter((post) => {
+      const normalizedCategory = normalizeCategoryName(post?.category);
+      const normalizedPostStatus = normalizeStatus(post?.status || "published");
+
+      if (listCategory !== "all" && normalizedCategory !== listCategory) {
+        return false;
+      }
+      if (listStatus !== "all" && normalizedPostStatus !== listStatus) {
+        return false;
+      }
+      if (normalizedSearch) {
+        const haystack =
+          `${post?.title || ""} ${post?.excerpt || ""}`.toLowerCase();
+        if (!haystack.includes(normalizedSearch)) {
+          return false;
+        }
+      }
+      return true;
+    });
+
     copy.sort((a, b) => {
       const aTime = new Date(a.date).getTime() || 0;
       const bTime = new Date(b.date).getTime() || 0;
-      return bTime - aTime;
+      return listSort === "oldest" ? aTime - bTime : bTime - aTime;
     });
     return copy;
-  }, [posts]);
+  }, [listCategory, listSearch, listSort, listStatus, posts]);
+
+  useEffect(() => {
+    const validIds = new Set(filteredPosts.map((post) => post._id));
+    setSelectedPostIds((prev) => prev.filter((id) => validIds.has(id)));
+  }, [filteredPosts]);
 
   const postCategoryOptions = useMemo(() => {
     const merged = [...categories, formState.category].filter(Boolean);
     return Array.from(new Set(merged));
   }, [categories, formState.category]);
+
+  const listCategoryOptions = useMemo(() => {
+    const fromPosts = posts
+      .map((post) => normalizeCategoryName(post?.category))
+      .filter(Boolean);
+    return Array.from(new Set([...categories, ...fromPosts]));
+  }, [categories, posts]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -167,6 +241,7 @@ export default function AdminPage() {
       slug: post.slug || "",
       excerpt: post.excerpt || "",
       category: post.category || categories[0] || "",
+      status: normalizeStatus(post.status || "published"),
       image: post.image || "",
       date: formatDateTime(post.date),
       content: post.content || "",
@@ -268,6 +343,69 @@ export default function AdminPage() {
     }
   };
 
+  const toggleSelectPost = (postId) => {
+    setSelectedPostIds((prev) =>
+      prev.includes(postId) ? prev.filter((id) => id !== postId) : [...prev, postId]
+    );
+  };
+
+  const toggleSelectAllVisiblePosts = () => {
+    const visibleIds = filteredPosts.map((post) => post._id);
+    const allSelected =
+      visibleIds.length > 0 && visibleIds.every((id) => selectedPostIds.includes(id));
+
+    if (allSelected) {
+      setSelectedPostIds((prev) => prev.filter((id) => !visibleIds.includes(id)));
+      return;
+    }
+    setSelectedPostIds(Array.from(new Set([...selectedPostIds, ...visibleIds])));
+  };
+
+  const handleBulkAction = async () => {
+    if (!selectedPostIds.length || !bulkAction) return;
+
+    const actionToLabel = {
+      delete: "delete",
+      publish: "set to Published",
+      draft: "set to Draft",
+    };
+    const confirmed = confirm(
+      `Apply "${actionToLabel[bulkAction] || bulkAction}" to ${selectedPostIds.length} selected post(s)?`
+    );
+    if (!confirmed) return;
+
+    setStatus("");
+    setError("");
+
+    const payload =
+      bulkAction === "delete"
+        ? { ids: selectedPostIds, action: "delete" }
+        : {
+            ids: selectedPostIds,
+            action: "setStatus",
+            status: bulkAction === "publish" ? "published" : "draft",
+          };
+
+    try {
+      const response = await fetch("/api/posts/bulk", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Bulk action failed.");
+      }
+
+      setBulkAction("");
+      setSelectedPostIds([]);
+      setStatus("Bulk action applied.");
+      fetchPosts();
+    } catch (err) {
+      setError(err.message || "Bulk action failed.");
+    }
+  };
+
   const handleJobChange = (event) => {
     const { name, value } = event.target;
     setJobFormState((prev) => ({ ...prev, [name]: value }));
@@ -293,9 +431,19 @@ export default function AdminPage() {
     setStatus("");
     setError("");
 
+    if (!formState.category) {
+      setError("Please add a category before creating a post.");
+      return;
+    }
+    if (formState.status === "scheduled" && !formState.date) {
+      setError("Scheduled posts require a publish date.");
+      return;
+    }
+
     const payload = {
       ...formState,
       date: formState.date ? new Date(formState.date).toISOString() : "",
+      status: normalizeStatus(formState.status || "draft"),
     };
 
     try {
@@ -571,6 +719,22 @@ export default function AdminPage() {
                     </select>
                   </label>
                   <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937" }}>
+                    Status
+                    <select
+                      id="post-status"
+                      name="status"
+                      value={formState.status}
+                      onChange={handleChange}
+                      style={inputStyle}
+                    >
+                      {POST_STATUS_OPTIONS.map((option) => (
+                        <option key={option} value={option}>
+                          {formatStatusLabel(option)}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937" }}>
                     Image URL
                     <input
                       id="post-image"
@@ -593,6 +757,17 @@ export default function AdminPage() {
                     />
                   </label>
                 </div>
+                {formState.status === "scheduled" && (
+                  <p
+                    style={{
+                      margin: "0.35rem 0 0",
+                      color: "#6b7280",
+                      fontWeight: 500,
+                    }}
+                  >
+                    This post will appear publicly at the selected date/time.
+                  </p>
+                )}
                 <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937", marginTop: "1rem" }}>
                   Excerpt
                   <textarea
@@ -606,18 +781,68 @@ export default function AdminPage() {
                     style={textareaStyle}
                   />
                 </label>
-                <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937", marginTop: "1rem" }}>
-                  Content (optional)
-                  <textarea
-                    id="post-content"
-                    name="content"
-                    placeholder="Content (optional)"
-                    value={formState.content}
-                    onChange={handleChange}
-                    rows={6}
-                    style={textareaStyle}
-                  />
-                </label>
+                <div style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937", marginTop: "1rem" }}>
+                  <span>Content</span>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "0.35rem" }}>
+                    <span style={{ fontSize: "0.9rem", color: "#64748b", fontWeight: 500 }}>
+                      Write with the toolbar above.
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setShowContentPreview((prev) => !prev)}
+                      style={{
+                        background: "#fff",
+                        border: "1px solid #cfd4dc",
+                        borderRadius: "10px",
+                        padding: "0.45rem 0.8rem",
+                        fontSize: "0.85rem",
+                        fontWeight: 600,
+                        color: "#1f2937",
+                        cursor: "pointer",
+                      }}
+                    >
+                      {showContentPreview ? "Hide Preview" : "Show Preview"}
+                    </button>
+                  </div>
+                  <div style={{ marginTop: "0.75rem" }}>
+                    <ReactQuill
+                      theme="snow"
+                      value={formState.content}
+                      onChange={(value) =>
+                        setFormState((prev) => ({ ...prev, content: value }))
+                      }
+                      modules={editorModules}
+                      formats={editorFormats}
+                      placeholder="Write your article content..."
+                      style={{ background: "#fff", borderRadius: "12px" }}
+                    />
+                  </div>
+                  {showContentPreview && (
+                    <div
+                      style={{
+                        marginTop: "0.9rem",
+                        border: "1px solid #cfd4dc",
+                        borderRadius: "12px",
+                        background: "#fff",
+                        padding: "1rem",
+                        minHeight: "160px",
+                      }}
+                    >
+                      <p style={{ margin: "0 0 0.6rem", color: "#64748b", fontSize: "0.82rem", fontWeight: 700 }}>
+                        LIVE PREVIEW
+                      </p>
+                      <div
+                        className="admin-rich-preview"
+                        style={{ color: "#111827", lineHeight: 1.65 }}
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            formState.content?.trim() ||
+                            "<p style='color:#94a3b8'>Your formatted content will appear here.</p>",
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
                 <div style={{ marginTop: "1rem", display: "flex", gap: "0.75rem" }}>
                   <button
                     type="submit"
@@ -659,11 +884,119 @@ export default function AdminPage() {
               <h2 style={{ fontSize: "1.4rem", fontWeight: 600, marginBottom: "1rem" }}>
                 Existing Posts
               </h2>
+              <div
+                style={{
+                  border: "1px solid #e3e7ee",
+                  borderRadius: "14px",
+                  padding: "1rem",
+                  marginBottom: "1rem",
+                  background: "#fff",
+                }}
+              >
+                <div
+                  style={{
+                    display: "grid",
+                    gap: "0.75rem",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+                  }}
+                >
+                  <input
+                    placeholder="Search title or excerpt"
+                    value={listSearch}
+                    onChange={(event) => setListSearch(event.target.value)}
+                    style={inputStyle}
+                  />
+                  <select
+                    value={listCategory}
+                    onChange={(event) => setListCategory(event.target.value)}
+                    style={inputStyle}
+                  >
+                    <option value="all">All categories</option>
+                    {listCategoryOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                  <select
+                    value={listStatus}
+                    onChange={(event) => setListStatus(event.target.value)}
+                    style={inputStyle}
+                  >
+                    <option value="all">All statuses</option>
+                    {POST_STATUS_OPTIONS.map((option) => (
+                      <option key={option} value={option}>
+                        {formatStatusLabel(option)}
+                      </option>
+                    ))}
+                  </select>
+                  <select
+                    value={listSort}
+                    onChange={(event) => setListSort(event.target.value)}
+                    style={inputStyle}
+                  >
+                    <option value="newest">Newest first</option>
+                    <option value="oldest">Oldest first</option>
+                  </select>
+                </div>
+
+                <div
+                  style={{
+                    marginTop: "0.75rem",
+                    display: "flex",
+                    gap: "0.75rem",
+                    alignItems: "center",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <button
+                    type="button"
+                    onClick={toggleSelectAllVisiblePosts}
+                    style={{
+                      ...inputStyle,
+                      padding: "0.45rem 0.85rem",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Select Visible
+                  </button>
+                  <select
+                    value={bulkAction}
+                    onChange={(event) => setBulkAction(event.target.value)}
+                    style={{ ...inputStyle, minWidth: "170px" }}
+                  >
+                    <option value="">Bulk action</option>
+                    <option value="publish">Mark as Published</option>
+                    <option value="draft">Move to Draft</option>
+                    <option value="delete">Delete Selected</option>
+                  </select>
+                  <button
+                    type="button"
+                    disabled={!selectedPostIds.length || !bulkAction}
+                    onClick={handleBulkAction}
+                    style={{
+                      border: "none",
+                      borderRadius: "10px",
+                      padding: "0.5rem 1rem",
+                      background:
+                        !selectedPostIds.length || !bulkAction ? "#cfd4dc" : "#111827",
+                      color: "#fff",
+                      cursor:
+                        !selectedPostIds.length || !bulkAction ? "not-allowed" : "pointer",
+                    }}
+                  >
+                    Apply
+                  </button>
+                  <span style={{ color: "#6b7280", fontSize: "0.92rem" }}>
+                    {selectedPostIds.length} selected
+                  </span>
+                </div>
+              </div>
               {loading ? (
                 <p>Loading posts...</p>
               ) : (
                 <div style={{ display: "grid", gap: "1rem" }}>
-                  {sortedPosts.map((post) => (
+                  {filteredPosts.map((post) => (
                     <div
                       key={post._id}
                       style={{
@@ -678,7 +1011,13 @@ export default function AdminPage() {
                         boxShadow: "0 10px 25px rgba(20, 33, 61, 0.06)",
                       }}
                     >
-                      <div>
+                      <div style={{ display: "flex", gap: "0.9rem", alignItems: "center" }}>
+                        <input
+                          type="checkbox"
+                          checked={selectedPostIds.includes(post._id)}
+                          onChange={() => toggleSelectPost(post._id)}
+                        />
+                        <div>
                         <h3 style={{ margin: "0 0 0.25rem", fontSize: "1.1rem" }}>
                           {post.title}
                         </h3>
@@ -700,7 +1039,32 @@ export default function AdminPage() {
                           <span style={{ color: "#6b7280", fontSize: "0.95rem" }}>
                             {post.date ? new Date(post.date).toLocaleDateString() : "No date"}
                           </span>
+                          <span
+                            style={{
+                              padding: "0.2rem 0.55rem",
+                              borderRadius: "999px",
+                              background:
+                                normalizeStatus(post.status || "published") === "draft"
+                                  ? "#fef3c7"
+                                  : normalizeStatus(post.status || "published") === "scheduled"
+                                  ? "#e0f2fe"
+                                  : "#dcfce7",
+                              color:
+                                normalizeStatus(post.status || "published") === "draft"
+                                  ? "#92400e"
+                                  : normalizeStatus(post.status || "published") === "scheduled"
+                                  ? "#0369a1"
+                                  : "#166534",
+                              fontSize: "0.75rem",
+                              fontWeight: 700,
+                              textTransform: "uppercase",
+                              letterSpacing: "0.5px",
+                            }}
+                          >
+                            {formatStatusLabel(post.status || "published")}
+                          </span>
                         </div>
+                      </div>
                       </div>
                       <div style={{ display: "flex", gap: "0.5rem" }}>
                         <button
@@ -732,7 +1096,7 @@ export default function AdminPage() {
                       </div>
                     </div>
                   ))}
-                  {!sortedPosts.length && <p>No posts yet.</p>}
+                  {!filteredPosts.length && <p>No posts match current filters.</p>}
                 </div>
               )}
             </section>
@@ -890,6 +1254,50 @@ export default function AdminPage() {
           </>
         )}
       </main>
+      <style jsx global>{`
+        .admin-rich-preview p {
+          margin: 0 0 0.8rem;
+        }
+        .admin-rich-preview ul,
+        .admin-rich-preview ol {
+          margin: 0.45rem 0 0.95rem;
+          padding-left: 1.5rem;
+        }
+        .admin-rich-preview ul {
+          list-style: disc;
+        }
+        .admin-rich-preview ol {
+          list-style: decimal;
+        }
+        .admin-rich-preview li {
+          margin-bottom: 0.35rem;
+        }
+        .admin-rich-preview h1,
+        .admin-rich-preview h2,
+        .admin-rich-preview h3 {
+          margin: 0.5rem 0 0.7rem;
+          line-height: 1.35;
+        }
+        .admin-rich-preview a {
+          color: #1d4ed8;
+          text-decoration: underline;
+        }
+        .admin-rich-preview .ql-size-small {
+          font-size: 0.85em;
+        }
+        .admin-rich-preview .ql-size-large {
+          font-size: 1.35em;
+        }
+        .admin-rich-preview .ql-size-huge {
+          font-size: 1.8em;
+        }
+        .admin-rich-preview .ql-font-serif {
+          font-family: Georgia, "Times New Roman", serif;
+        }
+        .admin-rich-preview .ql-font-monospace {
+          font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        }
+      `}</style>
     </NextLayout>
   );
 }
