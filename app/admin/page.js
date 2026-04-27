@@ -82,6 +82,7 @@ export default function AdminPage() {
   const [selectedPostIds, setSelectedPostIds] = useState([]);
   const [bulkAction, setBulkAction] = useState("");
   const [showContentPreview, setShowContentPreview] = useState(true);
+  const [imagePreviewError, setImagePreviewError] = useState(false);
   const [jobs, setJobs] = useState([]);
   const [jobFormState, setJobFormState] = useState({
     title: "",
@@ -217,6 +218,10 @@ export default function AdminPage() {
     setSelectedPostIds((prev) => prev.filter((id) => validIds.has(id)));
   }, [filteredPosts]);
 
+  useEffect(() => {
+    setImagePreviewError(false);
+  }, [editingId, formState.image]);
+
   const postCategoryOptions = useMemo(() => {
     const merged = [...categories, formState.category].filter(Boolean);
     return Array.from(new Set(merged));
@@ -231,6 +236,9 @@ export default function AdminPage() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    if (name === "image") {
+      setImagePreviewError(false);
+    }
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -744,6 +752,49 @@ export default function AdminPage() {
                       onChange={handleChange}
                       style={inputStyle}
                     />
+                    {formState.image.trim() && (
+                      <div
+                        style={{
+                          marginTop: "0.4rem",
+                          border: "1px solid #e3e7ee",
+                          borderRadius: "14px",
+                          padding: "0.85rem",
+                          background: "#fff",
+                        }}
+                      >
+                        <p
+                          style={{
+                            margin: "0 0 0.55rem",
+                            color: "#64748b",
+                            fontSize: "0.78rem",
+                            fontWeight: 700,
+                            letterSpacing: "0.04em",
+                          }}
+                        >
+                          IMAGE PREVIEW
+                        </p>
+                        {imagePreviewError ? (
+                          <p style={{ margin: 0, color: "#b42318", fontWeight: 500 }}>
+                            Unable to load this image URL.
+                          </p>
+                        ) : (
+                          <img
+                            src={formState.image}
+                            alt="Selected post preview"
+                            onError={() => setImagePreviewError(true)}
+                            style={{
+                              width: "100%",
+                              maxWidth: "320px",
+                              height: "180px",
+                              objectFit: "cover",
+                              borderRadius: "12px",
+                              border: "1px solid #e5e7eb",
+                              display: "block",
+                            }}
+                          />
+                        )}
+                      </div>
+                    )}
                   </label>
                   <label style={{ display: "grid", gap: "0.35rem", fontWeight: 600, color: "#1f2937" }}>
                     Publish Date
