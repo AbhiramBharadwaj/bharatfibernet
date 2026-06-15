@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import clientPromise from "@/lib/mongodb";
+import { isAuthenticatedRequest, unauthorizedJson } from "@/lib/adminAuth";
 
 const DB_NAME = "bharatfibernet";
 const COLLECTION = "posts";
@@ -74,6 +75,10 @@ export async function GET(request) {
   const slug = searchParams.get("slug");
   const includeAll = searchParams.get("includeAll") === "true";
 
+  if (includeAll && !isAuthenticatedRequest(request)) {
+    return unauthorizedJson();
+  }
+
   const client = await clientPromise;
   const collection = client.db(DB_NAME).collection(COLLECTION);
 
@@ -101,6 +106,10 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
+  if (!isAuthenticatedRequest(request)) {
+    return unauthorizedJson();
+  }
+
   const body = await request.json();
   const { title, excerpt, category, image, date, slug, content, status } =
     body || {};

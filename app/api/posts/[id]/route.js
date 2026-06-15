@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import clientPromise from "@/lib/mongodb";
+import { isAuthenticatedRequest, unauthorizedJson } from "@/lib/adminAuth";
 
 const DB_NAME = "bharatfibernet";
 const COLLECTION = "posts";
@@ -46,6 +47,10 @@ const parseDate = (value) => {
 };
 
 export async function PATCH(request, { params }) {
+  if (!isAuthenticatedRequest(request)) {
+    return unauthorizedJson();
+  }
+
   const { id } = params;
   if (!ObjectId.isValid(id)) {
     return NextResponse.json({ error: "Invalid post id." }, { status: 400 });
@@ -135,6 +140,10 @@ export async function PATCH(request, { params }) {
 }
 
 export async function DELETE(request, { params }) {
+  if (!isAuthenticatedRequest(request)) {
+    return unauthorizedJson();
+  }
+
   const { id } = params;
   if (!ObjectId.isValid(id)) {
     return NextResponse.json({ error: "Invalid post id." }, { status: 400 });

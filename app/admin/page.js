@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import NextLayout from "@/layouts/NextLayout";
 import "react-quill/dist/quill.snow.css";
 
@@ -63,6 +64,7 @@ const editorFormats = [
 ];
 
 export default function AdminPage() {
+  const router = useRouter();
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [jobsLoading, setJobsLoading] = useState(true);
@@ -91,6 +93,7 @@ export default function AdminPage() {
   const [editingJobId, setEditingJobId] = useState(null);
   const [jobStatus, setJobStatus] = useState("");
   const [jobError, setJobError] = useState("");
+  const [loggingOut, setLoggingOut] = useState(false);
 
   const inputStyle = {
     padding: "0.8rem 0.9rem",
@@ -541,6 +544,17 @@ export default function AdminPage() {
     }
   };
 
+  const handleLogout = async () => {
+    setLoggingOut(true);
+    try {
+      await fetch("/api/admin/logout", { method: "POST" });
+    } finally {
+      router.push("/admin/login");
+      router.refresh();
+      setLoggingOut(false);
+    }
+  };
+
   return (
     <NextLayout header={1} footer={1}>
       <main
@@ -595,6 +609,23 @@ export default function AdminPage() {
               }}
             >
               Career Openings
+            </button>
+            <button
+              type="button"
+              onClick={handleLogout}
+              disabled={loggingOut}
+              style={{
+                marginLeft: "auto",
+                padding: "0.6rem 1.4rem",
+                borderRadius: "999px",
+                border: "1px solid #fecaca",
+                background: "#fff5f5",
+                color: "#b91c1c",
+                fontWeight: 600,
+                cursor: loggingOut ? "not-allowed" : "pointer",
+              }}
+            >
+              {loggingOut ? "Signing out..." : "Logout"}
             </button>
           </div>
         </div>

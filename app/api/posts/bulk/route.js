@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import clientPromise from "@/lib/mongodb";
+import { isAuthenticatedRequest, unauthorizedJson } from "@/lib/adminAuth";
 
 const DB_NAME = "bharatfibernet";
 const COLLECTION = "posts";
@@ -38,6 +39,10 @@ const ensureCategoryExists = async (db, categoryName) => {
 };
 
 export async function POST(request) {
+  if (!isAuthenticatedRequest(request)) {
+    return unauthorizedJson();
+  }
+
   const body = await request.json();
   const ids = Array.isArray(body?.ids) ? body.ids : [];
   const action = String(body?.action || "");

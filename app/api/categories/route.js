@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import clientPromise from "@/lib/mongodb";
+import { isAuthenticatedRequest, unauthorizedJson } from "@/lib/adminAuth";
 
 const DB_NAME = "bharatfibernet";
 const COLLECTION = "categories";
@@ -51,6 +52,10 @@ export async function GET() {
 }
 
 export async function POST(request) {
+  if (!isAuthenticatedRequest(request)) {
+    return unauthorizedJson();
+  }
+
   const body = await request.json();
   const normalizedName = normalizeCategoryName(body?.name);
 

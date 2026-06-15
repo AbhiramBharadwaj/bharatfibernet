@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import clientPromise from "@/lib/mongodb";
+import { isAuthenticatedRequest, unauthorizedJson } from "@/lib/adminAuth";
 
 const DB_NAME = "bharatfibernet";
 const CATEGORY_COLLECTION = "categories";
@@ -18,6 +19,10 @@ const normalizeCategoryName = (value) =>
     .replace(/\s+/g, " ");
 
 export async function DELETE(_request, { params }) {
+  if (!isAuthenticatedRequest(_request)) {
+    return unauthorizedJson();
+  }
+
   const rawSlug = String(params?.slug || "").trim();
   const slug = slugify(rawSlug);
 

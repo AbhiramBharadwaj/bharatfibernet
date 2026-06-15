@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server";
 import clientPromise from "@/lib/mongodb";
+import { isAuthenticatedRequest, unauthorizedJson } from "@/lib/adminAuth";
 
 const DB_NAME = "bharatfibernet";
 const COLLECTION = "jobs";
 
-export async function GET() {
+export async function GET(request) {
+  if (!isAuthenticatedRequest(request)) {
+    return unauthorizedJson();
+  }
+
   const client = await clientPromise;
   const collection = client.db(DB_NAME).collection(COLLECTION);
   const jobs = await collection.find({}).sort({ createdAt: -1 }).toArray();
@@ -12,6 +17,10 @@ export async function GET() {
 }
 
 export async function POST(request) {
+  if (!isAuthenticatedRequest(request)) {
+    return unauthorizedJson();
+  }
+
   const body = await request.json();
   const { title, category } = body || {};
 
