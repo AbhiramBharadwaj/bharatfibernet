@@ -120,6 +120,9 @@ export default function AdminLoginPage() {
                 borderRadius: "14px",
                 border: "1px solid #cbd5e1",
                 marginBottom: "1rem",
+                color: "#111827",
+                backgroundColor: "#ffffff",
+                caretColor: "#111827",
               }}
             />
 
@@ -142,6 +145,9 @@ export default function AdminLoginPage() {
                 padding: "0.9rem 1rem",
                 borderRadius: "14px",
                 border: "1px solid #cbd5e1",
+                color: "#111827",
+                backgroundColor: "#ffffff",
+                caretColor: "#111827",
               }}
             />
 
